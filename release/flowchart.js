@@ -8,7 +8,7 @@
         var a = factory("object" == typeof exports ? require("Raphael") : root.Raphael);
         for (var i in a) ("object" == typeof exports ? exports : root)[i] = a[i];
     }
-}(this, function(__WEBPACK_EXTERNAL_MODULE_15__) {
+}("undefined" != typeof self ? self : this, function(__WEBPACK_EXTERNAL_MODULE_8__) {
     /******/
     return function(modules) {
         /******/
@@ -23,16 +23,15 @@
             if (installedModules[moduleId]) /******/
             return installedModules[moduleId].exports;
             /******/
-            /******/
             // Create a new module (and put it into the cache)
             /******/
             var module = installedModules[moduleId] = {
                 /******/
-                exports: {},
+                i: moduleId,
                 /******/
-                id: moduleId,
+                l: !1,
                 /******/
-                loaded: !1
+                exports: {}
             };
             /******/
             /******/
@@ -47,7 +46,7 @@
             // Flag the module as loaded
             /******/
             return modules[moduleId].call(module.exports, module, module.exports, __webpack_require__), 
-            module.loaded = !0, module.exports;
+            module.l = !0, module.exports;
         }
         // webpackBootstrap
         /******/
@@ -69,937 +68,199 @@
         /******/
         /******/
         /******/
+        // define getter function for harmony exports
+        /******/
+        /******/
+        /******/
+        // getDefaultExport function for compatibility with non-harmony modules
+        /******/
+        /******/
+        /******/
+        // Object.prototype.hasOwnProperty.call
+        /******/
+        /******/
+        /******/
         // __webpack_public_path__
         /******/
         return __webpack_require__.m = modules, __webpack_require__.c = installedModules, 
-        __webpack_require__.p = "", __webpack_require__(0);
+        __webpack_require__.d = function(exports, name, getter) {
+            /******/
+            __webpack_require__.o(exports, name) || /******/
+            Object.defineProperty(exports, name, {
+                /******/
+                configurable: !1,
+                /******/
+                enumerable: !0,
+                /******/
+                get: getter
+            });
+        }, __webpack_require__.n = function(module) {
+            /******/
+            var getter = module && module.__esModule ? /******/
+            function() {
+                return module.default;
+            } : /******/
+            function() {
+                return module;
+            };
+            /******/
+            /******/
+            return __webpack_require__.d(getter, "a", getter), getter;
+        }, __webpack_require__.o = function(object, property) {
+            return Object.prototype.hasOwnProperty.call(object, property);
+        }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 5);
     }([ /* 0 */
-    /*!******************!*\
-  !*** ./index.js ***!
-  \******************/
-    /***/
-    function(module, exports, __webpack_require__) {
-        __webpack_require__(/*! ./src/flowchart.shim */ 8);
-        var parse = __webpack_require__(/*! ./src/flowchart.parse */ 4);
-        __webpack_require__(/*! ./src/jquery-plugin */ 14);
-        var FlowChart = {
-            parse: parse
-        };
-        "undefined" != typeof window && (window.flowchart = FlowChart), module.exports = FlowChart;
-    }, /* 1 */
     /*!**********************************!*\
   !*** ./src/flowchart.helpers.js ***!
   \**********************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
     /***/
     function(module, exports) {
-        function _defaults(options, defaultOptions) {
-            if (!options || "function" == typeof options) return defaultOptions;
-            var merged = {};
-            for (var attrname in defaultOptions) merged[attrname] = defaultOptions[attrname];
-            for (attrname in options) options[attrname] && ("object" == typeof merged[attrname] ? merged[attrname] = _defaults(merged[attrname], options[attrname]) : merged[attrname] = options[attrname]);
-            return merged;
-        }
-        function _inherits(ctor, superCtor) {
-            if ("function" == typeof Object.create) // implementation from standard node.js 'util' module
-            ctor.super_ = superCtor, ctor.prototype = Object.create(superCtor.prototype, {
-                constructor: {
-                    value: ctor,
-                    enumerable: !1,
-                    writable: !0,
-                    configurable: !0
-                }
-            }); else {
-                // old school shim for old browsers
-                ctor.super_ = superCtor;
-                var TempCtor = function() {};
-                TempCtor.prototype = superCtor.prototype, ctor.prototype = new TempCtor(), ctor.prototype.constructor = ctor;
-            }
-        }
-        // move dependent functions to a container so that
-        // they can be overriden easier in no jquery environment (node.js)
-        module.exports = {
-            defaults: _defaults,
-            inherits: _inherits
-        };
-    }, /* 2 */
+        eval("function _defaults(options, defaultOptions) {\n  if (!options || typeof options === 'function') {\n    return defaultOptions;\n  }\n\n  var merged = {};\n  for (var attrname in defaultOptions) {\n    merged[attrname] = defaultOptions[attrname];\n  }\n\n  for (attrname in options) {\n    if (options[attrname]) {\n      if (typeof merged[attrname] === 'object') {\n        merged[attrname] = _defaults(merged[attrname], options[attrname]);\n      } else {\n        merged[attrname] = options[attrname];\n      }\n    }\n  }\n  return merged;\n}\n\nfunction _inherits(ctor, superCtor) {\n  if (typeof(Object.create) === 'function') {\n    // implementation from standard node.js 'util' module\n    ctor.super_ = superCtor;\n    ctor.prototype = Object.create(superCtor.prototype, {\n      constructor: {\n        value: ctor,\n        enumerable: false,\n        writable: true,\n        configurable: true\n      }\n    });\n  } else {\n    // old school shim for old browsers\n    ctor.super_ = superCtor;\n    var TempCtor = function () {};\n    TempCtor.prototype = superCtor.prototype;\n    ctor.prototype = new TempCtor();\n    ctor.prototype.constructor = ctor;\n  }\n}\n\n// move dependent functions to a container so that\n// they can be overriden easier in no jquery environment (node.js)\nmodule.exports = {\n  defaults: _defaults,\n  inherits: _inherits\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMC5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9mbG93Y2hhcnQuaGVscGVycy5qcz81MmMxIl0sInNvdXJjZXNDb250ZW50IjpbImZ1bmN0aW9uIF9kZWZhdWx0cyhvcHRpb25zLCBkZWZhdWx0T3B0aW9ucykge1xuICBpZiAoIW9wdGlvbnMgfHwgdHlwZW9mIG9wdGlvbnMgPT09ICdmdW5jdGlvbicpIHtcbiAgICByZXR1cm4gZGVmYXVsdE9wdGlvbnM7XG4gIH1cblxuICB2YXIgbWVyZ2VkID0ge307XG4gIGZvciAodmFyIGF0dHJuYW1lIGluIGRlZmF1bHRPcHRpb25zKSB7XG4gICAgbWVyZ2VkW2F0dHJuYW1lXSA9IGRlZmF1bHRPcHRpb25zW2F0dHJuYW1lXTtcbiAgfVxuXG4gIGZvciAoYXR0cm5hbWUgaW4gb3B0aW9ucykge1xuICAgIGlmIChvcHRpb25zW2F0dHJuYW1lXSkge1xuICAgICAgaWYgKHR5cGVvZiBtZXJnZWRbYXR0cm5hbWVdID09PSAnb2JqZWN0Jykge1xuICAgICAgICBtZXJnZWRbYXR0cm5hbWVdID0gX2RlZmF1bHRzKG1lcmdlZFthdHRybmFtZV0sIG9wdGlvbnNbYXR0cm5hbWVdKTtcbiAgICAgIH0gZWxzZSB7XG4gICAgICAgIG1lcmdlZFthdHRybmFtZV0gPSBvcHRpb25zW2F0dHJuYW1lXTtcbiAgICAgIH1cbiAgICB9XG4gIH1cbiAgcmV0dXJuIG1lcmdlZDtcbn1cblxuZnVuY3Rpb24gX2luaGVyaXRzKGN0b3IsIHN1cGVyQ3Rvcikge1xuICBpZiAodHlwZW9mKE9iamVjdC5jcmVhdGUpID09PSAnZnVuY3Rpb24nKSB7XG4gICAgLy8gaW1wbGVtZW50YXRpb24gZnJvbSBzdGFuZGFyZCBub2RlLmpzICd1dGlsJyBtb2R1bGVcbiAgICBjdG9yLnN1cGVyXyA9IHN1cGVyQ3RvcjtcbiAgICBjdG9yLnByb3RvdHlwZSA9IE9iamVjdC5jcmVhdGUoc3VwZXJDdG9yLnByb3RvdHlwZSwge1xuICAgICAgY29uc3RydWN0b3I6IHtcbiAgICAgICAgdmFsdWU6IGN0b3IsXG4gICAgICAgIGVudW1lcmFibGU6IGZhbHNlLFxuICAgICAgICB3cml0YWJsZTogdHJ1ZSxcbiAgICAgICAgY29uZmlndXJhYmxlOiB0cnVlXG4gICAgICB9XG4gICAgfSk7XG4gIH0gZWxzZSB7XG4gICAgLy8gb2xkIHNjaG9vbCBzaGltIGZvciBvbGQgYnJvd3NlcnNcbiAgICBjdG9yLnN1cGVyXyA9IHN1cGVyQ3RvcjtcbiAgICB2YXIgVGVtcEN0b3IgPSBmdW5jdGlvbiAoKSB7fTtcbiAgICBUZW1wQ3Rvci5wcm90b3R5cGUgPSBzdXBlckN0b3IucHJvdG90eXBlO1xuICAgIGN0b3IucHJvdG90eXBlID0gbmV3IFRlbXBDdG9yKCk7XG4gICAgY3Rvci5wcm90b3R5cGUuY29uc3RydWN0b3IgPSBjdG9yO1xuICB9XG59XG5cbi8vIG1vdmUgZGVwZW5kZW50IGZ1bmN0aW9ucyB0byBhIGNvbnRhaW5lciBzbyB0aGF0XG4vLyB0aGV5IGNhbiBiZSBvdmVycmlkZW4gZWFzaWVyIGluIG5vIGpxdWVyeSBlbnZpcm9ubWVudCAobm9kZS5qcylcbm1vZHVsZS5leHBvcnRzID0ge1xuICBkZWZhdWx0czogX2RlZmF1bHRzLFxuICBpbmhlcml0czogX2luaGVyaXRzXG59O1xuXG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi9zcmMvZmxvd2NoYXJ0LmhlbHBlcnMuanNcbi8vIG1vZHVsZSBpZCA9IDBcbi8vIG1vZHVsZSBjaHVua3MgPSAwIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOyIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///0\n");
+    }, /* 1 */
     /*!*********************************!*\
   !*** ./src/flowchart.symbol.js ***!
   \*********************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
     /***/
     function(module, exports, __webpack_require__) {
-        function Symbol(chart, options, symbol) {
-            this.chart = chart, this.group = this.chart.paper.set(), this.symbol = symbol, this.connectedTo = [], 
-            this.symbolType = options.symbolType, this.flowstate = options.flowstate || "future", 
-            this.lineStyle = options.lineStyle || {}, this.key = options.key || "", this.next_direction = options.next && options.direction_next ? options.direction_next : void 0, 
-            this.text = this.chart.paper.text(0, 0, options.text), //Raphael does not support the svg group tag so setting the text node id to the symbol node id plus t
-            options.key && (this.text.node.id = options.key + "t"), this.text.node.setAttribute("class", this.getAttr("class") + "t"), 
-            this.text.attr({
-                "text-anchor": "start",
-                x: this.getAttr("text-margin"),
-                fill: this.getAttr("font-color"),
-                "font-size": this.getAttr("font-size")
-            });
-            var font = this.getAttr("font"), fontF = this.getAttr("font-family"), fontW = this.getAttr("font-weight");
-            font && this.text.attr({
-                font: font
-            }), fontF && this.text.attr({
-                "font-family": fontF
-            }), fontW && this.text.attr({
-                "font-weight": fontW
-            }), options.link && this.text.attr("href", options.link), options.target && this.text.attr("target", options.target);
-            var maxWidth = this.getAttr("maxWidth");
-            if (maxWidth) {
-                for (var words = options.text.split(" "), tempText = "", i = 0, ii = words.length; ii > i; i++) {
-                    var word = words[i];
-                    this.text.attr("text", tempText + " " + word), tempText += this.text.getBBox().width > maxWidth ? "\n" + word : " " + word;
-                }
-                this.text.attr("text", tempText.substring(1));
-            }
-            if (this.group.push(this.text), symbol) {
-                var tmpMargin = this.getAttr("text-margin");
-                symbol.attr({
-                    fill: this.getAttr("fill"),
-                    stroke: this.getAttr("element-color"),
-                    "stroke-width": this.getAttr("line-width"),
-                    width: this.text.getBBox().width + 2 * tmpMargin,
-                    height: this.text.getBBox().height + 2 * tmpMargin
-                }), symbol.node.setAttribute("class", this.getAttr("class")), options.link && symbol.attr("href", options.link), 
-                options.target && symbol.attr("target", options.target), options.key && (symbol.node.id = options.key), 
-                this.group.push(symbol), symbol.insertBefore(this.text), this.text.attr({
-                    y: symbol.getBBox().height / 2
-                }), this.initialize();
-            }
-        }
-        var drawAPI = __webpack_require__(/*! ./flowchart.functions */ 3), drawLine = drawAPI.drawLine, checkLineIntersection = drawAPI.checkLineIntersection;
-        /* Gets the attribute based on Flowstate, Symbol-Name and default, first found wins */
-        Symbol.prototype.getAttr = function(attName) {
-            if (this.chart) {
-                var opt1, opt3 = this.chart.options ? this.chart.options[attName] : void 0, opt2 = this.chart.options.symbols ? this.chart.options.symbols[this.symbolType][attName] : void 0;
-                return this.chart.options.flowstate && this.chart.options.flowstate[this.flowstate] && (opt1 = this.chart.options.flowstate[this.flowstate][attName]), 
-                opt1 || opt2 || opt3;
-            }
-        }, Symbol.prototype.initialize = function() {
-            this.group.transform("t" + this.getAttr("line-width") + "," + this.getAttr("line-width")), 
-            this.width = this.group.getBBox().width, this.height = this.group.getBBox().height;
-        }, Symbol.prototype.getCenter = function() {
-            return {
-                x: this.getX() + this.width / 2,
-                y: this.getY() + this.height / 2
-            };
-        }, Symbol.prototype.getX = function() {
-            return this.group.getBBox().x;
-        }, Symbol.prototype.getY = function() {
-            return this.group.getBBox().y;
-        }, Symbol.prototype.shiftX = function(x) {
-            this.group.transform("t" + (this.getX() + x) + "," + this.getY());
-        }, Symbol.prototype.setX = function(x) {
-            this.group.transform("t" + x + "," + this.getY());
-        }, Symbol.prototype.shiftY = function(y) {
-            this.group.transform("t" + this.getX() + "," + (this.getY() + y));
-        }, Symbol.prototype.setY = function(y) {
-            this.group.transform("t" + this.getX() + "," + y);
-        }, Symbol.prototype.getTop = function() {
-            var y = this.getY(), x = this.getX() + this.width / 2;
-            return {
-                x: x,
-                y: y
-            };
-        }, Symbol.prototype.getBottom = function() {
-            var y = this.getY() + this.height, x = this.getX() + this.width / 2;
-            return {
-                x: x,
-                y: y
-            };
-        }, Symbol.prototype.getLeft = function() {
-            var y = this.getY() + this.group.getBBox().height / 2, x = this.getX();
-            return {
-                x: x,
-                y: y
-            };
-        }, Symbol.prototype.getRight = function() {
-            var y = this.getY() + this.group.getBBox().height / 2, x = this.getX() + this.group.getBBox().width;
-            return {
-                x: x,
-                y: y
-            };
-        }, Symbol.prototype.render = function() {
-            if (this.next) {
-                var lineLength = this.getAttr("line-length");
-                if ("right" === this.next_direction) {
-                    var rightPoint = this.getRight();
-                    if (!this.next.isPositioned) {
-                        this.next.setY(rightPoint.y - this.next.height / 2), this.next.shiftX(this.group.getBBox().x + this.width + lineLength);
-                        var self = this;
-                        !function shift() {
-                            for (var symb, hasSymbolUnder = !1, i = 0, len = self.chart.symbols.length; len > i; i++) {
-                                symb = self.chart.symbols[i];
-                                var diff = Math.abs(symb.getCenter().x - self.next.getCenter().x);
-                                if (symb.getCenter().y > self.next.getCenter().y && diff <= self.next.width / 2) {
-                                    hasSymbolUnder = !0;
-                                    break;
-                                }
-                            }
-                            hasSymbolUnder && (self.next.setX(symb.getX() + symb.width + lineLength), shift());
-                        }(), this.next.isPositioned = !0, this.next.render();
-                    }
-                } else {
-                    var bottomPoint = this.getBottom();
-                    this.next.isPositioned || (this.next.shiftY(this.getY() + this.height + lineLength), 
-                    this.next.setX(bottomPoint.x - this.next.width / 2), this.next.isPositioned = !0, 
-                    this.next.render());
-                }
-            }
-        }, Symbol.prototype.renderLines = function() {
-            this.next && (this.next_direction ? this.drawLineTo(this.next, "", this.next_direction) : this.drawLineTo(this.next));
-        }, Symbol.prototype.drawLineTo = function(symbol, text, origin) {
-            this.connectedTo.indexOf(symbol) < 0 && this.connectedTo.push(symbol);
-            var line, x = this.getCenter().x, y = this.getCenter().y, right = this.getRight(), bottom = this.getBottom(), left = this.getLeft(), symbolX = symbol.getCenter().x, symbolY = symbol.getCenter().y, symbolTop = symbol.getTop(), symbolRight = symbol.getRight(), symbolLeft = symbol.getLeft(), isOnSameColumn = x === symbolX, isOnSameLine = y === symbolY, isUnder = symbolY > y, isUpper = y > symbolY || this === symbol, isLeft = x > symbolX, isRight = symbolX > x, maxX = 0, lineLength = this.getAttr("line-length"), lineWith = this.getAttr("line-width");
-            if (origin && "bottom" !== origin || !isOnSameColumn || !isUnder) if (origin && "right" !== origin || !isOnSameLine || !isRight) if (origin && "left" !== origin || !isOnSameLine || !isLeft) if (origin && "right" !== origin || !isOnSameColumn || !isUpper) if (origin && "right" !== origin || !isOnSameColumn || !isUnder) if (origin && "bottom" !== origin || !isLeft) if (origin && "bottom" !== origin || !isRight) if (origin && "right" === origin && isLeft) line = drawLine(this.chart, right, [ {
-                x: right.x + lineLength / 2,
-                y: right.y
-            }, {
-                x: right.x + lineLength / 2,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y
-            } ], text), this.rightStart = !0, symbol.topEnd = !0, maxX = right.x + lineLength / 2; else if (origin && "right" === origin && isRight) line = drawLine(this.chart, right, [ {
-                x: symbolTop.x,
-                y: right.y
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y
-            } ], text), this.rightStart = !0, symbol.topEnd = !0, maxX = right.x + lineLength / 2; else if (origin && "bottom" === origin && isOnSameColumn && isUpper) line = drawLine(this.chart, bottom, [ {
-                x: bottom.x,
-                y: bottom.y + lineLength / 2
-            }, {
-                x: right.x + lineLength / 2,
-                y: bottom.y + lineLength / 2
-            }, {
-                x: right.x + lineLength / 2,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y
-            } ], text), this.bottomStart = !0, symbol.topEnd = !0, maxX = bottom.x + lineLength / 2; else if ("left" === origin && isOnSameColumn && isUpper) {
-                var diffX = left.x - lineLength / 2;
-                symbolLeft.x < left.x && (diffX = symbolLeft.x - lineLength / 2), line = drawLine(this.chart, left, [ {
-                    x: diffX,
-                    y: left.y
-                }, {
-                    x: diffX,
-                    y: symbolTop.y - lineLength / 2
-                }, {
-                    x: symbolTop.x,
-                    y: symbolTop.y - lineLength / 2
-                }, {
-                    x: symbolTop.x,
-                    y: symbolTop.y
-                } ], text), this.leftStart = !0, symbol.topEnd = !0, maxX = left.x;
-            } else "left" === origin && (line = drawLine(this.chart, left, [ {
-                x: symbolTop.x + (left.x - symbolTop.x) / 2,
-                y: left.y
-            }, {
-                x: symbolTop.x + (left.x - symbolTop.x) / 2,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y
-            } ], text), this.leftStart = !0, symbol.topEnd = !0, maxX = left.x); else line = drawLine(this.chart, bottom, [ {
-                x: bottom.x,
-                y: bottom.y + lineLength / 2
-            }, {
-                x: bottom.x + (bottom.x - symbolTop.x) / 2,
-                y: bottom.y + lineLength / 2
-            }, {
-                x: bottom.x + (bottom.x - symbolTop.x) / 2,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y
-            } ], text), this.bottomStart = !0, symbol.topEnd = !0, maxX = bottom.x + (bottom.x - symbolTop.x) / 2; else line = this.leftEnd && isUpper ? drawLine(this.chart, bottom, [ {
-                x: bottom.x,
-                y: bottom.y + lineLength / 2
-            }, {
-                x: bottom.x + (bottom.x - symbolTop.x) / 2,
-                y: bottom.y + lineLength / 2
-            }, {
-                x: bottom.x + (bottom.x - symbolTop.x) / 2,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y
-            } ], text) : drawLine(this.chart, bottom, [ {
-                x: bottom.x,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y
-            } ], text), this.bottomStart = !0, symbol.topEnd = !0, maxX = bottom.x + (bottom.x - symbolTop.x) / 2; else line = drawLine(this.chart, right, [ {
-                x: right.x + lineLength / 2,
-                y: right.y
-            }, {
-                x: right.x + lineLength / 2,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y
-            } ], text), this.rightStart = !0, symbol.topEnd = !0, maxX = right.x + lineLength / 2; else line = drawLine(this.chart, right, [ {
-                x: right.x + lineLength / 2,
-                y: right.y
-            }, {
-                x: right.x + lineLength / 2,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y - lineLength / 2
-            }, {
-                x: symbolTop.x,
-                y: symbolTop.y
-            } ], text), this.rightStart = !0, symbol.topEnd = !0, maxX = right.x + lineLength / 2; else line = drawLine(this.chart, left, symbolRight, text), 
-            this.leftStart = !0, symbol.rightEnd = !0, maxX = symbolRight.x; else line = drawLine(this.chart, right, symbolLeft, text), 
-            this.rightStart = !0, symbol.leftEnd = !0, maxX = symbolLeft.x; else line = drawLine(this.chart, bottom, symbolTop, text), 
-            this.bottomStart = !0, symbol.topEnd = !0, maxX = bottom.x;
-            if (//update line style
-            this.lineStyle[symbol.key] && line && line.attr(this.lineStyle[symbol.key]), line) {
-                for (var l = 0, llen = this.chart.lines.length; llen > l; l++) for (var len, otherLine = this.chart.lines[l], ePath = otherLine.attr("path"), lPath = line.attr("path"), iP = 0, lenP = ePath.length - 1; lenP > iP; iP++) {
-                    var newPath = [];
-                    newPath.push([ "M", ePath[iP][1], ePath[iP][2] ]), newPath.push([ "L", ePath[iP + 1][1], ePath[iP + 1][2] ]);
-                    for (var line1_from_x = newPath[0][1], line1_from_y = newPath[0][2], line1_to_x = newPath[1][1], line1_to_y = newPath[1][2], lP = 0, lenlP = lPath.length - 1; lenlP > lP; lP++) {
-                        var newLinePath = [];
-                        newLinePath.push([ "M", lPath[lP][1], lPath[lP][2] ]), newLinePath.push([ "L", lPath[lP + 1][1], lPath[lP + 1][2] ]);
-                        var line2_from_x = newLinePath[0][1], line2_from_y = newLinePath[0][2], line2_to_x = newLinePath[1][1], line2_to_y = newLinePath[1][2], res = checkLineIntersection(line1_from_x, line1_from_y, line1_to_x, line1_to_y, line2_from_x, line2_from_y, line2_to_x, line2_to_y);
-                        if (res.onLine1 && res.onLine2) {
-                            var newSegment;
-                            line2_from_y === line2_to_y ? line2_from_x > line2_to_x ? (newSegment = [ "L", res.x + 2 * lineWith, line2_from_y ], 
-                            lPath.splice(lP + 1, 0, newSegment), newSegment = [ "C", res.x + 2 * lineWith, line2_from_y, res.x, line2_from_y - 4 * lineWith, res.x - 2 * lineWith, line2_from_y ], 
-                            lPath.splice(lP + 2, 0, newSegment), line.attr("path", lPath)) : (newSegment = [ "L", res.x - 2 * lineWith, line2_from_y ], 
-                            lPath.splice(lP + 1, 0, newSegment), newSegment = [ "C", res.x - 2 * lineWith, line2_from_y, res.x, line2_from_y - 4 * lineWith, res.x + 2 * lineWith, line2_from_y ], 
-                            lPath.splice(lP + 2, 0, newSegment), line.attr("path", lPath)) : line2_from_y > line2_to_y ? (newSegment = [ "L", line2_from_x, res.y + 2 * lineWith ], 
-                            lPath.splice(lP + 1, 0, newSegment), newSegment = [ "C", line2_from_x, res.y + 2 * lineWith, line2_from_x + 4 * lineWith, res.y, line2_from_x, res.y - 2 * lineWith ], 
-                            lPath.splice(lP + 2, 0, newSegment), line.attr("path", lPath)) : (newSegment = [ "L", line2_from_x, res.y - 2 * lineWith ], 
-                            lPath.splice(lP + 1, 0, newSegment), newSegment = [ "C", line2_from_x, res.y - 2 * lineWith, line2_from_x + 4 * lineWith, res.y, line2_from_x, res.y + 2 * lineWith ], 
-                            lPath.splice(lP + 2, 0, newSegment), line.attr("path", lPath)), lP += 2, len += 2;
-                        }
-                    }
-                }
-                this.chart.lines.push(line);
-            }
-            (!this.chart.maxXFromLine || this.chart.maxXFromLine && maxX > this.chart.maxXFromLine) && (this.chart.maxXFromLine = maxX);
-        }, module.exports = Symbol;
-    }, /* 3 */
+        eval("var drawAPI = __webpack_require__(/*! ./flowchart.functions */ 2);\nvar drawLine = drawAPI.drawLine;\nvar checkLineIntersection = drawAPI.checkLineIntersection;\n\nfunction Symbol(chart, options, symbol) {\n  this.chart = chart;\n  this.group = this.chart.paper.set();\n  this.symbol = symbol;\n  this.connectedTo = [];\n  this.symbolType = options.symbolType;\n  this.flowstate = (options.flowstate || 'future');\n  this.lineStyle = (options.lineStyle || {});\n  this.key = (options.key || '');\n\n  this.next_direction = options.next && options['direction_next'] ? options['direction_next'] : undefined;\n\n  this.text = this.chart.paper.text(0, 0, options.text);\n  //Raphael does not support the svg group tag so setting the text node id to the symbol node id plus t\n  if (options.key) { this.text.node.id = options.key + 't'; }\n  this.text.node.setAttribute('class', this.getAttr('class') + 't');\n\n  this.text.attr({\n    'text-anchor': 'start',\n    'x'          : this.getAttr('text-margin'),\n    'fill'       : this.getAttr('font-color'),\n    'font-size'  : this.getAttr('font-size')\n  });\n\n  var font  = this.getAttr('font');\n  var fontF = this.getAttr('font-family');\n  var fontW = this.getAttr('font-weight');\n\n  if (font) this.text.attr({ 'font': font });\n  if (fontF) this.text.attr({ 'font-family': fontF });\n  if (fontW) this.text.attr({ 'font-weight': fontW });\n\n  if (options.link) { this.text.attr('href', options.link); }\n  if (options.target) { this.text.attr('target', options.target); }\n\n  var maxWidth = this.getAttr('maxWidth');\n  if (maxWidth) {\n    // using this approach: http://stackoverflow.com/a/3153457/22466\n    var words = options.text.split(' ');\n    var tempText = \"\";\n    for (var i=0, ii=words.length; i<ii; i++) {\n      var word = words[i];\n      this.text.attr(\"text\", tempText + \" \" + word);\n      if (this.text.getBBox().width > maxWidth) {\n        tempText += \"\\n\" + word;\n      } else {\n        tempText += \" \" + word;\n      }\n    }\n    this.text.attr(\"text\", tempText.substring(1));\n  }\n\n  this.group.push(this.text);\n\n  if (symbol) {\n    var tmpMargin = this.getAttr('text-margin');\n\n    symbol.attr({\n      'fill' : this.getAttr('fill'),\n      'stroke' : this.getAttr('element-color'),\n      'stroke-width' : this.getAttr('line-width'),\n      'width' : this.text.getBBox().width + 2 * tmpMargin,\n      'height' : this.text.getBBox().height + 2 * tmpMargin\n    });\n\n    symbol.node.setAttribute('class', this.getAttr('class'));\n\n    if (options.link) { symbol.attr('href', options.link); }\n    if (options.target) { symbol.attr('target', options.target); }\n    if (options.key) { symbol.node.id = options.key; }\n\n    this.group.push(symbol);\n    symbol.insertBefore(this.text);\n\n    this.text.attr({\n      'y': symbol.getBBox().height/2\n    });\n\n    this.initialize();\n  }\n\n}\n\n/* Gets the attribute based on Flowstate, Symbol-Name and default, first found wins */\nSymbol.prototype.getAttr = function(attName) {\n  if (!this.chart) {\n    return undefined;\n  }\n  var opt3 = (this.chart.options) ? this.chart.options[attName] : undefined;\n  var opt2 = (this.chart.options.symbols) ? this.chart.options.symbols[this.symbolType][attName] : undefined;\n  var opt1;\n  if (this.chart.options.flowstate && this.chart.options.flowstate[this.flowstate]) {\n    opt1 = this.chart.options.flowstate[this.flowstate][attName];\n  }\n  return (opt1 || opt2 || opt3);\n};\n\nSymbol.prototype.initialize = function() {\n  this.group.transform('t' + this.getAttr('line-width') + ',' + this.getAttr('line-width'));\n\n  this.width = this.group.getBBox().width;\n  this.height = this.group.getBBox().height;\n};\n\nSymbol.prototype.getCenter = function() {\n  return {x: this.getX() + this.width/2,\n          y: this.getY() + this.height/2};\n};\n\nSymbol.prototype.getX = function() {\n  return this.group.getBBox().x;\n};\n\nSymbol.prototype.getY = function() {\n  return this.group.getBBox().y;\n};\n\nSymbol.prototype.shiftX = function(x) {\n  this.group.transform('t' + (this.getX() + x) + ',' + this.getY());\n};\n\nSymbol.prototype.setX = function(x) {\n  this.group.transform('t' + x + ',' + this.getY());\n};\n\nSymbol.prototype.shiftY = function(y) {\n  this.group.transform('t' + this.getX() + ',' + (this.getY() + y));\n};\n\nSymbol.prototype.setY = function(y) {\n  this.group.transform('t' + this.getX() + ',' + y);\n};\n\nSymbol.prototype.getTop = function() {\n  var y = this.getY();\n  var x = this.getX() + this.width/2;\n  return {x: x, y: y};\n};\n\nSymbol.prototype.getBottom = function() {\n  var y = this.getY() + this.height;\n  var x = this.getX() + this.width/2;\n  return {x: x, y: y};\n};\n\nSymbol.prototype.getLeft = function() {\n  var y = this.getY() + this.group.getBBox().height/2;\n  var x = this.getX();\n  return {x: x, y: y};\n};\n\nSymbol.prototype.getRight = function() {\n  var y = this.getY() + this.group.getBBox().height/2;\n  var x = this.getX() + this.group.getBBox().width;\n  return {x: x, y: y};\n};\n\nSymbol.prototype.render = function() {\n  if (this.next) {\n\n    var lineLength = this.getAttr('line-length');\n\n    if (this.next_direction === 'right') {\n\n      var rightPoint = this.getRight();\n\n      if (!this.next.isPositioned) {\n\n        this.next.setY(rightPoint.y - this.next.height/2);\n        this.next.shiftX(this.group.getBBox().x + this.width + lineLength);\n\n        var self = this;\n        (function shift() {\n          var hasSymbolUnder = false;\n          var symb;\n          for (var i = 0, len = self.chart.symbols.length; i < len; i++) {\n            symb = self.chart.symbols[i];\n\n            var diff = Math.abs(symb.getCenter().x - self.next.getCenter().x);\n            if (symb.getCenter().y > self.next.getCenter().y && diff <= self.next.width/2) {\n              hasSymbolUnder = true;\n              break;\n            }\n          }\n\n          if (hasSymbolUnder) {\n            self.next.setX(symb.getX() + symb.width + lineLength);\n            shift();\n          }\n        })();\n\n        this.next.isPositioned = true;\n\n        this.next.render();\n      }\n    } else {\n      var bottomPoint = this.getBottom();\n\n      if (!this.next.isPositioned) {\n        this.next.shiftY(this.getY() + this.height + lineLength);\n        this.next.setX(bottomPoint.x - this.next.width/2);\n        this.next.isPositioned = true;\n\n        this.next.render();\n      }\n    }\n  }\n};\n\nSymbol.prototype.renderLines = function() {\n  if (this.next) {\n    if (this.next_direction) {\n      this.drawLineTo(this.next, '', this.next_direction);\n    } else {\n      this.drawLineTo(this.next);\n    }\n  }\n};\n\nSymbol.prototype.drawLineTo = function(symbol, text, origin) {\n  if (this.connectedTo.indexOf(symbol) < 0) {\n    this.connectedTo.push(symbol);\n  }\n\n  var x = this.getCenter().x,\n      y = this.getCenter().y,\n      right = this.getRight(),\n      bottom = this.getBottom(),\n      left = this.getLeft();\n\n  var symbolX = symbol.getCenter().x,\n      symbolY = symbol.getCenter().y,\n      symbolTop = symbol.getTop(),\n      symbolRight = symbol.getRight(),\n      symbolLeft = symbol.getLeft();\n\n  var isOnSameColumn = x === symbolX,\n      isOnSameLine = y === symbolY,\n      isUnder = y < symbolY,\n      isUpper = y > symbolY || this === symbol,\n      isLeft = x > symbolX,\n      isRight = x < symbolX;\n\n  var maxX = 0,\n      line,\n      lineLength = this.getAttr('line-length'),\n      lineWith = this.getAttr('line-width');\n\n  if ((!origin || origin === 'bottom') && isOnSameColumn && isUnder) {\n    line = drawLine(this.chart, bottom, symbolTop, text);\n    this.bottomStart = true;\n    symbol.topEnd = true;\n    maxX = bottom.x;\n  } else if ((!origin || origin === 'right') && isOnSameLine && isRight) {\n    line = drawLine(this.chart, right, symbolLeft, text);\n    this.rightStart = true;\n    symbol.leftEnd = true;\n    maxX = symbolLeft.x;\n  } else if ((!origin || origin === 'left') && isOnSameLine && isLeft) {\n    line = drawLine(this.chart, left, symbolRight, text);\n    this.leftStart = true;\n    symbol.rightEnd = true;\n    maxX = symbolRight.x;\n  } else if ((!origin || origin === 'right') && isOnSameColumn && isUpper) {\n    line = drawLine(this.chart, right, [\n      {x: right.x + lineLength/2, y: right.y},\n      {x: right.x + lineLength/2, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y}\n    ], text);\n    this.rightStart = true;\n    symbol.topEnd = true;\n    maxX = right.x + lineLength/2;\n  } else if ((!origin || origin === 'right') && isOnSameColumn && isUnder) {\n    line = drawLine(this.chart, right, [\n      {x: right.x + lineLength/2, y: right.y},\n      {x: right.x + lineLength/2, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y}\n    ], text);\n    this.rightStart = true;\n    symbol.topEnd = true;\n    maxX = right.x + lineLength/2;\n  } else if ((!origin || origin === 'bottom') && isLeft) {\n    if (this.leftEnd && isUpper) {\n      line = drawLine(this.chart, bottom, [\n        {x: bottom.x, y: bottom.y + lineLength/2},\n        {x: bottom.x + (bottom.x - symbolTop.x)/2, y: bottom.y + lineLength/2},\n        {x: bottom.x + (bottom.x - symbolTop.x)/2, y: symbolTop.y - lineLength/2},\n        {x: symbolTop.x, y: symbolTop.y - lineLength/2},\n        {x: symbolTop.x, y: symbolTop.y}\n      ], text);\n    } else {\n      line = drawLine(this.chart, bottom, [\n        {x: bottom.x, y: symbolTop.y - lineLength/2},\n        {x: symbolTop.x, y: symbolTop.y - lineLength/2},\n        {x: symbolTop.x, y: symbolTop.y}\n      ], text);\n    }\n    this.bottomStart = true;\n    symbol.topEnd = true;\n    maxX = bottom.x + (bottom.x - symbolTop.x)/2;\n  } else if ((!origin || origin === 'bottom') && isRight) {\n    line = drawLine(this.chart, bottom, [\n      {x: bottom.x, y: bottom.y + lineLength/2},\n      {x: bottom.x + (bottom.x - symbolTop.x)/2, y: bottom.y + lineLength/2},\n      {x: bottom.x + (bottom.x - symbolTop.x)/2, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y}\n    ], text);\n    this.bottomStart = true;\n    symbol.topEnd = true;\n    maxX = bottom.x + (bottom.x - symbolTop.x)/2;\n  } else if ((origin && origin === 'right') && isLeft) {\n    line = drawLine(this.chart, right, [\n      {x: right.x + lineLength/2, y: right.y},\n      {x: right.x + lineLength/2, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y}\n    ], text);\n    this.rightStart = true;\n    symbol.topEnd = true;\n    maxX = right.x + lineLength/2;\n  } else if ((origin && origin === 'right') && isRight) {\n    line = drawLine(this.chart, right, [\n      {x: symbolTop.x, y: right.y},\n      {x: symbolTop.x, y: symbolTop.y}\n    ], text);\n    this.rightStart = true;\n    symbol.topEnd = true;\n    maxX = right.x + lineLength/2;\n  } else if ((origin && origin === 'bottom') && isOnSameColumn && isUpper) {\n    line = drawLine(this.chart, bottom, [\n      {x: bottom.x, y: bottom.y + lineLength/2},\n      {x: right.x + lineLength/2, y: bottom.y + lineLength/2},\n      {x: right.x + lineLength/2, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y}\n    ], text);\n    this.bottomStart = true;\n    symbol.topEnd = true;\n    maxX = bottom.x + lineLength/2;\n  } else if ((origin === 'left') && isOnSameColumn && isUpper) {\n    var diffX = left.x - lineLength/2;\n    if (symbolLeft.x < left.x) {\n      diffX = symbolLeft.x - lineLength/2;\n    }\n    line = drawLine(this.chart, left, [\n      {x: diffX, y: left.y},\n      {x: diffX, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y}\n    ], text);\n    this.leftStart = true;\n    symbol.topEnd = true;\n    maxX = left.x;\n  } else if ((origin === 'left')) {\n    line = drawLine(this.chart, left, [\n      {x: symbolTop.x + (left.x - symbolTop.x)/ 2, y: left.y},\n      {x: symbolTop.x + (left.x - symbolTop.x)/ 2, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y - lineLength/2},\n      {x: symbolTop.x, y: symbolTop.y}\n    ], text);\n    this.leftStart = true;\n    symbol.topEnd = true;\n    maxX = left.x;\n  }\n\n  //update line style\n  if (this.lineStyle[symbol.key] && line){\n      line.attr( this.lineStyle[symbol.key]);\n  }\n\n  if (line) {\n    for (var l = 0, llen = this.chart.lines.length; l < llen; l++) {\n      var otherLine = this.chart.lines[l];\n      var len;\n\n      var ePath = otherLine.attr('path'),\n          lPath = line.attr('path');\n\n      for (var iP = 0, lenP = ePath.length - 1; iP < lenP; iP++) {\n        var newPath = [];\n        newPath.push(['M', ePath[iP][1], ePath[iP][2]]);\n        newPath.push(['L', ePath[iP + 1][1], ePath[iP + 1][2]]);\n\n        var line1_from_x = newPath[0][1];\n        var line1_from_y = newPath[0][2];\n        var line1_to_x = newPath[1][1];\n        var line1_to_y = newPath[1][2];\n\n        for (var lP = 0, lenlP = lPath.length - 1; lP < lenlP; lP++) {\n          var newLinePath = [];\n          newLinePath.push(['M', lPath[lP][1], lPath[lP][2]]);\n          newLinePath.push(['L', lPath[lP + 1][1], lPath[lP + 1][2]]);\n\n          var line2_from_x = newLinePath[0][1];\n          var line2_from_y = newLinePath[0][2];\n          var line2_to_x = newLinePath[1][1];\n          var line2_to_y = newLinePath[1][2];\n\n          var res = checkLineIntersection(line1_from_x, line1_from_y, line1_to_x, line1_to_y, line2_from_x, line2_from_y, line2_to_x, line2_to_y);\n          if (res.onLine1 && res.onLine2) {\n\n            var newSegment;\n            if (line2_from_y === line2_to_y) {\n              if (line2_from_x > line2_to_x) {\n                newSegment = ['L', res.x + lineWith * 2,  line2_from_y];\n                lPath.splice(lP + 1, 0, newSegment);\n                newSegment = ['C', res.x + lineWith * 2,  line2_from_y, res.x, line2_from_y - lineWith * 4, res.x - lineWith * 2, line2_from_y];\n                lPath.splice(lP + 2, 0, newSegment);\n                line.attr('path', lPath);\n              } else {\n                newSegment = ['L', res.x - lineWith * 2,  line2_from_y];\n                lPath.splice(lP + 1, 0, newSegment);\n                newSegment = ['C', res.x - lineWith * 2,  line2_from_y, res.x, line2_from_y - lineWith * 4, res.x + lineWith * 2, line2_from_y];\n                lPath.splice(lP + 2, 0, newSegment);\n                line.attr('path', lPath);\n              }\n            } else {\n              if (line2_from_y > line2_to_y) {\n                newSegment = ['L', line2_from_x, res.y + lineWith * 2];\n                lPath.splice(lP + 1, 0, newSegment);\n                newSegment = ['C', line2_from_x, res.y + lineWith * 2, line2_from_x + lineWith * 4, res.y, line2_from_x, res.y - lineWith * 2];\n                lPath.splice(lP + 2, 0, newSegment);\n                line.attr('path', lPath);\n              } else {\n                newSegment = ['L', line2_from_x, res.y - lineWith * 2];\n                lPath.splice(lP + 1, 0, newSegment);\n                newSegment = ['C', line2_from_x, res.y - lineWith * 2, line2_from_x + lineWith * 4, res.y, line2_from_x, res.y + lineWith * 2];\n                lPath.splice(lP + 2, 0, newSegment);\n                line.attr('path', lPath);\n              }\n            }\n\n            lP += 2;\n            len += 2;\n          }\n        }\n      }\n    }\n\n    this.chart.lines.push(line);\n  }\n\n  if (!this.chart.maxXFromLine || (this.chart.maxXFromLine && maxX > this.chart.maxXFromLine)) {\n    this.chart.maxXFromLine = maxX;\n  }\n};\n\nmodule.exports = Symbol;\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMS5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9mbG93Y2hhcnQuc3ltYm9sLmpzP2Y3OTgiXSwic291cmNlc0NvbnRlbnQiOlsidmFyIGRyYXdBUEkgPSByZXF1aXJlKCcuL2Zsb3djaGFydC5mdW5jdGlvbnMnKTtcbnZhciBkcmF3TGluZSA9IGRyYXdBUEkuZHJhd0xpbmU7XG52YXIgY2hlY2tMaW5lSW50ZXJzZWN0aW9uID0gZHJhd0FQSS5jaGVja0xpbmVJbnRlcnNlY3Rpb247XG5cbmZ1bmN0aW9uIFN5bWJvbChjaGFydCwgb3B0aW9ucywgc3ltYm9sKSB7XG4gIHRoaXMuY2hhcnQgPSBjaGFydDtcbiAgdGhpcy5ncm91cCA9IHRoaXMuY2hhcnQucGFwZXIuc2V0KCk7XG4gIHRoaXMuc3ltYm9sID0gc3ltYm9sO1xuICB0aGlzLmNvbm5lY3RlZFRvID0gW107XG4gIHRoaXMuc3ltYm9sVHlwZSA9IG9wdGlvbnMuc3ltYm9sVHlwZTtcbiAgdGhpcy5mbG93c3RhdGUgPSAob3B0aW9ucy5mbG93c3RhdGUgfHwgJ2Z1dHVyZScpO1xuICB0aGlzLmxpbmVTdHlsZSA9IChvcHRpb25zLmxpbmVTdHlsZSB8fCB7fSk7XG4gIHRoaXMua2V5ID0gKG9wdGlvbnMua2V5IHx8ICcnKTtcblxuICB0aGlzLm5leHRfZGlyZWN0aW9uID0gb3B0aW9ucy5uZXh0ICYmIG9wdGlvbnNbJ2RpcmVjdGlvbl9uZXh0J10gPyBvcHRpb25zWydkaXJlY3Rpb25fbmV4dCddIDogdW5kZWZpbmVkO1xuXG4gIHRoaXMudGV4dCA9IHRoaXMuY2hhcnQucGFwZXIudGV4dCgwLCAwLCBvcHRpb25zLnRleHQpO1xuICAvL1JhcGhhZWwgZG9lcyBub3Qgc3VwcG9ydCB0aGUgc3ZnIGdyb3VwIHRhZyBzbyBzZXR0aW5nIHRoZSB0ZXh0IG5vZGUgaWQgdG8gdGhlIHN5bWJvbCBub2RlIGlkIHBsdXMgdFxuICBpZiAob3B0aW9ucy5rZXkpIHsgdGhpcy50ZXh0Lm5vZGUuaWQgPSBvcHRpb25zLmtleSArICd0JzsgfVxuICB0aGlzLnRleHQubm9kZS5zZXRBdHRyaWJ1dGUoJ2NsYXNzJywgdGhpcy5nZXRBdHRyKCdjbGFzcycpICsgJ3QnKTtcblxuICB0aGlzLnRleHQuYXR0cih7XG4gICAgJ3RleHQtYW5jaG9yJzogJ3N0YXJ0JyxcbiAgICAneCcgICAgICAgICAgOiB0aGlzLmdldEF0dHIoJ3RleHQtbWFyZ2luJyksXG4gICAgJ2ZpbGwnICAgICAgIDogdGhpcy5nZXRBdHRyKCdmb250LWNvbG9yJyksXG4gICAgJ2ZvbnQtc2l6ZScgIDogdGhpcy5nZXRBdHRyKCdmb250LXNpemUnKVxuICB9KTtcblxuICB2YXIgZm9udCAgPSB0aGlzLmdldEF0dHIoJ2ZvbnQnKTtcbiAgdmFyIGZvbnRGID0gdGhpcy5nZXRBdHRyKCdmb250LWZhbWlseScpO1xuICB2YXIgZm9udFcgPSB0aGlzLmdldEF0dHIoJ2ZvbnQtd2VpZ2h0Jyk7XG5cbiAgaWYgKGZvbnQpIHRoaXMudGV4dC5hdHRyKHsgJ2ZvbnQnOiBmb250IH0pO1xuICBpZiAoZm9udEYpIHRoaXMudGV4dC5hdHRyKHsgJ2ZvbnQtZmFtaWx5JzogZm9udEYgfSk7XG4gIGlmIChmb250VykgdGhpcy50ZXh0LmF0dHIoeyAnZm9udC13ZWlnaHQnOiBmb250VyB9KTtcblxuICBpZiAob3B0aW9ucy5saW5rKSB7IHRoaXMudGV4dC5hdHRyKCdocmVmJywgb3B0aW9ucy5saW5rKTsgfVxuICBpZiAob3B0aW9ucy50YXJnZXQpIHsgdGhpcy50ZXh0LmF0dHIoJ3RhcmdldCcsIG9wdGlvbnMudGFyZ2V0KTsgfVxuXG4gIHZhciBtYXhXaWR0aCA9IHRoaXMuZ2V0QXR0cignbWF4V2lkdGgnKTtcbiAgaWYgKG1heFdpZHRoKSB7XG4gICAgLy8gdXNpbmcgdGhpcyBhcHByb2FjaDogaHR0cDovL3N0YWNrb3ZlcmZsb3cuY29tL2EvMzE1MzQ1Ny8yMjQ2NlxuICAgIHZhciB3b3JkcyA9IG9wdGlvbnMudGV4dC5zcGxpdCgnICcpO1xuICAgIHZhciB0ZW1wVGV4dCA9IFwiXCI7XG4gICAgZm9yICh2YXIgaT0wLCBpaT13b3Jkcy5sZW5ndGg7IGk8aWk7IGkrKykge1xuICAgICAgdmFyIHdvcmQgPSB3b3Jkc1tpXTtcbiAgICAgIHRoaXMudGV4dC5hdHRyKFwidGV4dFwiLCB0ZW1wVGV4dCArIFwiIFwiICsgd29yZCk7XG4gICAgICBpZiAodGhpcy50ZXh0LmdldEJCb3goKS53aWR0aCA+IG1heFdpZHRoKSB7XG4gICAgICAgIHRlbXBUZXh0ICs9IFwiXFxuXCIgKyB3b3JkO1xuICAgICAgfSBlbHNlIHtcbiAgICAgICAgdGVtcFRleHQgKz0gXCIgXCIgKyB3b3JkO1xuICAgICAgfVxuICAgIH1cbiAgICB0aGlzLnRleHQuYXR0cihcInRleHRcIiwgdGVtcFRleHQuc3Vic3RyaW5nKDEpKTtcbiAgfVxuXG4gIHRoaXMuZ3JvdXAucHVzaCh0aGlzLnRleHQpO1xuXG4gIGlmIChzeW1ib2wpIHtcbiAgICB2YXIgdG1wTWFyZ2luID0gdGhpcy5nZXRBdHRyKCd0ZXh0LW1hcmdpbicpO1xuXG4gICAgc3ltYm9sLmF0dHIoe1xuICAgICAgJ2ZpbGwnIDogdGhpcy5nZXRBdHRyKCdmaWxsJyksXG4gICAgICAnc3Ryb2tlJyA6IHRoaXMuZ2V0QXR0cignZWxlbWVudC1jb2xvcicpLFxuICAgICAgJ3N0cm9rZS13aWR0aCcgOiB0aGlzLmdldEF0dHIoJ2xpbmUtd2lkdGgnKSxcbiAgICAgICd3aWR0aCcgOiB0aGlzLnRleHQuZ2V0QkJveCgpLndpZHRoICsgMiAqIHRtcE1hcmdpbixcbiAgICAgICdoZWlnaHQnIDogdGhpcy50ZXh0LmdldEJCb3goKS5oZWlnaHQgKyAyICogdG1wTWFyZ2luXG4gICAgfSk7XG5cbiAgICBzeW1ib2wubm9kZS5zZXRBdHRyaWJ1dGUoJ2NsYXNzJywgdGhpcy5nZXRBdHRyKCdjbGFzcycpKTtcblxuICAgIGlmIChvcHRpb25zLmxpbmspIHsgc3ltYm9sLmF0dHIoJ2hyZWYnLCBvcHRpb25zLmxpbmspOyB9XG4gICAgaWYgKG9wdGlvbnMudGFyZ2V0KSB7IHN5bWJvbC5hdHRyKCd0YXJnZXQnLCBvcHRpb25zLnRhcmdldCk7IH1cbiAgICBpZiAob3B0aW9ucy5rZXkpIHsgc3ltYm9sLm5vZGUuaWQgPSBvcHRpb25zLmtleTsgfVxuXG4gICAgdGhpcy5ncm91cC5wdXNoKHN5bWJvbCk7XG4gICAgc3ltYm9sLmluc2VydEJlZm9yZSh0aGlzLnRleHQpO1xuXG4gICAgdGhpcy50ZXh0LmF0dHIoe1xuICAgICAgJ3knOiBzeW1ib2wuZ2V0QkJveCgpLmhlaWdodC8yXG4gICAgfSk7XG5cbiAgICB0aGlzLmluaXRpYWxpemUoKTtcbiAgfVxuXG59XG5cbi8qIEdldHMgdGhlIGF0dHJpYnV0ZSBiYXNlZCBvbiBGbG93c3RhdGUsIFN5bWJvbC1OYW1lIGFuZCBkZWZhdWx0LCBmaXJzdCBmb3VuZCB3aW5zICovXG5TeW1ib2wucHJvdG90eXBlLmdldEF0dHIgPSBmdW5jdGlvbihhdHROYW1lKSB7XG4gIGlmICghdGhpcy5jaGFydCkge1xuICAgIHJldHVybiB1bmRlZmluZWQ7XG4gIH1cbiAgdmFyIG9wdDMgPSAodGhpcy5jaGFydC5vcHRpb25zKSA/IHRoaXMuY2hhcnQub3B0aW9uc1thdHROYW1lXSA6IHVuZGVmaW5lZDtcbiAgdmFyIG9wdDIgPSAodGhpcy5jaGFydC5vcHRpb25zLnN5bWJvbHMpID8gdGhpcy5jaGFydC5vcHRpb25zLnN5bWJvbHNbdGhpcy5zeW1ib2xUeXBlXVthdHROYW1lXSA6IHVuZGVmaW5lZDtcbiAgdmFyIG9wdDE7XG4gIGlmICh0aGlzLmNoYXJ0Lm9wdGlvbnMuZmxvd3N0YXRlICYmIHRoaXMuY2hhcnQub3B0aW9ucy5mbG93c3RhdGVbdGhpcy5mbG93c3RhdGVdKSB7XG4gICAgb3B0MSA9IHRoaXMuY2hhcnQub3B0aW9ucy5mbG93c3RhdGVbdGhpcy5mbG93c3RhdGVdW2F0dE5hbWVdO1xuICB9XG4gIHJldHVybiAob3B0MSB8fCBvcHQyIHx8IG9wdDMpO1xufTtcblxuU3ltYm9sLnByb3RvdHlwZS5pbml0aWFsaXplID0gZnVuY3Rpb24oKSB7XG4gIHRoaXMuZ3JvdXAudHJhbnNmb3JtKCd0JyArIHRoaXMuZ2V0QXR0cignbGluZS13aWR0aCcpICsgJywnICsgdGhpcy5nZXRBdHRyKCdsaW5lLXdpZHRoJykpO1xuXG4gIHRoaXMud2lkdGggPSB0aGlzLmdyb3VwLmdldEJCb3goKS53aWR0aDtcbiAgdGhpcy5oZWlnaHQgPSB0aGlzLmdyb3VwLmdldEJCb3goKS5oZWlnaHQ7XG59O1xuXG5TeW1ib2wucHJvdG90eXBlLmdldENlbnRlciA9IGZ1bmN0aW9uKCkge1xuICByZXR1cm4ge3g6IHRoaXMuZ2V0WCgpICsgdGhpcy53aWR0aC8yLFxuICAgICAgICAgIHk6IHRoaXMuZ2V0WSgpICsgdGhpcy5oZWlnaHQvMn07XG59O1xuXG5TeW1ib2wucHJvdG90eXBlLmdldFggPSBmdW5jdGlvbigpIHtcbiAgcmV0dXJuIHRoaXMuZ3JvdXAuZ2V0QkJveCgpLng7XG59O1xuXG5TeW1ib2wucHJvdG90eXBlLmdldFkgPSBmdW5jdGlvbigpIHtcbiAgcmV0dXJuIHRoaXMuZ3JvdXAuZ2V0QkJveCgpLnk7XG59O1xuXG5TeW1ib2wucHJvdG90eXBlLnNoaWZ0WCA9IGZ1bmN0aW9uKHgpIHtcbiAgdGhpcy5ncm91cC50cmFuc2Zvcm0oJ3QnICsgKHRoaXMuZ2V0WCgpICsgeCkgKyAnLCcgKyB0aGlzLmdldFkoKSk7XG59O1xuXG5TeW1ib2wucHJvdG90eXBlLnNldFggPSBmdW5jdGlvbih4KSB7XG4gIHRoaXMuZ3JvdXAudHJhbnNmb3JtKCd0JyArIHggKyAnLCcgKyB0aGlzLmdldFkoKSk7XG59O1xuXG5TeW1ib2wucHJvdG90eXBlLnNoaWZ0WSA9IGZ1bmN0aW9uKHkpIHtcbiAgdGhpcy5ncm91cC50cmFuc2Zvcm0oJ3QnICsgdGhpcy5nZXRYKCkgKyAnLCcgKyAodGhpcy5nZXRZKCkgKyB5KSk7XG59O1xuXG5TeW1ib2wucHJvdG90eXBlLnNldFkgPSBmdW5jdGlvbih5KSB7XG4gIHRoaXMuZ3JvdXAudHJhbnNmb3JtKCd0JyArIHRoaXMuZ2V0WCgpICsgJywnICsgeSk7XG59O1xuXG5TeW1ib2wucHJvdG90eXBlLmdldFRvcCA9IGZ1bmN0aW9uKCkge1xuICB2YXIgeSA9IHRoaXMuZ2V0WSgpO1xuICB2YXIgeCA9IHRoaXMuZ2V0WCgpICsgdGhpcy53aWR0aC8yO1xuICByZXR1cm4ge3g6IHgsIHk6IHl9O1xufTtcblxuU3ltYm9sLnByb3RvdHlwZS5nZXRCb3R0b20gPSBmdW5jdGlvbigpIHtcbiAgdmFyIHkgPSB0aGlzLmdldFkoKSArIHRoaXMuaGVpZ2h0O1xuICB2YXIgeCA9IHRoaXMuZ2V0WCgpICsgdGhpcy53aWR0aC8yO1xuICByZXR1cm4ge3g6IHgsIHk6IHl9O1xufTtcblxuU3ltYm9sLnByb3RvdHlwZS5nZXRMZWZ0ID0gZnVuY3Rpb24oKSB7XG4gIHZhciB5ID0gdGhpcy5nZXRZKCkgKyB0aGlzLmdyb3VwLmdldEJCb3goKS5oZWlnaHQvMjtcbiAgdmFyIHggPSB0aGlzLmdldFgoKTtcbiAgcmV0dXJuIHt4OiB4LCB5OiB5fTtcbn07XG5cblN5bWJvbC5wcm90b3R5cGUuZ2V0UmlnaHQgPSBmdW5jdGlvbigpIHtcbiAgdmFyIHkgPSB0aGlzLmdldFkoKSArIHRoaXMuZ3JvdXAuZ2V0QkJveCgpLmhlaWdodC8yO1xuICB2YXIgeCA9IHRoaXMuZ2V0WCgpICsgdGhpcy5ncm91cC5nZXRCQm94KCkud2lkdGg7XG4gIHJldHVybiB7eDogeCwgeTogeX07XG59O1xuXG5TeW1ib2wucHJvdG90eXBlLnJlbmRlciA9IGZ1bmN0aW9uKCkge1xuICBpZiAodGhpcy5uZXh0KSB7XG5cbiAgICB2YXIgbGluZUxlbmd0aCA9IHRoaXMuZ2V0QXR0cignbGluZS1sZW5ndGgnKTtcblxuICAgIGlmICh0aGlzLm5leHRfZGlyZWN0aW9uID09PSAncmlnaHQnKSB7XG5cbiAgICAgIHZhciByaWdodFBvaW50ID0gdGhpcy5nZXRSaWdodCgpO1xuXG4gICAgICBpZiAoIXRoaXMubmV4dC5pc1Bvc2l0aW9uZWQpIHtcblxuICAgICAgICB0aGlzLm5leHQuc2V0WShyaWdodFBvaW50LnkgLSB0aGlzLm5leHQuaGVpZ2h0LzIpO1xuICAgICAgICB0aGlzLm5leHQuc2hpZnRYKHRoaXMuZ3JvdXAuZ2V0QkJveCgpLnggKyB0aGlzLndpZHRoICsgbGluZUxlbmd0aCk7XG5cbiAgICAgICAgdmFyIHNlbGYgPSB0aGlzO1xuICAgICAgICAoZnVuY3Rpb24gc2hpZnQoKSB7XG4gICAgICAgICAgdmFyIGhhc1N5bWJvbFVuZGVyID0gZmFsc2U7XG4gICAgICAgICAgdmFyIHN5bWI7XG4gICAgICAgICAgZm9yICh2YXIgaSA9IDAsIGxlbiA9IHNlbGYuY2hhcnQuc3ltYm9scy5sZW5ndGg7IGkgPCBsZW47IGkrKykge1xuICAgICAgICAgICAgc3ltYiA9IHNlbGYuY2hhcnQuc3ltYm9sc1tpXTtcblxuICAgICAgICAgICAgdmFyIGRpZmYgPSBNYXRoLmFicyhzeW1iLmdldENlbnRlcigpLnggLSBzZWxmLm5leHQuZ2V0Q2VudGVyKCkueCk7XG4gICAgICAgICAgICBpZiAoc3ltYi5nZXRDZW50ZXIoKS55ID4gc2VsZi5uZXh0LmdldENlbnRlcigpLnkgJiYgZGlmZiA8PSBzZWxmLm5leHQud2lkdGgvMikge1xuICAgICAgICAgICAgICBoYXNTeW1ib2xVbmRlciA9IHRydWU7XG4gICAgICAgICAgICAgIGJyZWFrO1xuICAgICAgICAgICAgfVxuICAgICAgICAgIH1cblxuICAgICAgICAgIGlmIChoYXNTeW1ib2xVbmRlcikge1xuICAgICAgICAgICAgc2VsZi5uZXh0LnNldFgoc3ltYi5nZXRYKCkgKyBzeW1iLndpZHRoICsgbGluZUxlbmd0aCk7XG4gICAgICAgICAgICBzaGlmdCgpO1xuICAgICAgICAgIH1cbiAgICAgICAgfSkoKTtcblxuICAgICAgICB0aGlzLm5leHQuaXNQb3NpdGlvbmVkID0gdHJ1ZTtcblxuICAgICAgICB0aGlzLm5leHQucmVuZGVyKCk7XG4gICAgICB9XG4gICAgfSBlbHNlIHtcbiAgICAgIHZhciBib3R0b21Qb2ludCA9IHRoaXMuZ2V0Qm90dG9tKCk7XG5cbiAgICAgIGlmICghdGhpcy5uZXh0LmlzUG9zaXRpb25lZCkge1xuICAgICAgICB0aGlzLm5leHQuc2hpZnRZKHRoaXMuZ2V0WSgpICsgdGhpcy5oZWlnaHQgKyBsaW5lTGVuZ3RoKTtcbiAgICAgICAgdGhpcy5uZXh0LnNldFgoYm90dG9tUG9pbnQueCAtIHRoaXMubmV4dC53aWR0aC8yKTtcbiAgICAgICAgdGhpcy5uZXh0LmlzUG9zaXRpb25lZCA9IHRydWU7XG5cbiAgICAgICAgdGhpcy5uZXh0LnJlbmRlcigpO1xuICAgICAgfVxuICAgIH1cbiAgfVxufTtcblxuU3ltYm9sLnByb3RvdHlwZS5yZW5kZXJMaW5lcyA9IGZ1bmN0aW9uKCkge1xuICBpZiAodGhpcy5uZXh0KSB7XG4gICAgaWYgKHRoaXMubmV4dF9kaXJlY3Rpb24pIHtcbiAgICAgIHRoaXMuZHJhd0xpbmVUbyh0aGlzLm5leHQsICcnLCB0aGlzLm5leHRfZGlyZWN0aW9uKTtcbiAgICB9IGVsc2Uge1xuICAgICAgdGhpcy5kcmF3TGluZVRvKHRoaXMubmV4dCk7XG4gICAgfVxuICB9XG59O1xuXG5TeW1ib2wucHJvdG90eXBlLmRyYXdMaW5lVG8gPSBmdW5jdGlvbihzeW1ib2wsIHRleHQsIG9yaWdpbikge1xuICBpZiAodGhpcy5jb25uZWN0ZWRUby5pbmRleE9mKHN5bWJvbCkgPCAwKSB7XG4gICAgdGhpcy5jb25uZWN0ZWRUby5wdXNoKHN5bWJvbCk7XG4gIH1cblxuICB2YXIgeCA9IHRoaXMuZ2V0Q2VudGVyKCkueCxcbiAgICAgIHkgPSB0aGlzLmdldENlbnRlcigpLnksXG4gICAgICByaWdodCA9IHRoaXMuZ2V0UmlnaHQoKSxcbiAgICAgIGJvdHRvbSA9IHRoaXMuZ2V0Qm90dG9tKCksXG4gICAgICBsZWZ0ID0gdGhpcy5nZXRMZWZ0KCk7XG5cbiAgdmFyIHN5bWJvbFggPSBzeW1ib2wuZ2V0Q2VudGVyKCkueCxcbiAgICAgIHN5bWJvbFkgPSBzeW1ib2wuZ2V0Q2VudGVyKCkueSxcbiAgICAgIHN5bWJvbFRvcCA9IHN5bWJvbC5nZXRUb3AoKSxcbiAgICAgIHN5bWJvbFJpZ2h0ID0gc3ltYm9sLmdldFJpZ2h0KCksXG4gICAgICBzeW1ib2xMZWZ0ID0gc3ltYm9sLmdldExlZnQoKTtcblxuICB2YXIgaXNPblNhbWVDb2x1bW4gPSB4ID09PSBzeW1ib2xYLFxuICAgICAgaXNPblNhbWVMaW5lID0geSA9PT0gc3ltYm9sWSxcbiAgICAgIGlzVW5kZXIgPSB5IDwgc3ltYm9sWSxcbiAgICAgIGlzVXBwZXIgPSB5ID4gc3ltYm9sWSB8fCB0aGlzID09PSBzeW1ib2wsXG4gICAgICBpc0xlZnQgPSB4ID4gc3ltYm9sWCxcbiAgICAgIGlzUmlnaHQgPSB4IDwgc3ltYm9sWDtcblxuICB2YXIgbWF4WCA9IDAsXG4gICAgICBsaW5lLFxuICAgICAgbGluZUxlbmd0aCA9IHRoaXMuZ2V0QXR0cignbGluZS1sZW5ndGgnKSxcbiAgICAgIGxpbmVXaXRoID0gdGhpcy5nZXRBdHRyKCdsaW5lLXdpZHRoJyk7XG5cbiAgaWYgKCghb3JpZ2luIHx8IG9yaWdpbiA9PT0gJ2JvdHRvbScpICYmIGlzT25TYW1lQ29sdW1uICYmIGlzVW5kZXIpIHtcbiAgICBsaW5lID0gZHJhd0xpbmUodGhpcy5jaGFydCwgYm90dG9tLCBzeW1ib2xUb3AsIHRleHQpO1xuICAgIHRoaXMuYm90dG9tU3RhcnQgPSB0cnVlO1xuICAgIHN5bWJvbC50b3BFbmQgPSB0cnVlO1xuICAgIG1heFggPSBib3R0b20ueDtcbiAgfSBlbHNlIGlmICgoIW9yaWdpbiB8fCBvcmlnaW4gPT09ICdyaWdodCcpICYmIGlzT25TYW1lTGluZSAmJiBpc1JpZ2h0KSB7XG4gICAgbGluZSA9IGRyYXdMaW5lKHRoaXMuY2hhcnQsIHJpZ2h0LCBzeW1ib2xMZWZ0LCB0ZXh0KTtcbiAgICB0aGlzLnJpZ2h0U3RhcnQgPSB0cnVlO1xuICAgIHN5bWJvbC5sZWZ0RW5kID0gdHJ1ZTtcbiAgICBtYXhYID0gc3ltYm9sTGVmdC54O1xuICB9IGVsc2UgaWYgKCghb3JpZ2luIHx8IG9yaWdpbiA9PT0gJ2xlZnQnKSAmJiBpc09uU2FtZUxpbmUgJiYgaXNMZWZ0KSB7XG4gICAgbGluZSA9IGRyYXdMaW5lKHRoaXMuY2hhcnQsIGxlZnQsIHN5bWJvbFJpZ2h0LCB0ZXh0KTtcbiAgICB0aGlzLmxlZnRTdGFydCA9IHRydWU7XG4gICAgc3ltYm9sLnJpZ2h0RW5kID0gdHJ1ZTtcbiAgICBtYXhYID0gc3ltYm9sUmlnaHQueDtcbiAgfSBlbHNlIGlmICgoIW9yaWdpbiB8fCBvcmlnaW4gPT09ICdyaWdodCcpICYmIGlzT25TYW1lQ29sdW1uICYmIGlzVXBwZXIpIHtcbiAgICBsaW5lID0gZHJhd0xpbmUodGhpcy5jaGFydCwgcmlnaHQsIFtcbiAgICAgIHt4OiByaWdodC54ICsgbGluZUxlbmd0aC8yLCB5OiByaWdodC55fSxcbiAgICAgIHt4OiByaWdodC54ICsgbGluZUxlbmd0aC8yLCB5OiBzeW1ib2xUb3AueSAtIGxpbmVMZW5ndGgvMn0sXG4gICAgICB7eDogc3ltYm9sVG9wLngsIHk6IHN5bWJvbFRvcC55IC0gbGluZUxlbmd0aC8yfSxcbiAgICAgIHt4OiBzeW1ib2xUb3AueCwgeTogc3ltYm9sVG9wLnl9XG4gICAgXSwgdGV4dCk7XG4gICAgdGhpcy5yaWdodFN0YXJ0ID0gdHJ1ZTtcbiAgICBzeW1ib2wudG9wRW5kID0gdHJ1ZTtcbiAgICBtYXhYID0gcmlnaHQueCArIGxpbmVMZW5ndGgvMjtcbiAgfSBlbHNlIGlmICgoIW9yaWdpbiB8fCBvcmlnaW4gPT09ICdyaWdodCcpICYmIGlzT25TYW1lQ29sdW1uICYmIGlzVW5kZXIpIHtcbiAgICBsaW5lID0gZHJhd0xpbmUodGhpcy5jaGFydCwgcmlnaHQsIFtcbiAgICAgIHt4OiByaWdodC54ICsgbGluZUxlbmd0aC8yLCB5OiByaWdodC55fSxcbiAgICAgIHt4OiByaWdodC54ICsgbGluZUxlbmd0aC8yLCB5OiBzeW1ib2xUb3AueSAtIGxpbmVMZW5ndGgvMn0sXG4gICAgICB7eDogc3ltYm9sVG9wLngsIHk6IHN5bWJvbFRvcC55IC0gbGluZUxlbmd0aC8yfSxcbiAgICAgIHt4OiBzeW1ib2xUb3AueCwgeTogc3ltYm9sVG9wLnl9XG4gICAgXSwgdGV4dCk7XG4gICAgdGhpcy5yaWdodFN0YXJ0ID0gdHJ1ZTtcbiAgICBzeW1ib2wudG9wRW5kID0gdHJ1ZTtcbiAgICBtYXhYID0gcmlnaHQueCArIGxpbmVMZW5ndGgvMjtcbiAgfSBlbHNlIGlmICgoIW9yaWdpbiB8fCBvcmlnaW4gPT09ICdib3R0b20nKSAmJiBpc0xlZnQpIHtcbiAgICBpZiAodGhpcy5sZWZ0RW5kICYmIGlzVXBwZXIpIHtcbiAgICAgIGxpbmUgPSBkcmF3TGluZSh0aGlzLmNoYXJ0LCBib3R0b20sIFtcbiAgICAgICAge3g6IGJvdHRvbS54LCB5OiBib3R0b20ueSArIGxpbmVMZW5ndGgvMn0sXG4gICAgICAgIHt4OiBib3R0b20ueCArIChib3R0b20ueCAtIHN5bWJvbFRvcC54KS8yLCB5OiBib3R0b20ueSArIGxpbmVMZW5ndGgvMn0sXG4gICAgICAgIHt4OiBib3R0b20ueCArIChib3R0b20ueCAtIHN5bWJvbFRvcC54KS8yLCB5OiBzeW1ib2xUb3AueSAtIGxpbmVMZW5ndGgvMn0sXG4gICAgICAgIHt4OiBzeW1ib2xUb3AueCwgeTogc3ltYm9sVG9wLnkgLSBsaW5lTGVuZ3RoLzJ9LFxuICAgICAgICB7eDogc3ltYm9sVG9wLngsIHk6IHN5bWJvbFRvcC55fVxuICAgICAgXSwgdGV4dCk7XG4gICAgfSBlbHNlIHtcbiAgICAgIGxpbmUgPSBkcmF3TGluZSh0aGlzLmNoYXJ0LCBib3R0b20sIFtcbiAgICAgICAge3g6IGJvdHRvbS54LCB5OiBzeW1ib2xUb3AueSAtIGxpbmVMZW5ndGgvMn0sXG4gICAgICAgIHt4OiBzeW1ib2xUb3AueCwgeTogc3ltYm9sVG9wLnkgLSBsaW5lTGVuZ3RoLzJ9LFxuICAgICAgICB7eDogc3ltYm9sVG9wLngsIHk6IHN5bWJvbFRvcC55fVxuICAgICAgXSwgdGV4dCk7XG4gICAgfVxuICAgIHRoaXMuYm90dG9tU3RhcnQgPSB0cnVlO1xuICAgIHN5bWJvbC50b3BFbmQgPSB0cnVlO1xuICAgIG1heFggPSBib3R0b20ueCArIChib3R0b20ueCAtIHN5bWJvbFRvcC54KS8yO1xuICB9IGVsc2UgaWYgKCghb3JpZ2luIHx8IG9yaWdpbiA9PT0gJ2JvdHRvbScpICYmIGlzUmlnaHQpIHtcbiAgICBsaW5lID0gZHJhd0xpbmUodGhpcy5jaGFydCwgYm90dG9tLCBbXG4gICAgICB7eDogYm90dG9tLngsIHk6IGJvdHRvbS55ICsgbGluZUxlbmd0aC8yfSxcbiAgICAgIHt4OiBib3R0b20ueCArIChib3R0b20ueCAtIHN5bWJvbFRvcC54KS8yLCB5OiBib3R0b20ueSArIGxpbmVMZW5ndGgvMn0sXG4gICAgICB7eDogYm90dG9tLnggKyAoYm90dG9tLnggLSBzeW1ib2xUb3AueCkvMiwgeTogc3ltYm9sVG9wLnkgLSBsaW5lTGVuZ3RoLzJ9LFxuICAgICAge3g6IHN5bWJvbFRvcC54LCB5OiBzeW1ib2xUb3AueSAtIGxpbmVMZW5ndGgvMn0sXG4gICAgICB7eDogc3ltYm9sVG9wLngsIHk6IHN5bWJvbFRvcC55fVxuICAgIF0sIHRleHQpO1xuICAgIHRoaXMuYm90dG9tU3RhcnQgPSB0cnVlO1xuICAgIHN5bWJvbC50b3BFbmQgPSB0cnVlO1xuICAgIG1heFggPSBib3R0b20ueCArIChib3R0b20ueCAtIHN5bWJvbFRvcC54KS8yO1xuICB9IGVsc2UgaWYgKChvcmlnaW4gJiYgb3JpZ2luID09PSAncmlnaHQnKSAmJiBpc0xlZnQpIHtcbiAgICBsaW5lID0gZHJhd0xpbmUodGhpcy5jaGFydCwgcmlnaHQsIFtcbiAgICAgIHt4OiByaWdodC54ICsgbGluZUxlbmd0aC8yLCB5OiByaWdodC55fSxcbiAgICAgIHt4OiByaWdodC54ICsgbGluZUxlbmd0aC8yLCB5OiBzeW1ib2xUb3AueSAtIGxpbmVMZW5ndGgvMn0sXG4gICAgICB7eDogc3ltYm9sVG9wLngsIHk6IHN5bWJvbFRvcC55IC0gbGluZUxlbmd0aC8yfSxcbiAgICAgIHt4OiBzeW1ib2xUb3AueCwgeTogc3ltYm9sVG9wLnl9XG4gICAgXSwgdGV4dCk7XG4gICAgdGhpcy5yaWdodFN0YXJ0ID0gdHJ1ZTtcbiAgICBzeW1ib2wudG9wRW5kID0gdHJ1ZTtcbiAgICBtYXhYID0gcmlnaHQueCArIGxpbmVMZW5ndGgvMjtcbiAgfSBlbHNlIGlmICgob3JpZ2luICYmIG9yaWdpbiA9PT0gJ3JpZ2h0JykgJiYgaXNSaWdodCkge1xuICAgIGxpbmUgPSBkcmF3TGluZSh0aGlzLmNoYXJ0LCByaWdodCwgW1xuICAgICAge3g6IHN5bWJvbFRvcC54LCB5OiByaWdodC55fSxcbiAgICAgIHt4OiBzeW1ib2xUb3AueCwgeTogc3ltYm9sVG9wLnl9XG4gICAgXSwgdGV4dCk7XG4gICAgdGhpcy5yaWdodFN0YXJ0ID0gdHJ1ZTtcbiAgICBzeW1ib2wudG9wRW5kID0gdHJ1ZTtcbiAgICBtYXhYID0gcmlnaHQueCArIGxpbmVMZW5ndGgvMjtcbiAgfSBlbHNlIGlmICgob3JpZ2luICYmIG9yaWdpbiA9PT0gJ2JvdHRvbScpICYmIGlzT25TYW1lQ29sdW1uICYmIGlzVXBwZXIpIHtcbiAgICBsaW5lID0gZHJhd0xpbmUodGhpcy5jaGFydCwgYm90dG9tLCBbXG4gICAgICB7eDogYm90dG9tLngsIHk6IGJvdHRvbS55ICsgbGluZUxlbmd0aC8yfSxcbiAgICAgIHt4OiByaWdodC54ICsgbGluZUxlbmd0aC8yLCB5OiBib3R0b20ueSArIGxpbmVMZW5ndGgvMn0sXG4gICAgICB7eDogcmlnaHQueCArIGxpbmVMZW5ndGgvMiwgeTogc3ltYm9sVG9wLnkgLSBsaW5lTGVuZ3RoLzJ9LFxuICAgICAge3g6IHN5bWJvbFRvcC54LCB5OiBzeW1ib2xUb3AueSAtIGxpbmVMZW5ndGgvMn0sXG4gICAgICB7eDogc3ltYm9sVG9wLngsIHk6IHN5bWJvbFRvcC55fVxuICAgIF0sIHRleHQpO1xuICAgIHRoaXMuYm90dG9tU3RhcnQgPSB0cnVlO1xuICAgIHN5bWJvbC50b3BFbmQgPSB0cnVlO1xuICAgIG1heFggPSBib3R0b20ueCArIGxpbmVMZW5ndGgvMjtcbiAgfSBlbHNlIGlmICgob3JpZ2luID09PSAnbGVmdCcpICYmIGlzT25TYW1lQ29sdW1uICYmIGlzVXBwZXIpIHtcbiAgICB2YXIgZGlmZlggPSBsZWZ0LnggLSBsaW5lTGVuZ3RoLzI7XG4gICAgaWYgKHN5bWJvbExlZnQueCA8IGxlZnQueCkge1xuICAgICAgZGlmZlggPSBzeW1ib2xMZWZ0LnggLSBsaW5lTGVuZ3RoLzI7XG4gICAgfVxuICAgIGxpbmUgPSBkcmF3TGluZSh0aGlzLmNoYXJ0LCBsZWZ0LCBbXG4gICAgICB7eDogZGlmZlgsIHk6IGxlZnQueX0sXG4gICAgICB7eDogZGlmZlgsIHk6IHN5bWJvbFRvcC55IC0gbGluZUxlbmd0aC8yfSxcbiAgICAgIHt4OiBzeW1ib2xUb3AueCwgeTogc3ltYm9sVG9wLnkgLSBsaW5lTGVuZ3RoLzJ9LFxuICAgICAge3g6IHN5bWJvbFRvcC54LCB5OiBzeW1ib2xUb3AueX1cbiAgICBdLCB0ZXh0KTtcbiAgICB0aGlzLmxlZnRTdGFydCA9IHRydWU7XG4gICAgc3ltYm9sLnRvcEVuZCA9IHRydWU7XG4gICAgbWF4WCA9IGxlZnQueDtcbiAgfSBlbHNlIGlmICgob3JpZ2luID09PSAnbGVmdCcpKSB7XG4gICAgbGluZSA9IGRyYXdMaW5lKHRoaXMuY2hhcnQsIGxlZnQsIFtcbiAgICAgIHt4OiBzeW1ib2xUb3AueCArIChsZWZ0LnggLSBzeW1ib2xUb3AueCkvIDIsIHk6IGxlZnQueX0sXG4gICAgICB7eDogc3ltYm9sVG9wLnggKyAobGVmdC54IC0gc3ltYm9sVG9wLngpLyAyLCB5OiBzeW1ib2xUb3AueSAtIGxpbmVMZW5ndGgvMn0sXG4gICAgICB7eDogc3ltYm9sVG9wLngsIHk6IHN5bWJvbFRvcC55IC0gbGluZUxlbmd0aC8yfSxcbiAgICAgIHt4OiBzeW1ib2xUb3AueCwgeTogc3ltYm9sVG9wLnl9XG4gICAgXSwgdGV4dCk7XG4gICAgdGhpcy5sZWZ0U3RhcnQgPSB0cnVlO1xuICAgIHN5bWJvbC50b3BFbmQgPSB0cnVlO1xuICAgIG1heFggPSBsZWZ0Lng7XG4gIH1cblxuICAvL3VwZGF0ZSBsaW5lIHN0eWxlXG4gIGlmICh0aGlzLmxpbmVTdHlsZVtzeW1ib2wua2V5XSAmJiBsaW5lKXtcbiAgICAgIGxpbmUuYXR0ciggdGhpcy5saW5lU3R5bGVbc3ltYm9sLmtleV0pO1xuICB9XG5cbiAgaWYgKGxpbmUpIHtcbiAgICBmb3IgKHZhciBsID0gMCwgbGxlbiA9IHRoaXMuY2hhcnQubGluZXMubGVuZ3RoOyBsIDwgbGxlbjsgbCsrKSB7XG4gICAgICB2YXIgb3RoZXJMaW5lID0gdGhpcy5jaGFydC5saW5lc1tsXTtcbiAgICAgIHZhciBsZW47XG5cbiAgICAgIHZhciBlUGF0aCA9IG90aGVyTGluZS5hdHRyKCdwYXRoJyksXG4gICAgICAgICAgbFBhdGggPSBsaW5lLmF0dHIoJ3BhdGgnKTtcblxuICAgICAgZm9yICh2YXIgaVAgPSAwLCBsZW5QID0gZVBhdGgubGVuZ3RoIC0gMTsgaVAgPCBsZW5QOyBpUCsrKSB7XG4gICAgICAgIHZhciBuZXdQYXRoID0gW107XG4gICAgICAgIG5ld1BhdGgucHVzaChbJ00nLCBlUGF0aFtpUF1bMV0sIGVQYXRoW2lQXVsyXV0pO1xuICAgICAgICBuZXdQYXRoLnB1c2goWydMJywgZVBhdGhbaVAgKyAxXVsxXSwgZVBhdGhbaVAgKyAxXVsyXV0pO1xuXG4gICAgICAgIHZhciBsaW5lMV9mcm9tX3ggPSBuZXdQYXRoWzBdWzFdO1xuICAgICAgICB2YXIgbGluZTFfZnJvbV95ID0gbmV3UGF0aFswXVsyXTtcbiAgICAgICAgdmFyIGxpbmUxX3RvX3ggPSBuZXdQYXRoWzFdWzFdO1xuICAgICAgICB2YXIgbGluZTFfdG9feSA9IG5ld1BhdGhbMV1bMl07XG5cbiAgICAgICAgZm9yICh2YXIgbFAgPSAwLCBsZW5sUCA9IGxQYXRoLmxlbmd0aCAtIDE7IGxQIDwgbGVubFA7IGxQKyspIHtcbiAgICAgICAgICB2YXIgbmV3TGluZVBhdGggPSBbXTtcbiAgICAgICAgICBuZXdMaW5lUGF0aC5wdXNoKFsnTScsIGxQYXRoW2xQXVsxXSwgbFBhdGhbbFBdWzJdXSk7XG4gICAgICAgICAgbmV3TGluZVBhdGgucHVzaChbJ0wnLCBsUGF0aFtsUCArIDFdWzFdLCBsUGF0aFtsUCArIDFdWzJdXSk7XG5cbiAgICAgICAgICB2YXIgbGluZTJfZnJvbV94ID0gbmV3TGluZVBhdGhbMF1bMV07XG4gICAgICAgICAgdmFyIGxpbmUyX2Zyb21feSA9IG5ld0xpbmVQYXRoWzBdWzJdO1xuICAgICAgICAgIHZhciBsaW5lMl90b194ID0gbmV3TGluZVBhdGhbMV1bMV07XG4gICAgICAgICAgdmFyIGxpbmUyX3RvX3kgPSBuZXdMaW5lUGF0aFsxXVsyXTtcblxuICAgICAgICAgIHZhciByZXMgPSBjaGVja0xpbmVJbnRlcnNlY3Rpb24obGluZTFfZnJvbV94LCBsaW5lMV9mcm9tX3ksIGxpbmUxX3RvX3gsIGxpbmUxX3RvX3ksIGxpbmUyX2Zyb21feCwgbGluZTJfZnJvbV95LCBsaW5lMl90b194LCBsaW5lMl90b195KTtcbiAgICAgICAgICBpZiAocmVzLm9uTGluZTEgJiYgcmVzLm9uTGluZTIpIHtcblxuICAgICAgICAgICAgdmFyIG5ld1NlZ21lbnQ7XG4gICAgICAgICAgICBpZiAobGluZTJfZnJvbV95ID09PSBsaW5lMl90b195KSB7XG4gICAgICAgICAgICAgIGlmIChsaW5lMl9mcm9tX3ggPiBsaW5lMl90b194KSB7XG4gICAgICAgICAgICAgICAgbmV3U2VnbWVudCA9IFsnTCcsIHJlcy54ICsgbGluZVdpdGggKiAyLCAgbGluZTJfZnJvbV95XTtcbiAgICAgICAgICAgICAgICBsUGF0aC5zcGxpY2UobFAgKyAxLCAwLCBuZXdTZWdtZW50KTtcbiAgICAgICAgICAgICAgICBuZXdTZWdtZW50ID0gWydDJywgcmVzLnggKyBsaW5lV2l0aCAqIDIsICBsaW5lMl9mcm9tX3ksIHJlcy54LCBsaW5lMl9mcm9tX3kgLSBsaW5lV2l0aCAqIDQsIHJlcy54IC0gbGluZVdpdGggKiAyLCBsaW5lMl9mcm9tX3ldO1xuICAgICAgICAgICAgICAgIGxQYXRoLnNwbGljZShsUCArIDIsIDAsIG5ld1NlZ21lbnQpO1xuICAgICAgICAgICAgICAgIGxpbmUuYXR0cigncGF0aCcsIGxQYXRoKTtcbiAgICAgICAgICAgICAgfSBlbHNlIHtcbiAgICAgICAgICAgICAgICBuZXdTZWdtZW50ID0gWydMJywgcmVzLnggLSBsaW5lV2l0aCAqIDIsICBsaW5lMl9mcm9tX3ldO1xuICAgICAgICAgICAgICAgIGxQYXRoLnNwbGljZShsUCArIDEsIDAsIG5ld1NlZ21lbnQpO1xuICAgICAgICAgICAgICAgIG5ld1NlZ21lbnQgPSBbJ0MnLCByZXMueCAtIGxpbmVXaXRoICogMiwgIGxpbmUyX2Zyb21feSwgcmVzLngsIGxpbmUyX2Zyb21feSAtIGxpbmVXaXRoICogNCwgcmVzLnggKyBsaW5lV2l0aCAqIDIsIGxpbmUyX2Zyb21feV07XG4gICAgICAgICAgICAgICAgbFBhdGguc3BsaWNlKGxQICsgMiwgMCwgbmV3U2VnbWVudCk7XG4gICAgICAgICAgICAgICAgbGluZS5hdHRyKCdwYXRoJywgbFBhdGgpO1xuICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgICBpZiAobGluZTJfZnJvbV95ID4gbGluZTJfdG9feSkge1xuICAgICAgICAgICAgICAgIG5ld1NlZ21lbnQgPSBbJ0wnLCBsaW5lMl9mcm9tX3gsIHJlcy55ICsgbGluZVdpdGggKiAyXTtcbiAgICAgICAgICAgICAgICBsUGF0aC5zcGxpY2UobFAgKyAxLCAwLCBuZXdTZWdtZW50KTtcbiAgICAgICAgICAgICAgICBuZXdTZWdtZW50ID0gWydDJywgbGluZTJfZnJvbV94LCByZXMueSArIGxpbmVXaXRoICogMiwgbGluZTJfZnJvbV94ICsgbGluZVdpdGggKiA0LCByZXMueSwgbGluZTJfZnJvbV94LCByZXMueSAtIGxpbmVXaXRoICogMl07XG4gICAgICAgICAgICAgICAgbFBhdGguc3BsaWNlKGxQICsgMiwgMCwgbmV3U2VnbWVudCk7XG4gICAgICAgICAgICAgICAgbGluZS5hdHRyKCdwYXRoJywgbFBhdGgpO1xuICAgICAgICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgICAgIG5ld1NlZ21lbnQgPSBbJ0wnLCBsaW5lMl9mcm9tX3gsIHJlcy55IC0gbGluZVdpdGggKiAyXTtcbiAgICAgICAgICAgICAgICBsUGF0aC5zcGxpY2UobFAgKyAxLCAwLCBuZXdTZWdtZW50KTtcbiAgICAgICAgICAgICAgICBuZXdTZWdtZW50ID0gWydDJywgbGluZTJfZnJvbV94LCByZXMueSAtIGxpbmVXaXRoICogMiwgbGluZTJfZnJvbV94ICsgbGluZVdpdGggKiA0LCByZXMueSwgbGluZTJfZnJvbV94LCByZXMueSArIGxpbmVXaXRoICogMl07XG4gICAgICAgICAgICAgICAgbFBhdGguc3BsaWNlKGxQICsgMiwgMCwgbmV3U2VnbWVudCk7XG4gICAgICAgICAgICAgICAgbGluZS5hdHRyKCdwYXRoJywgbFBhdGgpO1xuICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG5cbiAgICAgICAgICAgIGxQICs9IDI7XG4gICAgICAgICAgICBsZW4gKz0gMjtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG5cbiAgICB0aGlzLmNoYXJ0LmxpbmVzLnB1c2gobGluZSk7XG4gIH1cblxuICBpZiAoIXRoaXMuY2hhcnQubWF4WEZyb21MaW5lIHx8ICh0aGlzLmNoYXJ0Lm1heFhGcm9tTGluZSAmJiBtYXhYID4gdGhpcy5jaGFydC5tYXhYRnJvbUxpbmUpKSB7XG4gICAgdGhpcy5jaGFydC5tYXhYRnJvbUxpbmUgPSBtYXhYO1xuICB9XG59O1xuXG5tb2R1bGUuZXhwb3J0cyA9IFN5bWJvbDtcblxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4vc3JjL2Zsb3djaGFydC5zeW1ib2wuanNcbi8vIG1vZHVsZSBpZCA9IDFcbi8vIG1vZHVsZSBjaHVua3MgPSAwIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOyIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///1\n");
+    }, /* 2 */
     /*!************************************!*\
   !*** ./src/flowchart.functions.js ***!
   \************************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
     /***/
     function(module, exports) {
-        function drawPath(chart, location, points) {
-            var i, len, path = "M{0},{1}";
-            for (i = 2, len = 2 * points.length + 2; len > i; i += 2) path += " L{" + i + "},{" + (i + 1) + "}";
-            var pathValues = [ location.x, location.y ];
-            for (i = 0, len = points.length; len > i; i++) pathValues.push(points[i].x), pathValues.push(points[i].y);
-            var symbol = chart.paper.path(path, pathValues);
-            symbol.attr("stroke", chart.options["element-color"]), symbol.attr("stroke-width", chart.options["line-width"]);
-            var font = chart.options.font, fontF = chart.options["font-family"], fontW = chart.options["font-weight"];
-            return font && symbol.attr({
-                font: font
-            }), fontF && symbol.attr({
-                "font-family": fontF
-            }), fontW && symbol.attr({
-                "font-weight": fontW
-            }), symbol;
-        }
-        function drawLine(chart, from, to, text) {
-            var i, len;
-            "[object Array]" !== Object.prototype.toString.call(to) && (to = [ to ]);
-            var path = "M{0},{1}";
-            for (i = 2, len = 2 * to.length + 2; len > i; i += 2) path += " L{" + i + "},{" + (i + 1) + "}";
-            var pathValues = [ from.x, from.y ];
-            for (i = 0, len = to.length; len > i; i++) pathValues.push(to[i].x), pathValues.push(to[i].y);
-            var line = chart.paper.path(path, pathValues);
-            line.attr({
-                stroke: chart.options["line-color"],
-                "stroke-width": chart.options["line-width"],
-                "arrow-end": chart.options["arrow-end"]
-            });
-            var font = chart.options.font, fontF = chart.options["font-family"], fontW = chart.options["font-weight"];
-            if (font && line.attr({
-                font: font
-            }), fontF && line.attr({
-                "font-family": fontF
-            }), fontW && line.attr({
-                "font-weight": fontW
-            }), text) {
-                var centerText = !1, textPath = chart.paper.text(0, 0, text), isHorizontal = !1, firstTo = to[0];
-                from.y === firstTo.y && (isHorizontal = !0);
-                var x = 0, y = 0;
-                centerText ? (x = from.x > firstTo.x ? from.x - (from.x - firstTo.x) / 2 : firstTo.x - (firstTo.x - from.x) / 2, 
-                y = from.y > firstTo.y ? from.y - (from.y - firstTo.y) / 2 : firstTo.y - (firstTo.y - from.y) / 2, 
-                isHorizontal ? (x -= textPath.getBBox().width / 2, y -= chart.options["text-margin"]) : (x += chart.options["text-margin"], 
-                y -= textPath.getBBox().height / 2)) : (x = from.x, y = from.y, isHorizontal ? (x += chart.options["text-margin"] / 2, 
-                y -= chart.options["text-margin"]) : (x += chart.options["text-margin"] / 2, y += chart.options["text-margin"])), 
-                textPath.attr({
-                    "text-anchor": "start",
-                    "font-size": chart.options["font-size"],
-                    fill: chart.options["font-color"],
-                    x: x,
-                    y: y
-                }), font && textPath.attr({
-                    font: font
-                }), fontF && textPath.attr({
-                    "font-family": fontF
-                }), fontW && textPath.attr({
-                    "font-weight": fontW
-                });
-            }
-            return line;
-        }
-        function checkLineIntersection(line1StartX, line1StartY, line1EndX, line1EndY, line2StartX, line2StartY, line2EndX, line2EndY) {
-            // if the lines intersect, the result contains the x and y of the intersection (treating the lines as infinite) and booleans for whether line segment 1 or line segment 2 contain the point
-            var denominator, a, b, numerator1, numerator2, result = {
-                x: null,
-                y: null,
-                onLine1: !1,
-                onLine2: !1
-            };
-            // if we cast these lines infinitely in both directions, they intersect here:
-            /*
-	  // it is worth noting that this should be the same as:
-	  x = line2StartX + (b * (line2EndX - line2StartX));
-	  y = line2StartX + (b * (line2EndY - line2StartY));
-	  */
-            // if line1 is a segment and line2 is infinite, they intersect if:
-            // if line2 is a segment and line1 is infinite, they intersect if:
-            return denominator = (line2EndY - line2StartY) * (line1EndX - line1StartX) - (line2EndX - line2StartX) * (line1EndY - line1StartY), 
-            0 === denominator ? result : (a = line1StartY - line2StartY, b = line1StartX - line2StartX, 
-            numerator1 = (line2EndX - line2StartX) * a - (line2EndY - line2StartY) * b, numerator2 = (line1EndX - line1StartX) * a - (line1EndY - line1StartY) * b, 
-            a = numerator1 / denominator, b = numerator2 / denominator, result.x = line1StartX + a * (line1EndX - line1StartX), 
-            result.y = line1StartY + a * (line1EndY - line1StartY), a > 0 && 1 > a && (result.onLine1 = !0), 
-            b > 0 && 1 > b && (result.onLine2 = !0), result);
-        }
-        module.exports = {
-            drawPath: drawPath,
-            drawLine: drawLine,
-            checkLineIntersection: checkLineIntersection
-        };
-    }, /* 4 */
+        eval("function drawPath(chart, location, points) {\n  var i, len;\n  var path = 'M{0},{1}';\n  for (i = 2, len = 2 * points.length + 2; i < len; i+=2) {\n    path += ' L{' + i + '},{' + (i + 1) + '}';\n  }\n  var pathValues = [location.x, location.y];\n  for (i = 0, len = points.length; i < len; i++) {\n    pathValues.push(points[i].x);\n    pathValues.push(points[i].y);\n  }\n  var symbol = chart.paper.path(path, pathValues);\n  symbol.attr('stroke', chart.options['element-color']);\n  symbol.attr('stroke-width', chart.options['line-width']);\n\n  var font = chart.options.font;\n  var fontF = chart.options['font-family'];\n  var fontW = chart.options['font-weight'];\n\n  if (font) symbol.attr({ 'font': font });\n  if (fontF) symbol.attr({ 'font-family': fontF });\n  if (fontW) symbol.attr({ 'font-weight': fontW });\n\n  return symbol;\n}\n\nfunction drawLine(chart, from, to, text) {\n  var i, len;\n\n  if (Object.prototype.toString.call(to) !== '[object Array]') {\n    to = [to];\n  }\n\n  var path = 'M{0},{1}';\n  for (i = 2, len = 2 * to.length + 2; i < len; i+=2) {\n    path += ' L{' + i + '},{' + (i + 1) + '}';\n  }\n  var pathValues = [from.x, from.y];\n  for (i = 0, len = to.length; i < len; i++) {\n    pathValues.push(to[i].x);\n    pathValues.push(to[i].y);\n  }\n\n  var line = chart.paper.path(path, pathValues);\n  line.attr({\n    stroke: chart.options['line-color'],\n    'stroke-width': chart.options['line-width'],\n    'arrow-end': chart.options['arrow-end']\n  });\n\n  var font = chart.options.font;\n  var fontF = chart.options['font-family'];\n  var fontW = chart.options['font-weight'];\n\n  if (font) line.attr({ 'font': font });\n  if (fontF) line.attr({ 'font-family': fontF });\n  if (fontW) line.attr({ 'font-weight': fontW });\n\n  if (text) {\n\n    var centerText = false;\n\n    var textPath = chart.paper.text(0, 0, text);\n\n    var isHorizontal = false;\n    var firstTo = to[0];\n\n    if (from.y === firstTo.y) {\n      isHorizontal = true;\n    }\n\n    var x = 0,\n        y = 0;\n\n    if (centerText) {\n      if (from.x > firstTo.x) {\n        x = from.x - (from.x - firstTo.x)/2;\n      } else {\n        x = firstTo.x - (firstTo.x - from.x)/2;\n      }\n\n      if (from.y > firstTo.y) {\n        y = from.y - (from.y - firstTo.y)/2;\n      } else {\n        y = firstTo.y - (firstTo.y - from.y)/2;\n      }\n\n      if (isHorizontal) {\n        x -= textPath.getBBox().width/2;\n        y -= chart.options['text-margin'];\n      } else {\n        x += chart.options['text-margin'];\n        y -= textPath.getBBox().height/2;\n      }\n    } else {\n      x = from.x;\n      y = from.y;\n\n      if (isHorizontal) {\n        x += chart.options['text-margin']/2;\n        y -= chart.options['text-margin'];\n      } else {\n        x += chart.options['text-margin']/2;\n        y += chart.options['text-margin'];\n      }\n    }\n\n    textPath.attr({\n      'text-anchor': 'start',\n      'font-size': chart.options['font-size'],\n      'fill': chart.options['font-color'],\n      x: x,\n      y: y\n    });\n\n    if (font) textPath.attr({ 'font': font });\n    if (fontF) textPath.attr({ 'font-family': fontF });\n    if (fontW) textPath.attr({ 'font-weight': fontW });\n  }\n\n  return line;\n}\n\nfunction checkLineIntersection(line1StartX, line1StartY, line1EndX, line1EndY, line2StartX, line2StartY, line2EndX, line2EndY) {\n  // if the lines intersect, the result contains the x and y of the intersection (treating the lines as infinite) and booleans for whether line segment 1 or line segment 2 contain the point\n  var denominator, a, b, numerator1, numerator2, result = {\n    x: null,\n    y: null,\n    onLine1: false,\n    onLine2: false\n  };\n  denominator = ((line2EndY - line2StartY) * (line1EndX - line1StartX)) - ((line2EndX - line2StartX) * (line1EndY - line1StartY));\n  if (denominator === 0) {\n    return result;\n  }\n  a = line1StartY - line2StartY;\n  b = line1StartX - line2StartX;\n  numerator1 = ((line2EndX - line2StartX) * a) - ((line2EndY - line2StartY) * b);\n  numerator2 = ((line1EndX - line1StartX) * a) - ((line1EndY - line1StartY) * b);\n  a = numerator1 / denominator;\n  b = numerator2 / denominator;\n\n  // if we cast these lines infinitely in both directions, they intersect here:\n  result.x = line1StartX + (a * (line1EndX - line1StartX));\n  result.y = line1StartY + (a * (line1EndY - line1StartY));\n  /*\n  // it is worth noting that this should be the same as:\n  x = line2StartX + (b * (line2EndX - line2StartX));\n  y = line2StartX + (b * (line2EndY - line2StartY));\n  */\n  // if line1 is a segment and line2 is infinite, they intersect if:\n  if (a > 0 && a < 1) {\n    result.onLine1 = true;\n  }\n  // if line2 is a segment and line1 is infinite, they intersect if:\n  if (b > 0 && b < 1) {\n    result.onLine2 = true;\n  }\n  // if line1 and line2 are segments, they intersect if both of the above are true\n  return result;\n}\n\nmodule.exports = {\n\tdrawPath: drawPath,\n\tdrawLine: drawLine,\n\tcheckLineIntersection: checkLineIntersection\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMi5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9mbG93Y2hhcnQuZnVuY3Rpb25zLmpzP2E1MjIiXSwic291cmNlc0NvbnRlbnQiOlsiZnVuY3Rpb24gZHJhd1BhdGgoY2hhcnQsIGxvY2F0aW9uLCBwb2ludHMpIHtcbiAgdmFyIGksIGxlbjtcbiAgdmFyIHBhdGggPSAnTXswfSx7MX0nO1xuICBmb3IgKGkgPSAyLCBsZW4gPSAyICogcG9pbnRzLmxlbmd0aCArIDI7IGkgPCBsZW47IGkrPTIpIHtcbiAgICBwYXRoICs9ICcgTHsnICsgaSArICd9LHsnICsgKGkgKyAxKSArICd9JztcbiAgfVxuICB2YXIgcGF0aFZhbHVlcyA9IFtsb2NhdGlvbi54LCBsb2NhdGlvbi55XTtcbiAgZm9yIChpID0gMCwgbGVuID0gcG9pbnRzLmxlbmd0aDsgaSA8IGxlbjsgaSsrKSB7XG4gICAgcGF0aFZhbHVlcy5wdXNoKHBvaW50c1tpXS54KTtcbiAgICBwYXRoVmFsdWVzLnB1c2gocG9pbnRzW2ldLnkpO1xuICB9XG4gIHZhciBzeW1ib2wgPSBjaGFydC5wYXBlci5wYXRoKHBhdGgsIHBhdGhWYWx1ZXMpO1xuICBzeW1ib2wuYXR0cignc3Ryb2tlJywgY2hhcnQub3B0aW9uc1snZWxlbWVudC1jb2xvciddKTtcbiAgc3ltYm9sLmF0dHIoJ3N0cm9rZS13aWR0aCcsIGNoYXJ0Lm9wdGlvbnNbJ2xpbmUtd2lkdGgnXSk7XG5cbiAgdmFyIGZvbnQgPSBjaGFydC5vcHRpb25zLmZvbnQ7XG4gIHZhciBmb250RiA9IGNoYXJ0Lm9wdGlvbnNbJ2ZvbnQtZmFtaWx5J107XG4gIHZhciBmb250VyA9IGNoYXJ0Lm9wdGlvbnNbJ2ZvbnQtd2VpZ2h0J107XG5cbiAgaWYgKGZvbnQpIHN5bWJvbC5hdHRyKHsgJ2ZvbnQnOiBmb250IH0pO1xuICBpZiAoZm9udEYpIHN5bWJvbC5hdHRyKHsgJ2ZvbnQtZmFtaWx5JzogZm9udEYgfSk7XG4gIGlmIChmb250Vykgc3ltYm9sLmF0dHIoeyAnZm9udC13ZWlnaHQnOiBmb250VyB9KTtcblxuICByZXR1cm4gc3ltYm9sO1xufVxuXG5mdW5jdGlvbiBkcmF3TGluZShjaGFydCwgZnJvbSwgdG8sIHRleHQpIHtcbiAgdmFyIGksIGxlbjtcblxuICBpZiAoT2JqZWN0LnByb3RvdHlwZS50b1N0cmluZy5jYWxsKHRvKSAhPT0gJ1tvYmplY3QgQXJyYXldJykge1xuICAgIHRvID0gW3RvXTtcbiAgfVxuXG4gIHZhciBwYXRoID0gJ017MH0sezF9JztcbiAgZm9yIChpID0gMiwgbGVuID0gMiAqIHRvLmxlbmd0aCArIDI7IGkgPCBsZW47IGkrPTIpIHtcbiAgICBwYXRoICs9ICcgTHsnICsgaSArICd9LHsnICsgKGkgKyAxKSArICd9JztcbiAgfVxuICB2YXIgcGF0aFZhbHVlcyA9IFtmcm9tLngsIGZyb20ueV07XG4gIGZvciAoaSA9IDAsIGxlbiA9IHRvLmxlbmd0aDsgaSA8IGxlbjsgaSsrKSB7XG4gICAgcGF0aFZhbHVlcy5wdXNoKHRvW2ldLngpO1xuICAgIHBhdGhWYWx1ZXMucHVzaCh0b1tpXS55KTtcbiAgfVxuXG4gIHZhciBsaW5lID0gY2hhcnQucGFwZXIucGF0aChwYXRoLCBwYXRoVmFsdWVzKTtcbiAgbGluZS5hdHRyKHtcbiAgICBzdHJva2U6IGNoYXJ0Lm9wdGlvbnNbJ2xpbmUtY29sb3InXSxcbiAgICAnc3Ryb2tlLXdpZHRoJzogY2hhcnQub3B0aW9uc1snbGluZS13aWR0aCddLFxuICAgICdhcnJvdy1lbmQnOiBjaGFydC5vcHRpb25zWydhcnJvdy1lbmQnXVxuICB9KTtcblxuICB2YXIgZm9udCA9IGNoYXJ0Lm9wdGlvbnMuZm9udDtcbiAgdmFyIGZvbnRGID0gY2hhcnQub3B0aW9uc1snZm9udC1mYW1pbHknXTtcbiAgdmFyIGZvbnRXID0gY2hhcnQub3B0aW9uc1snZm9udC13ZWlnaHQnXTtcblxuICBpZiAoZm9udCkgbGluZS5hdHRyKHsgJ2ZvbnQnOiBmb250IH0pO1xuICBpZiAoZm9udEYpIGxpbmUuYXR0cih7ICdmb250LWZhbWlseSc6IGZvbnRGIH0pO1xuICBpZiAoZm9udFcpIGxpbmUuYXR0cih7ICdmb250LXdlaWdodCc6IGZvbnRXIH0pO1xuXG4gIGlmICh0ZXh0KSB7XG5cbiAgICB2YXIgY2VudGVyVGV4dCA9IGZhbHNlO1xuXG4gICAgdmFyIHRleHRQYXRoID0gY2hhcnQucGFwZXIudGV4dCgwLCAwLCB0ZXh0KTtcblxuICAgIHZhciBpc0hvcml6b250YWwgPSBmYWxzZTtcbiAgICB2YXIgZmlyc3RUbyA9IHRvWzBdO1xuXG4gICAgaWYgKGZyb20ueSA9PT0gZmlyc3RUby55KSB7XG4gICAgICBpc0hvcml6b250YWwgPSB0cnVlO1xuICAgIH1cblxuICAgIHZhciB4ID0gMCxcbiAgICAgICAgeSA9IDA7XG5cbiAgICBpZiAoY2VudGVyVGV4dCkge1xuICAgICAgaWYgKGZyb20ueCA+IGZpcnN0VG8ueCkge1xuICAgICAgICB4ID0gZnJvbS54IC0gKGZyb20ueCAtIGZpcnN0VG8ueCkvMjtcbiAgICAgIH0gZWxzZSB7XG4gICAgICAgIHggPSBmaXJzdFRvLnggLSAoZmlyc3RUby54IC0gZnJvbS54KS8yO1xuICAgICAgfVxuXG4gICAgICBpZiAoZnJvbS55ID4gZmlyc3RUby55KSB7XG4gICAgICAgIHkgPSBmcm9tLnkgLSAoZnJvbS55IC0gZmlyc3RUby55KS8yO1xuICAgICAgfSBlbHNlIHtcbiAgICAgICAgeSA9IGZpcnN0VG8ueSAtIChmaXJzdFRvLnkgLSBmcm9tLnkpLzI7XG4gICAgICB9XG5cbiAgICAgIGlmIChpc0hvcml6b250YWwpIHtcbiAgICAgICAgeCAtPSB0ZXh0UGF0aC5nZXRCQm94KCkud2lkdGgvMjtcbiAgICAgICAgeSAtPSBjaGFydC5vcHRpb25zWyd0ZXh0LW1hcmdpbiddO1xuICAgICAgfSBlbHNlIHtcbiAgICAgICAgeCArPSBjaGFydC5vcHRpb25zWyd0ZXh0LW1hcmdpbiddO1xuICAgICAgICB5IC09IHRleHRQYXRoLmdldEJCb3goKS5oZWlnaHQvMjtcbiAgICAgIH1cbiAgICB9IGVsc2Uge1xuICAgICAgeCA9IGZyb20ueDtcbiAgICAgIHkgPSBmcm9tLnk7XG5cbiAgICAgIGlmIChpc0hvcml6b250YWwpIHtcbiAgICAgICAgeCArPSBjaGFydC5vcHRpb25zWyd0ZXh0LW1hcmdpbiddLzI7XG4gICAgICAgIHkgLT0gY2hhcnQub3B0aW9uc1sndGV4dC1tYXJnaW4nXTtcbiAgICAgIH0gZWxzZSB7XG4gICAgICAgIHggKz0gY2hhcnQub3B0aW9uc1sndGV4dC1tYXJnaW4nXS8yO1xuICAgICAgICB5ICs9IGNoYXJ0Lm9wdGlvbnNbJ3RleHQtbWFyZ2luJ107XG4gICAgICB9XG4gICAgfVxuXG4gICAgdGV4dFBhdGguYXR0cih7XG4gICAgICAndGV4dC1hbmNob3InOiAnc3RhcnQnLFxuICAgICAgJ2ZvbnQtc2l6ZSc6IGNoYXJ0Lm9wdGlvbnNbJ2ZvbnQtc2l6ZSddLFxuICAgICAgJ2ZpbGwnOiBjaGFydC5vcHRpb25zWydmb250LWNvbG9yJ10sXG4gICAgICB4OiB4LFxuICAgICAgeTogeVxuICAgIH0pO1xuXG4gICAgaWYgKGZvbnQpIHRleHRQYXRoLmF0dHIoeyAnZm9udCc6IGZvbnQgfSk7XG4gICAgaWYgKGZvbnRGKSB0ZXh0UGF0aC5hdHRyKHsgJ2ZvbnQtZmFtaWx5JzogZm9udEYgfSk7XG4gICAgaWYgKGZvbnRXKSB0ZXh0UGF0aC5hdHRyKHsgJ2ZvbnQtd2VpZ2h0JzogZm9udFcgfSk7XG4gIH1cblxuICByZXR1cm4gbGluZTtcbn1cblxuZnVuY3Rpb24gY2hlY2tMaW5lSW50ZXJzZWN0aW9uKGxpbmUxU3RhcnRYLCBsaW5lMVN0YXJ0WSwgbGluZTFFbmRYLCBsaW5lMUVuZFksIGxpbmUyU3RhcnRYLCBsaW5lMlN0YXJ0WSwgbGluZTJFbmRYLCBsaW5lMkVuZFkpIHtcbiAgLy8gaWYgdGhlIGxpbmVzIGludGVyc2VjdCwgdGhlIHJlc3VsdCBjb250YWlucyB0aGUgeCBhbmQgeSBvZiB0aGUgaW50ZXJzZWN0aW9uICh0cmVhdGluZyB0aGUgbGluZXMgYXMgaW5maW5pdGUpIGFuZCBib29sZWFucyBmb3Igd2hldGhlciBsaW5lIHNlZ21lbnQgMSBvciBsaW5lIHNlZ21lbnQgMiBjb250YWluIHRoZSBwb2ludFxuICB2YXIgZGVub21pbmF0b3IsIGEsIGIsIG51bWVyYXRvcjEsIG51bWVyYXRvcjIsIHJlc3VsdCA9IHtcbiAgICB4OiBudWxsLFxuICAgIHk6IG51bGwsXG4gICAgb25MaW5lMTogZmFsc2UsXG4gICAgb25MaW5lMjogZmFsc2VcbiAgfTtcbiAgZGVub21pbmF0b3IgPSAoKGxpbmUyRW5kWSAtIGxpbmUyU3RhcnRZKSAqIChsaW5lMUVuZFggLSBsaW5lMVN0YXJ0WCkpIC0gKChsaW5lMkVuZFggLSBsaW5lMlN0YXJ0WCkgKiAobGluZTFFbmRZIC0gbGluZTFTdGFydFkpKTtcbiAgaWYgKGRlbm9taW5hdG9yID09PSAwKSB7XG4gICAgcmV0dXJuIHJlc3VsdDtcbiAgfVxuICBhID0gbGluZTFTdGFydFkgLSBsaW5lMlN0YXJ0WTtcbiAgYiA9IGxpbmUxU3RhcnRYIC0gbGluZTJTdGFydFg7XG4gIG51bWVyYXRvcjEgPSAoKGxpbmUyRW5kWCAtIGxpbmUyU3RhcnRYKSAqIGEpIC0gKChsaW5lMkVuZFkgLSBsaW5lMlN0YXJ0WSkgKiBiKTtcbiAgbnVtZXJhdG9yMiA9ICgobGluZTFFbmRYIC0gbGluZTFTdGFydFgpICogYSkgLSAoKGxpbmUxRW5kWSAtIGxpbmUxU3RhcnRZKSAqIGIpO1xuICBhID0gbnVtZXJhdG9yMSAvIGRlbm9taW5hdG9yO1xuICBiID0gbnVtZXJhdG9yMiAvIGRlbm9taW5hdG9yO1xuXG4gIC8vIGlmIHdlIGNhc3QgdGhlc2UgbGluZXMgaW5maW5pdGVseSBpbiBib3RoIGRpcmVjdGlvbnMsIHRoZXkgaW50ZXJzZWN0IGhlcmU6XG4gIHJlc3VsdC54ID0gbGluZTFTdGFydFggKyAoYSAqIChsaW5lMUVuZFggLSBsaW5lMVN0YXJ0WCkpO1xuICByZXN1bHQueSA9IGxpbmUxU3RhcnRZICsgKGEgKiAobGluZTFFbmRZIC0gbGluZTFTdGFydFkpKTtcbiAgLypcbiAgLy8gaXQgaXMgd29ydGggbm90aW5nIHRoYXQgdGhpcyBzaG91bGQgYmUgdGhlIHNhbWUgYXM6XG4gIHggPSBsaW5lMlN0YXJ0WCArIChiICogKGxpbmUyRW5kWCAtIGxpbmUyU3RhcnRYKSk7XG4gIHkgPSBsaW5lMlN0YXJ0WCArIChiICogKGxpbmUyRW5kWSAtIGxpbmUyU3RhcnRZKSk7XG4gICovXG4gIC8vIGlmIGxpbmUxIGlzIGEgc2VnbWVudCBhbmQgbGluZTIgaXMgaW5maW5pdGUsIHRoZXkgaW50ZXJzZWN0IGlmOlxuICBpZiAoYSA+IDAgJiYgYSA8IDEpIHtcbiAgICByZXN1bHQub25MaW5lMSA9IHRydWU7XG4gIH1cbiAgLy8gaWYgbGluZTIgaXMgYSBzZWdtZW50IGFuZCBsaW5lMSBpcyBpbmZpbml0ZSwgdGhleSBpbnRlcnNlY3QgaWY6XG4gIGlmIChiID4gMCAmJiBiIDwgMSkge1xuICAgIHJlc3VsdC5vbkxpbmUyID0gdHJ1ZTtcbiAgfVxuICAvLyBpZiBsaW5lMSBhbmQgbGluZTIgYXJlIHNlZ21lbnRzLCB0aGV5IGludGVyc2VjdCBpZiBib3RoIG9mIHRoZSBhYm92ZSBhcmUgdHJ1ZVxuICByZXR1cm4gcmVzdWx0O1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IHtcblx0ZHJhd1BhdGg6IGRyYXdQYXRoLFxuXHRkcmF3TGluZTogZHJhd0xpbmUsXG5cdGNoZWNrTGluZUludGVyc2VjdGlvbjogY2hlY2tMaW5lSW50ZXJzZWN0aW9uXG59O1xuXG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi9zcmMvZmxvd2NoYXJ0LmZ1bmN0aW9ucy5qc1xuLy8gbW9kdWxlIGlkID0gMlxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7Iiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///2\n");
+    }, /* 3 */
     /*!********************************!*\
   !*** ./src/flowchart.parse.js ***!
   \********************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
     /***/
     function(module, exports, __webpack_require__) {
-        function parse(input) {
-            function getStyle(s) {
-                var startIndex = s.indexOf("(") + 1, endIndex = s.indexOf(")");
-                return startIndex >= 0 && endIndex >= 0 ? s.substring(startIndex, endIndex) : "{}";
-            }
-            function getSymbol(s) {
-                var startIndex = s.indexOf("(") + 1, endIndex = s.indexOf(")");
-                return startIndex >= 0 && endIndex >= 0 ? chart.symbols[s.substring(0, startIndex - 1)] : chart.symbols[s];
-            }
-            function getNextPath(s) {
-                var next = "next", startIndex = s.indexOf("(") + 1, endIndex = s.indexOf(")");
-                return startIndex >= 0 && endIndex >= 0 && (next = flowSymb.substring(startIndex, endIndex), 
-                next.indexOf(",") < 0 && "yes" !== next && "no" !== next && (next = "next, " + next)), 
-                next;
-            }
-            input = input || "", input = input.trim();
-            for (var chart = {
-                symbols: {},
-                start: null,
-                drawSVG: function(container, options) {
-                    function getDisplaySymbol(s) {
-                        if (dispSymbols[s.key]) return dispSymbols[s.key];
-                        switch (s.symbolType) {
-                          case "start":
-                            dispSymbols[s.key] = new Start(diagram, s);
-                            break;
-
-                          case "end":
-                            dispSymbols[s.key] = new End(diagram, s);
-                            break;
-
-                          case "operation":
-                            dispSymbols[s.key] = new Operation(diagram, s);
-                            break;
-
-                          case "inputoutput":
-                            dispSymbols[s.key] = new InputOutput(diagram, s);
-                            break;
-
-                          case "subroutine":
-                            dispSymbols[s.key] = new Subroutine(diagram, s);
-                            break;
-
-                          case "condition":
-                            dispSymbols[s.key] = new Condition(diagram, s);
-                            break;
-
-                          default:
-                            return new Error("Wrong symbol type!");
-                        }
-                        return dispSymbols[s.key];
-                    }
-                    var self = this;
-                    this.diagram && this.diagram.clean();
-                    var diagram = new FlowChart(container, options);
-                    this.diagram = diagram;
-                    var dispSymbols = {};
-                    !function constructChart(s, prevDisp, prev) {
-                        var dispSymb = getDisplaySymbol(s);
-                        return self.start === s ? diagram.startWith(dispSymb) : prevDisp && prev && !prevDisp.pathOk && (prevDisp instanceof Condition ? (prev.yes === s && prevDisp.yes(dispSymb), 
-                        prev.no === s && prevDisp.no(dispSymb)) : prevDisp.then(dispSymb)), dispSymb.pathOk ? dispSymb : (dispSymb instanceof Condition ? (s.yes && constructChart(s.yes, dispSymb, s), 
-                        s.no && constructChart(s.no, dispSymb, s)) : s.next && constructChart(s.next, dispSymb, s), 
-                        dispSymb);
-                    }(this.start), diagram.render();
-                },
-                clean: function() {
-                    this.diagram.clean();
-                }
-            }, lines = [], prevBreak = 0, i0 = 1, i0len = input.length; i0len > i0; i0++) if ("\n" === input[i0] && "\\" !== input[i0 - 1]) {
-                var line0 = input.substring(prevBreak, i0);
-                prevBreak = i0 + 1, lines.push(line0.replace(/\\\n/g, "\n"));
-            }
-            prevBreak < input.length && lines.push(input.substr(prevBreak));
-            for (var l = 1, len = lines.length; len > l; ) {
-                var currentLine = lines[l];
-                currentLine.indexOf("->") < 0 && currentLine.indexOf("=>") < 0 && currentLine.indexOf("@>") < 0 ? (lines[l - 1] += "\n" + currentLine, 
-                lines.splice(l, 1), len--) : l++;
-            }
-            for (;lines.length > 0; ) {
-                var line = lines.splice(0, 1)[0].trim();
-                if (line.indexOf("=>") >= 0) {
-                    // definition
-                    var parts = line.split("=>"), symbol = {
-                        key: parts[0].replace(/\(.*\)/, ""),
-                        symbolType: parts[1],
-                        text: null,
-                        link: null,
-                        target: null,
-                        flowstate: null,
-                        lineStyle: {},
-                        params: {}
-                    }, params = parts[0].match(/\((.*)\)/);
-                    if (params && params.length > 1) for (var entries = params[1].split(","), i = 0; i < entries.length; i++) {
-                        var entry = entries[0].split("=");
-                        2 == entry.length && (symbol.params[entry[0]] = entry[1]);
-                    }
-                    var sub;
-                    /* adding support for links */
-                    if (symbol.symbolType.indexOf(": ") >= 0 && (sub = symbol.symbolType.split(": "), 
-                    symbol.symbolType = sub.shift(), symbol.text = sub.join(": ")), symbol.text && symbol.text.indexOf(":>") >= 0 ? (sub = symbol.text.split(":>"), 
-                    symbol.text = sub.shift(), symbol.link = sub.join(":>")) : symbol.symbolType.indexOf(":>") >= 0 && (sub = symbol.symbolType.split(":>"), 
-                    symbol.symbolType = sub.shift(), symbol.link = sub.join(":>")), symbol.symbolType.indexOf("\n") >= 0 && (symbol.symbolType = symbol.symbolType.split("\n")[0]), 
-                    symbol.link) {
-                        var startIndex = symbol.link.indexOf("[") + 1, endIndex = symbol.link.indexOf("]");
-                        startIndex >= 0 && endIndex >= 0 && (symbol.target = symbol.link.substring(startIndex, endIndex), 
-                        symbol.link = symbol.link.substring(0, startIndex - 1));
-                    }
-                    /* end of link support */
-                    /* adding support for flowstates */
-                    if (symbol.text && symbol.text.indexOf("|") >= 0) {
-                        var txtAndState = symbol.text.split("|");
-                        symbol.flowstate = txtAndState.pop().trim(), symbol.text = txtAndState.join("|");
-                    }
-                    /* end of flowstate support */
-                    chart.symbols[symbol.key] = symbol;
-                } else if (line.indexOf("->") >= 0) for (var flowSymbols = line.split("->"), i = 0, lenS = flowSymbols.length; lenS > i; i++) {
-                    var flowSymb = flowSymbols[i], realSymb = getSymbol(flowSymb), next = getNextPath(flowSymb), direction = null;
-                    if (next.indexOf(",") >= 0) {
-                        var condOpt = next.split(",");
-                        next = condOpt[0], direction = condOpt[1].trim();
-                    }
-                    if (chart.start || (chart.start = realSymb), lenS > i + 1) {
-                        var nextSymb = flowSymbols[i + 1];
-                        realSymb[next] = getSymbol(nextSymb), realSymb["direction_" + next] = direction, 
-                        direction = null;
-                    }
-                } else if (line.indexOf("@>") >= 0) for (var lineStyleSymbols = line.split("@>"), i = 0, lenS = lineStyleSymbols.length; lenS > i; i++) if (i + 1 != lenS) {
-                    var curSymb = getSymbol(lineStyleSymbols[i]), nextSymb = getSymbol(lineStyleSymbols[i + 1]);
-                    curSymb.lineStyle[nextSymb.key] = JSON.parse(getStyle(lineStyleSymbols[i + 1]));
-                }
-            }
-            return chart;
-        }
-        var FlowChart = __webpack_require__(/*! ./flowchart.chart */ 6), Start = __webpack_require__(/*! ./flowchart.symbol.start */ 12), End = __webpack_require__(/*! ./flowchart.symbol.end */ 9), Operation = __webpack_require__(/*! ./flowchart.symbol.operation */ 11), InputOutput = __webpack_require__(/*! ./flowchart.symbol.inputoutput */ 10), Subroutine = __webpack_require__(/*! ./flowchart.symbol.subroutine */ 13), Condition = __webpack_require__(/*! ./flowchart.symbol.condition */ 5);
-        module.exports = parse;
-    }, /* 5 */
+        eval("var FlowChart = __webpack_require__(/*! ./flowchart.chart */ 7);\nvar Start = __webpack_require__(/*! ./flowchart.symbol.start */ 10);\nvar End = __webpack_require__(/*! ./flowchart.symbol.end */ 11);\nvar Operation = __webpack_require__(/*! ./flowchart.symbol.operation */ 12);\nvar InputOutput = __webpack_require__(/*! ./flowchart.symbol.inputoutput */ 13);\nvar Subroutine = __webpack_require__(/*! ./flowchart.symbol.subroutine */ 14);\nvar Condition = __webpack_require__(/*! ./flowchart.symbol.condition */ 4);\nvar Options = __webpack_require__(/*! ./flowchart.symbol.options */ 15);\n\nfunction parse(input) {\n  input = input || '';\n  input = input.trim();\n\n  var chart = {\n    symbols: {},\n    start: null,\n    drawSVG: function(container, options) {\n      var self = this;\n\n      if (this.diagram) {\n        this.diagram.clean();\n      }\n\n      var diagram = new FlowChart(container, options);\n      this.diagram = diagram;\n      var dispSymbols = {};\n\n      function getDisplaySymbol(s) {\n        if (dispSymbols[s.key]) {\n          return dispSymbols[s.key];\n        }\n\n        switch (s.symbolType) {\n          case 'start':\n            dispSymbols[s.key] = new Start(diagram, s);\n            break;\n          case 'end':\n            dispSymbols[s.key] = new End(diagram, s);\n            break;\n          case 'operation':\n            dispSymbols[s.key] = new Operation(diagram, s);\n            break;\n          case 'inputoutput':\n            dispSymbols[s.key] = new InputOutput(diagram, s);\n            break;\n          case 'subroutine':\n            dispSymbols[s.key] = new Subroutine(diagram, s);\n            break;\n          case 'condition':\n            dispSymbols[s.key] = new Condition(diagram, s);\n            break;\n          case 'options':\n            dispSymbols[s.key] = new Options(diagram, s);\n            break;\n          default:\n            return new Error('Wrong symbol type!');\n        }\n\n        return dispSymbols[s.key];\n      }\n\n      (function constructChart(s, prevDisp, prev) {\n        var dispSymb = getDisplaySymbol(s);\n\n        if (self.start === s) {\n          diagram.startWith(dispSymb);\n        } else if (prevDisp && prev && !prevDisp.pathOk) {\n          if (prevDisp instanceof(Condition)) {\n            if (prev.yes === s) {\n              prevDisp.yes(dispSymb);\n            }\n            if (prev.no === s) {\n              prevDisp.no(dispSymb);\n            }\n          } else {\n            prevDisp.then(dispSymb);\n          }\n        }\n\n        if (dispSymb.pathOk) {\n          return dispSymb;\n        }\n\n        if (dispSymb instanceof(Condition)) {\n          if (s.yes) {\n            constructChart(s.yes, dispSymb, s);\n          }\n          if (s.no) {\n            constructChart(s.no, dispSymb, s);\n          }\n        } else if (s.next) {\n          constructChart(s.next, dispSymb, s);\n        }\n\n        return dispSymb;\n      })(this.start);\n\n      diagram.render();\n    },\n    clean: function() {\n      this.diagram.clean();\n    }\n  };\n\n  var lines = [];\n  var prevBreak = 0;\n  for (var i0 = 1, i0len = input.length; i0 < i0len; i0++) {\n    if(input[i0] === '\\n' && input[i0 - 1] !== '\\\\') {\n      var line0 = input.substring(prevBreak, i0);\n      prevBreak = i0 + 1;\n      lines.push(line0.replace(/\\\\\\n/g, '\\n'));\n    }\n  }\n\n  if(prevBreak < input.length) {\n    lines.push(input.substr(prevBreak));\n  }\n\n  for (var l = 1, len = lines.length; l < len;) {\n    var currentLine = lines[l];\n\n    if (currentLine.indexOf('->') < 0 && currentLine.indexOf('=>') < 0 && currentLine.indexOf('@>') < 0) {\n      lines[l - 1] += '\\n' + currentLine;\n      lines.splice(l, 1);\n      len--;\n    } else {\n      l++;\n    }\n  }\n\n  function getStyle(s){\n    var startIndex = s.indexOf('(') + 1;\n    var endIndex = s.indexOf(')');\n    if (startIndex >= 0 && endIndex >= 0) {\n      return s.substring(startIndex,endIndex);\n    }\n    return '{}';\n  }\n\n  function getSymbol(s) {\n    var startIndex = s.indexOf('(') + 1;\n    var endIndex = s.indexOf(')');\n    if (startIndex >= 0 && endIndex >= 0) {\n      return chart.symbols[s.substring(0, startIndex - 1)];\n    }\n    return chart.symbols[s];\n  }\n\n  function getNextPath(s) {\n    var next = 'next';\n    var startIndex = s.indexOf('(') + 1;\n    var endIndex = s.indexOf(')');\n    if (startIndex >= 0 && endIndex >= 0) {\n      next = flowSymb.substring(startIndex, endIndex);\n      if (next.indexOf(',') < 0) {\n        if (next !== 'yes' && next !== 'no') {\n          next = 'next, ' + next;\n        }\n      }\n    }\n    return next;\n  }\n\n  while (lines.length > 0) {\n    var line = lines.splice(0, 1)[0].trim();\n\n    if (line.indexOf('=>') >= 0) {\n      // definition\n      var parts = line.split('=>');\n      var symbol = {\n        key: parts[0].replace(/\\(.*\\)/, ''),\n        symbolType: parts[1],\n        text: null,\n        link: null,\n        target: null,\n        flowstate: null,\n        lineStyle: {},\n        params: {}\n      };\n\n      //parse parameters\n      var params = parts[0].match(/\\((.*)\\)/);\n      if (params && params.length > 1){\n        var entries = params[1].split(',');\n        for(var i = 0; i < entries.length; i++) {\n          var entry = entries[0].split('=');\n          if (entry.length == 2){\n            symbol.params[entry[0]] = entry[1];\n          }\n        }\n      }\n\n      var sub;\n\n      if (symbol.symbolType.indexOf(': ') >= 0) {\n        sub = symbol.symbolType.split(': ');\n        symbol.symbolType = sub.shift();\n        symbol.text = sub.join(': ');\n      }\n\n      if (symbol.text && symbol.text.indexOf(':>') >= 0) {\n        sub = symbol.text.split(':>');\n        symbol.text = sub.shift();\n        symbol.link = sub.join(':>');\n      } else if (symbol.symbolType.indexOf(':>') >= 0) {\n        sub = symbol.symbolType.split(':>');\n        symbol.symbolType = sub.shift();\n        symbol.link = sub.join(':>');\n      }\n\n      if (symbol.symbolType.indexOf('\\n') >= 0) {\n        symbol.symbolType = symbol.symbolType.split('\\n')[0];\n      }\n\n      /* adding support for links */\n      if (symbol.link) {\n        var startIndex = symbol.link.indexOf('[') + 1;\n        var endIndex = symbol.link.indexOf(']');\n        if (startIndex >= 0 && endIndex >= 0) {\n          symbol.target = symbol.link.substring(startIndex, endIndex);\n          symbol.link = symbol.link.substring(0, startIndex - 1);\n        }\n      }\n      /* end of link support */\n\n      /* adding support for flowstates */\n      if (symbol.text) {\n        if (symbol.text.indexOf('|') >= 0) {\n          var txtAndState = symbol.text.split('|');\n          symbol.flowstate = txtAndState.pop().trim();\n          symbol.text = txtAndState.join('|');\n        }\n      }\n      /* end of flowstate support */\n\n      chart.symbols[symbol.key] = symbol;\n\n    } else if (line.indexOf('->') >= 0) {\n      // flow\n      var flowSymbols = line.split('->');\n      for (var i = 0, lenS = flowSymbols.length; i < lenS; i++) {\n        var flowSymb = flowSymbols[i];\n\n        var realSymb = getSymbol(flowSymb);\n        var next = getNextPath(flowSymb);\n\n        var direction = null;\n        if (next.indexOf(',') >= 0) {\n          var condOpt = next.split(',');\n          next = condOpt[0];\n          direction = condOpt[1].trim();\n        }\n\n        if (!chart.start) {\n          chart.start = realSymb;\n        }\n\n        if (i + 1 < lenS) {\n          var nextSymb = flowSymbols[i + 1];\n          realSymb[next] = getSymbol(nextSymb);\n          realSymb['direction_' + next] = direction;\n          direction = null;\n        }\n      }\n    } else if (line.indexOf('@>') >= 0) {\n\n      // line style\n      var lineStyleSymbols = line.split('@>');\n      for (var i = 0, lenS = lineStyleSymbols.length; i < lenS; i++) {\n\n        if ((i+1) != lenS){\n          var curSymb = getSymbol(lineStyleSymbols[i]);\n          var nextSymb = getSymbol(lineStyleSymbols[i+1])\n\n          curSymb['lineStyle'][nextSymb.key] = JSON.parse(getStyle(lineStyleSymbols[i+1]));\n        }\n      }\n    }\n\n  }\n  return chart;\n}\n\nmodule.exports = parse;\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMy5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9mbG93Y2hhcnQucGFyc2UuanM/YjVhNSJdLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgRmxvd0NoYXJ0ID0gcmVxdWlyZSgnLi9mbG93Y2hhcnQuY2hhcnQnKTtcbnZhciBTdGFydCA9IHJlcXVpcmUoJy4vZmxvd2NoYXJ0LnN5bWJvbC5zdGFydCcpO1xudmFyIEVuZCA9IHJlcXVpcmUoJy4vZmxvd2NoYXJ0LnN5bWJvbC5lbmQnKTtcbnZhciBPcGVyYXRpb24gPSByZXF1aXJlKCcuL2Zsb3djaGFydC5zeW1ib2wub3BlcmF0aW9uJyk7XG52YXIgSW5wdXRPdXRwdXQgPSByZXF1aXJlKCcuL2Zsb3djaGFydC5zeW1ib2wuaW5wdXRvdXRwdXQnKTtcbnZhciBTdWJyb3V0aW5lID0gcmVxdWlyZSgnLi9mbG93Y2hhcnQuc3ltYm9sLnN1YnJvdXRpbmUnKTtcbnZhciBDb25kaXRpb24gPSByZXF1aXJlKCcuL2Zsb3djaGFydC5zeW1ib2wuY29uZGl0aW9uJyk7XG52YXIgT3B0aW9ucyA9IHJlcXVpcmUoJy4vZmxvd2NoYXJ0LnN5bWJvbC5vcHRpb25zJyk7XG5cbmZ1bmN0aW9uIHBhcnNlKGlucHV0KSB7XG4gIGlucHV0ID0gaW5wdXQgfHwgJyc7XG4gIGlucHV0ID0gaW5wdXQudHJpbSgpO1xuXG4gIHZhciBjaGFydCA9IHtcbiAgICBzeW1ib2xzOiB7fSxcbiAgICBzdGFydDogbnVsbCxcbiAgICBkcmF3U1ZHOiBmdW5jdGlvbihjb250YWluZXIsIG9wdGlvbnMpIHtcbiAgICAgIHZhciBzZWxmID0gdGhpcztcblxuICAgICAgaWYgKHRoaXMuZGlhZ3JhbSkge1xuICAgICAgICB0aGlzLmRpYWdyYW0uY2xlYW4oKTtcbiAgICAgIH1cblxuICAgICAgdmFyIGRpYWdyYW0gPSBuZXcgRmxvd0NoYXJ0KGNvbnRhaW5lciwgb3B0aW9ucyk7XG4gICAgICB0aGlzLmRpYWdyYW0gPSBkaWFncmFtO1xuICAgICAgdmFyIGRpc3BTeW1ib2xzID0ge307XG5cbiAgICAgIGZ1bmN0aW9uIGdldERpc3BsYXlTeW1ib2wocykge1xuICAgICAgICBpZiAoZGlzcFN5bWJvbHNbcy5rZXldKSB7XG4gICAgICAgICAgcmV0dXJuIGRpc3BTeW1ib2xzW3Mua2V5XTtcbiAgICAgICAgfVxuXG4gICAgICAgIHN3aXRjaCAocy5zeW1ib2xUeXBlKSB7XG4gICAgICAgICAgY2FzZSAnc3RhcnQnOlxuICAgICAgICAgICAgZGlzcFN5bWJvbHNbcy5rZXldID0gbmV3IFN0YXJ0KGRpYWdyYW0sIHMpO1xuICAgICAgICAgICAgYnJlYWs7XG4gICAgICAgICAgY2FzZSAnZW5kJzpcbiAgICAgICAgICAgIGRpc3BTeW1ib2xzW3Mua2V5XSA9IG5ldyBFbmQoZGlhZ3JhbSwgcyk7XG4gICAgICAgICAgICBicmVhaztcbiAgICAgICAgICBjYXNlICdvcGVyYXRpb24nOlxuICAgICAgICAgICAgZGlzcFN5bWJvbHNbcy5rZXldID0gbmV3IE9wZXJhdGlvbihkaWFncmFtLCBzKTtcbiAgICAgICAgICAgIGJyZWFrO1xuICAgICAgICAgIGNhc2UgJ2lucHV0b3V0cHV0JzpcbiAgICAgICAgICAgIGRpc3BTeW1ib2xzW3Mua2V5XSA9IG5ldyBJbnB1dE91dHB1dChkaWFncmFtLCBzKTtcbiAgICAgICAgICAgIGJyZWFrO1xuICAgICAgICAgIGNhc2UgJ3N1YnJvdXRpbmUnOlxuICAgICAgICAgICAgZGlzcFN5bWJvbHNbcy5rZXldID0gbmV3IFN1YnJvdXRpbmUoZGlhZ3JhbSwgcyk7XG4gICAgICAgICAgICBicmVhaztcbiAgICAgICAgICBjYXNlICdjb25kaXRpb24nOlxuICAgICAgICAgICAgZGlzcFN5bWJvbHNbcy5rZXldID0gbmV3IENvbmRpdGlvbihkaWFncmFtLCBzKTtcbiAgICAgICAgICAgIGJyZWFrO1xuICAgICAgICAgIGNhc2UgJ29wdGlvbnMnOlxuICAgICAgICAgICAgZGlzcFN5bWJvbHNbcy5rZXldID0gbmV3IE9wdGlvbnMoZGlhZ3JhbSwgcyk7XG4gICAgICAgICAgICBicmVhaztcbiAgICAgICAgICBkZWZhdWx0OlxuICAgICAgICAgICAgcmV0dXJuIG5ldyBFcnJvcignV3Jvbmcgc3ltYm9sIHR5cGUhJyk7XG4gICAgICAgIH1cblxuICAgICAgICByZXR1cm4gZGlzcFN5bWJvbHNbcy5rZXldO1xuICAgICAgfVxuXG4gICAgICAoZnVuY3Rpb24gY29uc3RydWN0Q2hhcnQocywgcHJldkRpc3AsIHByZXYpIHtcbiAgICAgICAgdmFyIGRpc3BTeW1iID0gZ2V0RGlzcGxheVN5bWJvbChzKTtcblxuICAgICAgICBpZiAoc2VsZi5zdGFydCA9PT0gcykge1xuICAgICAgICAgIGRpYWdyYW0uc3RhcnRXaXRoKGRpc3BTeW1iKTtcbiAgICAgICAgfSBlbHNlIGlmIChwcmV2RGlzcCAmJiBwcmV2ICYmICFwcmV2RGlzcC5wYXRoT2spIHtcbiAgICAgICAgICBpZiAocHJldkRpc3AgaW5zdGFuY2VvZihDb25kaXRpb24pKSB7XG4gICAgICAgICAgICBpZiAocHJldi55ZXMgPT09IHMpIHtcbiAgICAgICAgICAgICAgcHJldkRpc3AueWVzKGRpc3BTeW1iKTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgIGlmIChwcmV2Lm5vID09PSBzKSB7XG4gICAgICAgICAgICAgIHByZXZEaXNwLm5vKGRpc3BTeW1iKTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgcHJldkRpc3AudGhlbihkaXNwU3ltYik7XG4gICAgICAgICAgfVxuICAgICAgICB9XG5cbiAgICAgICAgaWYgKGRpc3BTeW1iLnBhdGhPaykge1xuICAgICAgICAgIHJldHVybiBkaXNwU3ltYjtcbiAgICAgICAgfVxuXG4gICAgICAgIGlmIChkaXNwU3ltYiBpbnN0YW5jZW9mKENvbmRpdGlvbikpIHtcbiAgICAgICAgICBpZiAocy55ZXMpIHtcbiAgICAgICAgICAgIGNvbnN0cnVjdENoYXJ0KHMueWVzLCBkaXNwU3ltYiwgcyk7XG4gICAgICAgICAgfVxuICAgICAgICAgIGlmIChzLm5vKSB7XG4gICAgICAgICAgICBjb25zdHJ1Y3RDaGFydChzLm5vLCBkaXNwU3ltYiwgcyk7XG4gICAgICAgICAgfVxuICAgICAgICB9IGVsc2UgaWYgKHMubmV4dCkge1xuICAgICAgICAgIGNvbnN0cnVjdENoYXJ0KHMubmV4dCwgZGlzcFN5bWIsIHMpO1xuICAgICAgICB9XG5cbiAgICAgICAgcmV0dXJuIGRpc3BTeW1iO1xuICAgICAgfSkodGhpcy5zdGFydCk7XG5cbiAgICAgIGRpYWdyYW0ucmVuZGVyKCk7XG4gICAgfSxcbiAgICBjbGVhbjogZnVuY3Rpb24oKSB7XG4gICAgICB0aGlzLmRpYWdyYW0uY2xlYW4oKTtcbiAgICB9XG4gIH07XG5cbiAgdmFyIGxpbmVzID0gW107XG4gIHZhciBwcmV2QnJlYWsgPSAwO1xuICBmb3IgKHZhciBpMCA9IDEsIGkwbGVuID0gaW5wdXQubGVuZ3RoOyBpMCA8IGkwbGVuOyBpMCsrKSB7XG4gICAgaWYoaW5wdXRbaTBdID09PSAnXFxuJyAmJiBpbnB1dFtpMCAtIDFdICE9PSAnXFxcXCcpIHtcbiAgICAgIHZhciBsaW5lMCA9IGlucHV0LnN1YnN0cmluZyhwcmV2QnJlYWssIGkwKTtcbiAgICAgIHByZXZCcmVhayA9IGkwICsgMTtcbiAgICAgIGxpbmVzLnB1c2gobGluZTAucmVwbGFjZSgvXFxcXFxcbi9nLCAnXFxuJykpO1xuICAgIH1cbiAgfVxuXG4gIGlmKHByZXZCcmVhayA8IGlucHV0Lmxlbmd0aCkge1xuICAgIGxpbmVzLnB1c2goaW5wdXQuc3Vic3RyKHByZXZCcmVhaykpO1xuICB9XG5cbiAgZm9yICh2YXIgbCA9IDEsIGxlbiA9IGxpbmVzLmxlbmd0aDsgbCA8IGxlbjspIHtcbiAgICB2YXIgY3VycmVudExpbmUgPSBsaW5lc1tsXTtcblxuICAgIGlmIChjdXJyZW50TGluZS5pbmRleE9mKCctPicpIDwgMCAmJiBjdXJyZW50TGluZS5pbmRleE9mKCc9PicpIDwgMCAmJiBjdXJyZW50TGluZS5pbmRleE9mKCdAPicpIDwgMCkge1xuICAgICAgbGluZXNbbCAtIDFdICs9ICdcXG4nICsgY3VycmVudExpbmU7XG4gICAgICBsaW5lcy5zcGxpY2UobCwgMSk7XG4gICAgICBsZW4tLTtcbiAgICB9IGVsc2Uge1xuICAgICAgbCsrO1xuICAgIH1cbiAgfVxuXG4gIGZ1bmN0aW9uIGdldFN0eWxlKHMpe1xuICAgIHZhciBzdGFydEluZGV4ID0gcy5pbmRleE9mKCcoJykgKyAxO1xuICAgIHZhciBlbmRJbmRleCA9IHMuaW5kZXhPZignKScpO1xuICAgIGlmIChzdGFydEluZGV4ID49IDAgJiYgZW5kSW5kZXggPj0gMCkge1xuICAgICAgcmV0dXJuIHMuc3Vic3RyaW5nKHN0YXJ0SW5kZXgsZW5kSW5kZXgpO1xuICAgIH1cbiAgICByZXR1cm4gJ3t9JztcbiAgfVxuXG4gIGZ1bmN0aW9uIGdldFN5bWJvbChzKSB7XG4gICAgdmFyIHN0YXJ0SW5kZXggPSBzLmluZGV4T2YoJygnKSArIDE7XG4gICAgdmFyIGVuZEluZGV4ID0gcy5pbmRleE9mKCcpJyk7XG4gICAgaWYgKHN0YXJ0SW5kZXggPj0gMCAmJiBlbmRJbmRleCA+PSAwKSB7XG4gICAgICByZXR1cm4gY2hhcnQuc3ltYm9sc1tzLnN1YnN0cmluZygwLCBzdGFydEluZGV4IC0gMSldO1xuICAgIH1cbiAgICByZXR1cm4gY2hhcnQuc3ltYm9sc1tzXTtcbiAgfVxuXG4gIGZ1bmN0aW9uIGdldE5leHRQYXRoKHMpIHtcbiAgICB2YXIgbmV4dCA9ICduZXh0JztcbiAgICB2YXIgc3RhcnRJbmRleCA9IHMuaW5kZXhPZignKCcpICsgMTtcbiAgICB2YXIgZW5kSW5kZXggPSBzLmluZGV4T2YoJyknKTtcbiAgICBpZiAoc3RhcnRJbmRleCA+PSAwICYmIGVuZEluZGV4ID49IDApIHtcbiAgICAgIG5leHQgPSBmbG93U3ltYi5zdWJzdHJpbmcoc3RhcnRJbmRleCwgZW5kSW5kZXgpO1xuICAgICAgaWYgKG5leHQuaW5kZXhPZignLCcpIDwgMCkge1xuICAgICAgICBpZiAobmV4dCAhPT0gJ3llcycgJiYgbmV4dCAhPT0gJ25vJykge1xuICAgICAgICAgIG5leHQgPSAnbmV4dCwgJyArIG5leHQ7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gICAgcmV0dXJuIG5leHQ7XG4gIH1cblxuICB3aGlsZSAobGluZXMubGVuZ3RoID4gMCkge1xuICAgIHZhciBsaW5lID0gbGluZXMuc3BsaWNlKDAsIDEpWzBdLnRyaW0oKTtcblxuICAgIGlmIChsaW5lLmluZGV4T2YoJz0+JykgPj0gMCkge1xuICAgICAgLy8gZGVmaW5pdGlvblxuICAgICAgdmFyIHBhcnRzID0gbGluZS5zcGxpdCgnPT4nKTtcbiAgICAgIHZhciBzeW1ib2wgPSB7XG4gICAgICAgIGtleTogcGFydHNbMF0ucmVwbGFjZSgvXFwoLipcXCkvLCAnJyksXG4gICAgICAgIHN5bWJvbFR5cGU6IHBhcnRzWzFdLFxuICAgICAgICB0ZXh0OiBudWxsLFxuICAgICAgICBsaW5rOiBudWxsLFxuICAgICAgICB0YXJnZXQ6IG51bGwsXG4gICAgICAgIGZsb3dzdGF0ZTogbnVsbCxcbiAgICAgICAgbGluZVN0eWxlOiB7fSxcbiAgICAgICAgcGFyYW1zOiB7fVxuICAgICAgfTtcblxuICAgICAgLy9wYXJzZSBwYXJhbWV0ZXJzXG4gICAgICB2YXIgcGFyYW1zID0gcGFydHNbMF0ubWF0Y2goL1xcKCguKilcXCkvKTtcbiAgICAgIGlmIChwYXJhbXMgJiYgcGFyYW1zLmxlbmd0aCA+IDEpe1xuICAgICAgICB2YXIgZW50cmllcyA9IHBhcmFtc1sxXS5zcGxpdCgnLCcpO1xuICAgICAgICBmb3IodmFyIGkgPSAwOyBpIDwgZW50cmllcy5sZW5ndGg7IGkrKykge1xuICAgICAgICAgIHZhciBlbnRyeSA9IGVudHJpZXNbMF0uc3BsaXQoJz0nKTtcbiAgICAgICAgICBpZiAoZW50cnkubGVuZ3RoID09IDIpe1xuICAgICAgICAgICAgc3ltYm9sLnBhcmFtc1tlbnRyeVswXV0gPSBlbnRyeVsxXTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgdmFyIHN1YjtcblxuICAgICAgaWYgKHN5bWJvbC5zeW1ib2xUeXBlLmluZGV4T2YoJzogJykgPj0gMCkge1xuICAgICAgICBzdWIgPSBzeW1ib2wuc3ltYm9sVHlwZS5zcGxpdCgnOiAnKTtcbiAgICAgICAgc3ltYm9sLnN5bWJvbFR5cGUgPSBzdWIuc2hpZnQoKTtcbiAgICAgICAgc3ltYm9sLnRleHQgPSBzdWIuam9pbignOiAnKTtcbiAgICAgIH1cblxuICAgICAgaWYgKHN5bWJvbC50ZXh0ICYmIHN5bWJvbC50ZXh0LmluZGV4T2YoJzo+JykgPj0gMCkge1xuICAgICAgICBzdWIgPSBzeW1ib2wudGV4dC5zcGxpdCgnOj4nKTtcbiAgICAgICAgc3ltYm9sLnRleHQgPSBzdWIuc2hpZnQoKTtcbiAgICAgICAgc3ltYm9sLmxpbmsgPSBzdWIuam9pbignOj4nKTtcbiAgICAgIH0gZWxzZSBpZiAoc3ltYm9sLnN5bWJvbFR5cGUuaW5kZXhPZignOj4nKSA+PSAwKSB7XG4gICAgICAgIHN1YiA9IHN5bWJvbC5zeW1ib2xUeXBlLnNwbGl0KCc6PicpO1xuICAgICAgICBzeW1ib2wuc3ltYm9sVHlwZSA9IHN1Yi5zaGlmdCgpO1xuICAgICAgICBzeW1ib2wubGluayA9IHN1Yi5qb2luKCc6PicpO1xuICAgICAgfVxuXG4gICAgICBpZiAoc3ltYm9sLnN5bWJvbFR5cGUuaW5kZXhPZignXFxuJykgPj0gMCkge1xuICAgICAgICBzeW1ib2wuc3ltYm9sVHlwZSA9IHN5bWJvbC5zeW1ib2xUeXBlLnNwbGl0KCdcXG4nKVswXTtcbiAgICAgIH1cblxuICAgICAgLyogYWRkaW5nIHN1cHBvcnQgZm9yIGxpbmtzICovXG4gICAgICBpZiAoc3ltYm9sLmxpbmspIHtcbiAgICAgICAgdmFyIHN0YXJ0SW5kZXggPSBzeW1ib2wubGluay5pbmRleE9mKCdbJykgKyAxO1xuICAgICAgICB2YXIgZW5kSW5kZXggPSBzeW1ib2wubGluay5pbmRleE9mKCddJyk7XG4gICAgICAgIGlmIChzdGFydEluZGV4ID49IDAgJiYgZW5kSW5kZXggPj0gMCkge1xuICAgICAgICAgIHN5bWJvbC50YXJnZXQgPSBzeW1ib2wubGluay5zdWJzdHJpbmcoc3RhcnRJbmRleCwgZW5kSW5kZXgpO1xuICAgICAgICAgIHN5bWJvbC5saW5rID0gc3ltYm9sLmxpbmsuc3Vic3RyaW5nKDAsIHN0YXJ0SW5kZXggLSAxKTtcbiAgICAgICAgfVxuICAgICAgfVxuICAgICAgLyogZW5kIG9mIGxpbmsgc3VwcG9ydCAqL1xuXG4gICAgICAvKiBhZGRpbmcgc3VwcG9ydCBmb3IgZmxvd3N0YXRlcyAqL1xuICAgICAgaWYgKHN5bWJvbC50ZXh0KSB7XG4gICAgICAgIGlmIChzeW1ib2wudGV4dC5pbmRleE9mKCd8JykgPj0gMCkge1xuICAgICAgICAgIHZhciB0eHRBbmRTdGF0ZSA9IHN5bWJvbC50ZXh0LnNwbGl0KCd8Jyk7XG4gICAgICAgICAgc3ltYm9sLmZsb3dzdGF0ZSA9IHR4dEFuZFN0YXRlLnBvcCgpLnRyaW0oKTtcbiAgICAgICAgICBzeW1ib2wudGV4dCA9IHR4dEFuZFN0YXRlLmpvaW4oJ3wnKTtcbiAgICAgICAgfVxuICAgICAgfVxuICAgICAgLyogZW5kIG9mIGZsb3dzdGF0ZSBzdXBwb3J0ICovXG5cbiAgICAgIGNoYXJ0LnN5bWJvbHNbc3ltYm9sLmtleV0gPSBzeW1ib2w7XG5cbiAgICB9IGVsc2UgaWYgKGxpbmUuaW5kZXhPZignLT4nKSA+PSAwKSB7XG4gICAgICAvLyBmbG93XG4gICAgICB2YXIgZmxvd1N5bWJvbHMgPSBsaW5lLnNwbGl0KCctPicpO1xuICAgICAgZm9yICh2YXIgaSA9IDAsIGxlblMgPSBmbG93U3ltYm9scy5sZW5ndGg7IGkgPCBsZW5TOyBpKyspIHtcbiAgICAgICAgdmFyIGZsb3dTeW1iID0gZmxvd1N5bWJvbHNbaV07XG5cbiAgICAgICAgdmFyIHJlYWxTeW1iID0gZ2V0U3ltYm9sKGZsb3dTeW1iKTtcbiAgICAgICAgdmFyIG5leHQgPSBnZXROZXh0UGF0aChmbG93U3ltYik7XG5cbiAgICAgICAgdmFyIGRpcmVjdGlvbiA9IG51bGw7XG4gICAgICAgIGlmIChuZXh0LmluZGV4T2YoJywnKSA+PSAwKSB7XG4gICAgICAgICAgdmFyIGNvbmRPcHQgPSBuZXh0LnNwbGl0KCcsJyk7XG4gICAgICAgICAgbmV4dCA9IGNvbmRPcHRbMF07XG4gICAgICAgICAgZGlyZWN0aW9uID0gY29uZE9wdFsxXS50cmltKCk7XG4gICAgICAgIH1cblxuICAgICAgICBpZiAoIWNoYXJ0LnN0YXJ0KSB7XG4gICAgICAgICAgY2hhcnQuc3RhcnQgPSByZWFsU3ltYjtcbiAgICAgICAgfVxuXG4gICAgICAgIGlmIChpICsgMSA8IGxlblMpIHtcbiAgICAgICAgICB2YXIgbmV4dFN5bWIgPSBmbG93U3ltYm9sc1tpICsgMV07XG4gICAgICAgICAgcmVhbFN5bWJbbmV4dF0gPSBnZXRTeW1ib2wobmV4dFN5bWIpO1xuICAgICAgICAgIHJlYWxTeW1iWydkaXJlY3Rpb25fJyArIG5leHRdID0gZGlyZWN0aW9uO1xuICAgICAgICAgIGRpcmVjdGlvbiA9IG51bGw7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9IGVsc2UgaWYgKGxpbmUuaW5kZXhPZignQD4nKSA+PSAwKSB7XG5cbiAgICAgIC8vIGxpbmUgc3R5bGVcbiAgICAgIHZhciBsaW5lU3R5bGVTeW1ib2xzID0gbGluZS5zcGxpdCgnQD4nKTtcbiAgICAgIGZvciAodmFyIGkgPSAwLCBsZW5TID0gbGluZVN0eWxlU3ltYm9scy5sZW5ndGg7IGkgPCBsZW5TOyBpKyspIHtcblxuICAgICAgICBpZiAoKGkrMSkgIT0gbGVuUyl7XG4gICAgICAgICAgdmFyIGN1clN5bWIgPSBnZXRTeW1ib2wobGluZVN0eWxlU3ltYm9sc1tpXSk7XG4gICAgICAgICAgdmFyIG5leHRTeW1iID0gZ2V0U3ltYm9sKGxpbmVTdHlsZVN5bWJvbHNbaSsxXSlcblxuICAgICAgICAgIGN1clN5bWJbJ2xpbmVTdHlsZSddW25leHRTeW1iLmtleV0gPSBKU09OLnBhcnNlKGdldFN0eWxlKGxpbmVTdHlsZVN5bWJvbHNbaSsxXSkpO1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuXG4gIH1cbiAgcmV0dXJuIGNoYXJ0O1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IHBhcnNlO1xuXG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi9zcmMvZmxvd2NoYXJ0LnBhcnNlLmpzXG4vLyBtb2R1bGUgaWQgPSAzXG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTsiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///3\n");
+    }, /* 4 */
     /*!*******************************************!*\
   !*** ./src/flowchart.symbol.condition.js ***!
   \*******************************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
     /***/
     function(module, exports, __webpack_require__) {
-        function Condition(chart, options) {
-            options = options || {}, Symbol.call(this, chart, options), this.textMargin = this.getAttr("text-margin"), 
-            this.yes_direction = "bottom", this.no_direction = "right", this.params = options.params, 
-            options.yes && options.direction_yes && options.no && !options.direction_no ? "right" === options.direction_yes ? (this.no_direction = "bottom", 
-            this.yes_direction = "right") : (this.no_direction = "right", this.yes_direction = "bottom") : options.yes && !options.direction_yes && options.no && options.direction_no ? "right" === options.direction_no ? (this.yes_direction = "bottom", 
-            this.no_direction = "right") : (this.yes_direction = "right", this.no_direction = "bottom") : (this.yes_direction = "bottom", 
-            this.no_direction = "right"), this.yes_direction = this.yes_direction || "bottom", 
-            this.no_direction = this.no_direction || "right", this.text.attr({
-                x: 2 * this.textMargin
-            });
-            var width = this.text.getBBox().width + 3 * this.textMargin;
-            width += width / 2;
-            var height = this.text.getBBox().height + 2 * this.textMargin;
-            height += height / 2, height = Math.max(.5 * width, height);
-            var startX = width / 4, startY = height / 4;
-            this.text.attr({
-                x: startX + this.textMargin / 2
-            });
-            var start = {
-                x: startX,
-                y: startY
-            }, points = [ {
-                x: startX - width / 4,
-                y: startY + height / 4
-            }, {
-                x: startX - width / 4 + width / 2,
-                y: startY + height / 4 + height / 2
-            }, {
-                x: startX - width / 4 + width,
-                y: startY + height / 4
-            }, {
-                x: startX - width / 4 + width / 2,
-                y: startY + height / 4 - height / 2
-            }, {
-                x: startX - width / 4,
-                y: startY + height / 4
-            } ], symbol = drawPath(chart, start, points);
-            symbol.attr({
-                stroke: this.getAttr("element-color"),
-                "stroke-width": this.getAttr("line-width"),
-                fill: this.getAttr("fill")
-            }), options.link && symbol.attr("href", options.link), options.target && symbol.attr("target", options.target), 
-            options.key && (symbol.node.id = options.key), symbol.node.setAttribute("class", this.getAttr("class")), 
-            this.text.attr({
-                y: symbol.getBBox().height / 2
-            }), this.group.push(symbol), symbol.insertBefore(this.text), this.initialize();
-        }
-        var Symbol = __webpack_require__(/*! ./flowchart.symbol */ 2), inherits = __webpack_require__(/*! ./flowchart.helpers */ 1).inherits, drawAPI = __webpack_require__(/*! ./flowchart.functions */ 3), drawPath = drawAPI.drawPath;
-        inherits(Condition, Symbol), Condition.prototype.render = function() {
-            this.yes_direction && (this[this.yes_direction + "_symbol"] = this.yes_symbol), 
-            this.no_direction && (this[this.no_direction + "_symbol"] = this.no_symbol);
-            var lineLength = this.getAttr("line-length");
-            if (this.bottom_symbol) {
-                var bottomPoint = this.getBottom();
-                this.bottom_symbol.isPositioned || (this.bottom_symbol.shiftY(this.getY() + this.height + lineLength), 
-                this.bottom_symbol.setX(bottomPoint.x - this.bottom_symbol.width / 2), this.bottom_symbol.isPositioned = !0, 
-                this.bottom_symbol.render());
-            }
-            if (this.right_symbol) {
-                var rightPoint = this.getRight();
-                if (!this.right_symbol.isPositioned) {
-                    this.right_symbol.setY(rightPoint.y - this.right_symbol.height / 2), this.right_symbol.shiftX(this.group.getBBox().x + this.width + lineLength);
-                    var self = this;
-                    !function shift() {
-                        for (var symb, hasSymbolUnder = !1, i = 0, len = self.chart.symbols.length; len > i; i++) if (symb = self.chart.symbols[i], 
-                        !self.params["align-next"] || "no" !== self.params["align-next"]) {
-                            var diff = Math.abs(symb.getCenter().x - self.right_symbol.getCenter().x);
-                            if (symb.getCenter().y > self.right_symbol.getCenter().y && diff <= self.right_symbol.width / 2) {
-                                hasSymbolUnder = !0;
-                                break;
-                            }
-                        }
-                        hasSymbolUnder && (self.right_symbol.setX(symb.getX() + symb.width + lineLength), 
-                        shift());
-                    }(), this.right_symbol.isPositioned = !0, this.right_symbol.render();
-                }
-            }
-        }, Condition.prototype.renderLines = function() {
-            this.yes_symbol && this.drawLineTo(this.yes_symbol, this.getAttr("yes-text"), this.yes_direction), 
-            this.no_symbol && this.drawLineTo(this.no_symbol, this.getAttr("no-text"), this.no_direction);
-        }, module.exports = Condition;
+        eval("var Symbol = __webpack_require__(/*! ./flowchart.symbol */ 1);\nvar inherits = __webpack_require__(/*! ./flowchart.helpers */ 0).inherits;\nvar drawAPI = __webpack_require__(/*! ./flowchart.functions */ 2);\nvar drawPath = drawAPI.drawPath;\n\nfunction Condition(chart, options) {\n  options = options || {};\n  Symbol.call(this, chart, options);\n  this.textMargin = this.getAttr('text-margin');\n  this.yes_direction = 'bottom';\n  this.no_direction = 'right';\n  this.params = options.params;\n  if (options.yes && options.direction_yes && options.no && !options.direction_no) {\n    if (options.direction_yes === 'right') {\n      this.no_direction = 'bottom';\n      this.yes_direction = 'right';\n    } else {\n      this.no_direction = 'right';\n      this.yes_direction = 'bottom';\n    }\n  } else if (options.yes && !options.direction_yes && options.no && options.direction_no) {\n    if (options.direction_no === 'right') {\n      this.yes_direction = 'bottom';\n      this.no_direction = 'right';\n    } else {\n      this.yes_direction = 'right';\n      this.no_direction = 'bottom';\n    }\n  } else {\n    this.yes_direction = 'bottom';\n    this.no_direction = 'right';\n  }\n\n  this.yes_direction = this.yes_direction || 'bottom';\n  this.no_direction = this.no_direction || 'right';\n\n  this.text.attr({\n    x: this.textMargin * 2\n  });\n\n  var width = this.text.getBBox().width + 3 * this.textMargin;\n  width += width/2;\n  var height = this.text.getBBox().height + 2 * this.textMargin;\n  height += height/2;\n  height = Math.max(width * 0.5, height);\n  var startX = width/4;\n  var startY = height/4;\n\n  this.text.attr({\n    x: startX + this.textMargin/2\n  });\n\n  var start = {x: startX, y: startY};\n  var points = [\n    {x: startX - width/4, y: startY + height/4},\n    {x: startX - width/4 + width/2, y: startY + height/4 + height/2},\n    {x: startX - width/4 + width, y: startY + height/4},\n    {x: startX - width/4 + width/2, y: startY + height/4 - height/2},\n    {x: startX - width/4, y: startY + height/4}\n  ];\n\n  var symbol = drawPath(chart, start, points);\n\n  symbol.attr({\n    stroke: this.getAttr('element-color'),\n    'stroke-width': this.getAttr('line-width'),\n    fill: this.getAttr('fill')\n  });\n  if (options.link) { symbol.attr('href', options.link); }\n  if (options.target) { symbol.attr('target', options.target); }\n  if (options.key) { symbol.node.id = options.key; }\n  symbol.node.setAttribute('class', this.getAttr('class'));\n\n  this.text.attr({\n    y: symbol.getBBox().height/2\n  });\n\n  this.group.push(symbol);\n  symbol.insertBefore(this.text);\n\n  this.initialize();\n}\ninherits(Condition, Symbol);\n\nCondition.prototype.render = function() {\n\n  if (this.yes_direction) {\n    this[this.yes_direction + '_symbol'] = this.yes_symbol;\n  }\n\n  if (this.no_direction) {\n    this[this.no_direction + '_symbol'] = this.no_symbol;\n  }\n\n  var lineLength = this.getAttr('line-length');\n\n  if (this.bottom_symbol) {\n    var bottomPoint = this.getBottom();\n\n    if (!this.bottom_symbol.isPositioned) {\n      this.bottom_symbol.shiftY(this.getY() + this.height + lineLength);\n      this.bottom_symbol.setX(bottomPoint.x - this.bottom_symbol.width/2);\n      this.bottom_symbol.isPositioned = true;\n\n      this.bottom_symbol.render();\n    }\n  }\n\n  if (this.right_symbol) {\n    var rightPoint = this.getRight();\n\n    if (!this.right_symbol.isPositioned) {\n\n      this.right_symbol.setY(rightPoint.y - this.right_symbol.height/2);\n      this.right_symbol.shiftX(this.group.getBBox().x + this.width + lineLength);\n\n      var self = this;\n      (function shift() {\n        var hasSymbolUnder = false;\n        var symb;\n        for (var i = 0, len = self.chart.symbols.length; i < len; i++) {\n          symb = self.chart.symbols[i];\n\n          if (!self.params['align-next'] || self.params['align-next'] !== 'no') { \n            var diff = Math.abs(symb.getCenter().x - self.right_symbol.getCenter().x);\n            if (symb.getCenter().y > self.right_symbol.getCenter().y && diff <= self.right_symbol.width/2) {\n              hasSymbolUnder = true;\n              break;\n            }\n          }\n        }\n\n        if (hasSymbolUnder) {\n          self.right_symbol.setX(symb.getX() + symb.width + lineLength);\n          shift();\n        }\n      })();\n\n      this.right_symbol.isPositioned = true;\n\n      this.right_symbol.render();\n    }\n  }\n};\n\nCondition.prototype.renderLines = function() {\n  if (this.yes_symbol) {\n    this.drawLineTo(this.yes_symbol, this.getAttr('yes-text'), this.yes_direction);\n  }\n\n  if (this.no_symbol) {\n    this.drawLineTo(this.no_symbol, this.getAttr('no-text'), this.no_direction);\n  }\n};\n\nmodule.exports = Condition;\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiNC5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9mbG93Y2hhcnQuc3ltYm9sLmNvbmRpdGlvbi5qcz82ZTQ0Il0sInNvdXJjZXNDb250ZW50IjpbInZhciBTeW1ib2wgPSByZXF1aXJlKCcuL2Zsb3djaGFydC5zeW1ib2wnKTtcbnZhciBpbmhlcml0cyA9IHJlcXVpcmUoJy4vZmxvd2NoYXJ0LmhlbHBlcnMnKS5pbmhlcml0cztcbnZhciBkcmF3QVBJID0gcmVxdWlyZSgnLi9mbG93Y2hhcnQuZnVuY3Rpb25zJyk7XG52YXIgZHJhd1BhdGggPSBkcmF3QVBJLmRyYXdQYXRoO1xuXG5mdW5jdGlvbiBDb25kaXRpb24oY2hhcnQsIG9wdGlvbnMpIHtcbiAgb3B0aW9ucyA9IG9wdGlvbnMgfHwge307XG4gIFN5bWJvbC5jYWxsKHRoaXMsIGNoYXJ0LCBvcHRpb25zKTtcbiAgdGhpcy50ZXh0TWFyZ2luID0gdGhpcy5nZXRBdHRyKCd0ZXh0LW1hcmdpbicpO1xuICB0aGlzLnllc19kaXJlY3Rpb24gPSAnYm90dG9tJztcbiAgdGhpcy5ub19kaXJlY3Rpb24gPSAncmlnaHQnO1xuICB0aGlzLnBhcmFtcyA9IG9wdGlvbnMucGFyYW1zO1xuICBpZiAob3B0aW9ucy55ZXMgJiYgb3B0aW9ucy5kaXJlY3Rpb25feWVzICYmIG9wdGlvbnMubm8gJiYgIW9wdGlvbnMuZGlyZWN0aW9uX25vKSB7XG4gICAgaWYgKG9wdGlvbnMuZGlyZWN0aW9uX3llcyA9PT0gJ3JpZ2h0Jykge1xuICAgICAgdGhpcy5ub19kaXJlY3Rpb24gPSAnYm90dG9tJztcbiAgICAgIHRoaXMueWVzX2RpcmVjdGlvbiA9ICdyaWdodCc7XG4gICAgfSBlbHNlIHtcbiAgICAgIHRoaXMubm9fZGlyZWN0aW9uID0gJ3JpZ2h0JztcbiAgICAgIHRoaXMueWVzX2RpcmVjdGlvbiA9ICdib3R0b20nO1xuICAgIH1cbiAgfSBlbHNlIGlmIChvcHRpb25zLnllcyAmJiAhb3B0aW9ucy5kaXJlY3Rpb25feWVzICYmIG9wdGlvbnMubm8gJiYgb3B0aW9ucy5kaXJlY3Rpb25fbm8pIHtcbiAgICBpZiAob3B0aW9ucy5kaXJlY3Rpb25fbm8gPT09ICdyaWdodCcpIHtcbiAgICAgIHRoaXMueWVzX2RpcmVjdGlvbiA9ICdib3R0b20nO1xuICAgICAgdGhpcy5ub19kaXJlY3Rpb24gPSAncmlnaHQnO1xuICAgIH0gZWxzZSB7XG4gICAgICB0aGlzLnllc19kaXJlY3Rpb24gPSAncmlnaHQnO1xuICAgICAgdGhpcy5ub19kaXJlY3Rpb24gPSAnYm90dG9tJztcbiAgICB9XG4gIH0gZWxzZSB7XG4gICAgdGhpcy55ZXNfZGlyZWN0aW9uID0gJ2JvdHRvbSc7XG4gICAgdGhpcy5ub19kaXJlY3Rpb24gPSAncmlnaHQnO1xuICB9XG5cbiAgdGhpcy55ZXNfZGlyZWN0aW9uID0gdGhpcy55ZXNfZGlyZWN0aW9uIHx8ICdib3R0b20nO1xuICB0aGlzLm5vX2RpcmVjdGlvbiA9IHRoaXMubm9fZGlyZWN0aW9uIHx8ICdyaWdodCc7XG5cbiAgdGhpcy50ZXh0LmF0dHIoe1xuICAgIHg6IHRoaXMudGV4dE1hcmdpbiAqIDJcbiAgfSk7XG5cbiAgdmFyIHdpZHRoID0gdGhpcy50ZXh0LmdldEJCb3goKS53aWR0aCArIDMgKiB0aGlzLnRleHRNYXJnaW47XG4gIHdpZHRoICs9IHdpZHRoLzI7XG4gIHZhciBoZWlnaHQgPSB0aGlzLnRleHQuZ2V0QkJveCgpLmhlaWdodCArIDIgKiB0aGlzLnRleHRNYXJnaW47XG4gIGhlaWdodCArPSBoZWlnaHQvMjtcbiAgaGVpZ2h0ID0gTWF0aC5tYXgod2lkdGggKiAwLjUsIGhlaWdodCk7XG4gIHZhciBzdGFydFggPSB3aWR0aC80O1xuICB2YXIgc3RhcnRZID0gaGVpZ2h0LzQ7XG5cbiAgdGhpcy50ZXh0LmF0dHIoe1xuICAgIHg6IHN0YXJ0WCArIHRoaXMudGV4dE1hcmdpbi8yXG4gIH0pO1xuXG4gIHZhciBzdGFydCA9IHt4OiBzdGFydFgsIHk6IHN0YXJ0WX07XG4gIHZhciBwb2ludHMgPSBbXG4gICAge3g6IHN0YXJ0WCAtIHdpZHRoLzQsIHk6IHN0YXJ0WSArIGhlaWdodC80fSxcbiAgICB7eDogc3RhcnRYIC0gd2lkdGgvNCArIHdpZHRoLzIsIHk6IHN0YXJ0WSArIGhlaWdodC80ICsgaGVpZ2h0LzJ9LFxuICAgIHt4OiBzdGFydFggLSB3aWR0aC80ICsgd2lkdGgsIHk6IHN0YXJ0WSArIGhlaWdodC80fSxcbiAgICB7eDogc3RhcnRYIC0gd2lkdGgvNCArIHdpZHRoLzIsIHk6IHN0YXJ0WSArIGhlaWdodC80IC0gaGVpZ2h0LzJ9LFxuICAgIHt4OiBzdGFydFggLSB3aWR0aC80LCB5OiBzdGFydFkgKyBoZWlnaHQvNH1cbiAgXTtcblxuICB2YXIgc3ltYm9sID0gZHJhd1BhdGgoY2hhcnQsIHN0YXJ0LCBwb2ludHMpO1xuXG4gIHN5bWJvbC5hdHRyKHtcbiAgICBzdHJva2U6IHRoaXMuZ2V0QXR0cignZWxlbWVudC1jb2xvcicpLFxuICAgICdzdHJva2Utd2lkdGgnOiB0aGlzLmdldEF0dHIoJ2xpbmUtd2lkdGgnKSxcbiAgICBmaWxsOiB0aGlzLmdldEF0dHIoJ2ZpbGwnKVxuICB9KTtcbiAgaWYgKG9wdGlvbnMubGluaykgeyBzeW1ib2wuYXR0cignaHJlZicsIG9wdGlvbnMubGluayk7IH1cbiAgaWYgKG9wdGlvbnMudGFyZ2V0KSB7IHN5bWJvbC5hdHRyKCd0YXJnZXQnLCBvcHRpb25zLnRhcmdldCk7IH1cbiAgaWYgKG9wdGlvbnMua2V5KSB7IHN5bWJvbC5ub2RlLmlkID0gb3B0aW9ucy5rZXk7IH1cbiAgc3ltYm9sLm5vZGUuc2V0QXR0cmlidXRlKCdjbGFzcycsIHRoaXMuZ2V0QXR0cignY2xhc3MnKSk7XG5cbiAgdGhpcy50ZXh0LmF0dHIoe1xuICAgIHk6IHN5bWJvbC5nZXRCQm94KCkuaGVpZ2h0LzJcbiAgfSk7XG5cbiAgdGhpcy5ncm91cC5wdXNoKHN5bWJvbCk7XG4gIHN5bWJvbC5pbnNlcnRCZWZvcmUodGhpcy50ZXh0KTtcblxuICB0aGlzLmluaXRpYWxpemUoKTtcbn1cbmluaGVyaXRzKENvbmRpdGlvbiwgU3ltYm9sKTtcblxuQ29uZGl0aW9uLnByb3RvdHlwZS5yZW5kZXIgPSBmdW5jdGlvbigpIHtcblxuICBpZiAodGhpcy55ZXNfZGlyZWN0aW9uKSB7XG4gICAgdGhpc1t0aGlzLnllc19kaXJlY3Rpb24gKyAnX3N5bWJvbCddID0gdGhpcy55ZXNfc3ltYm9sO1xuICB9XG5cbiAgaWYgKHRoaXMubm9fZGlyZWN0aW9uKSB7XG4gICAgdGhpc1t0aGlzLm5vX2RpcmVjdGlvbiArICdfc3ltYm9sJ10gPSB0aGlzLm5vX3N5bWJvbDtcbiAgfVxuXG4gIHZhciBsaW5lTGVuZ3RoID0gdGhpcy5nZXRBdHRyKCdsaW5lLWxlbmd0aCcpO1xuXG4gIGlmICh0aGlzLmJvdHRvbV9zeW1ib2wpIHtcbiAgICB2YXIgYm90dG9tUG9pbnQgPSB0aGlzLmdldEJvdHRvbSgpO1xuXG4gICAgaWYgKCF0aGlzLmJvdHRvbV9zeW1ib2wuaXNQb3NpdGlvbmVkKSB7XG4gICAgICB0aGlzLmJvdHRvbV9zeW1ib2wuc2hpZnRZKHRoaXMuZ2V0WSgpICsgdGhpcy5oZWlnaHQgKyBsaW5lTGVuZ3RoKTtcbiAgICAgIHRoaXMuYm90dG9tX3N5bWJvbC5zZXRYKGJvdHRvbVBvaW50LnggLSB0aGlzLmJvdHRvbV9zeW1ib2wud2lkdGgvMik7XG4gICAgICB0aGlzLmJvdHRvbV9zeW1ib2wuaXNQb3NpdGlvbmVkID0gdHJ1ZTtcblxuICAgICAgdGhpcy5ib3R0b21fc3ltYm9sLnJlbmRlcigpO1xuICAgIH1cbiAgfVxuXG4gIGlmICh0aGlzLnJpZ2h0X3N5bWJvbCkge1xuICAgIHZhciByaWdodFBvaW50ID0gdGhpcy5nZXRSaWdodCgpO1xuXG4gICAgaWYgKCF0aGlzLnJpZ2h0X3N5bWJvbC5pc1Bvc2l0aW9uZWQpIHtcblxuICAgICAgdGhpcy5yaWdodF9zeW1ib2wuc2V0WShyaWdodFBvaW50LnkgLSB0aGlzLnJpZ2h0X3N5bWJvbC5oZWlnaHQvMik7XG4gICAgICB0aGlzLnJpZ2h0X3N5bWJvbC5zaGlmdFgodGhpcy5ncm91cC5nZXRCQm94KCkueCArIHRoaXMud2lkdGggKyBsaW5lTGVuZ3RoKTtcblxuICAgICAgdmFyIHNlbGYgPSB0aGlzO1xuICAgICAgKGZ1bmN0aW9uIHNoaWZ0KCkge1xuICAgICAgICB2YXIgaGFzU3ltYm9sVW5kZXIgPSBmYWxzZTtcbiAgICAgICAgdmFyIHN5bWI7XG4gICAgICAgIGZvciAodmFyIGkgPSAwLCBsZW4gPSBzZWxmLmNoYXJ0LnN5bWJvbHMubGVuZ3RoOyBpIDwgbGVuOyBpKyspIHtcbiAgICAgICAgICBzeW1iID0gc2VsZi5jaGFydC5zeW1ib2xzW2ldO1xuXG4gICAgICAgICAgaWYgKCFzZWxmLnBhcmFtc1snYWxpZ24tbmV4dCddIHx8IHNlbGYucGFyYW1zWydhbGlnbi1uZXh0J10gIT09ICdubycpIHsgXG4gICAgICAgICAgICB2YXIgZGlmZiA9IE1hdGguYWJzKHN5bWIuZ2V0Q2VudGVyKCkueCAtIHNlbGYucmlnaHRfc3ltYm9sLmdldENlbnRlcigpLngpO1xuICAgICAgICAgICAgaWYgKHN5bWIuZ2V0Q2VudGVyKCkueSA+IHNlbGYucmlnaHRfc3ltYm9sLmdldENlbnRlcigpLnkgJiYgZGlmZiA8PSBzZWxmLnJpZ2h0X3N5bWJvbC53aWR0aC8yKSB7XG4gICAgICAgICAgICAgIGhhc1N5bWJvbFVuZGVyID0gdHJ1ZTtcbiAgICAgICAgICAgICAgYnJlYWs7XG4gICAgICAgICAgICB9XG4gICAgICAgICAgfVxuICAgICAgICB9XG5cbiAgICAgICAgaWYgKGhhc1N5bWJvbFVuZGVyKSB7XG4gICAgICAgICAgc2VsZi5yaWdodF9zeW1ib2wuc2V0WChzeW1iLmdldFgoKSArIHN5bWIud2lkdGggKyBsaW5lTGVuZ3RoKTtcbiAgICAgICAgICBzaGlmdCgpO1xuICAgICAgICB9XG4gICAgICB9KSgpO1xuXG4gICAgICB0aGlzLnJpZ2h0X3N5bWJvbC5pc1Bvc2l0aW9uZWQgPSB0cnVlO1xuXG4gICAgICB0aGlzLnJpZ2h0X3N5bWJvbC5yZW5kZXIoKTtcbiAgICB9XG4gIH1cbn07XG5cbkNvbmRpdGlvbi5wcm90b3R5cGUucmVuZGVyTGluZXMgPSBmdW5jdGlvbigpIHtcbiAgaWYgKHRoaXMueWVzX3N5bWJvbCkge1xuICAgIHRoaXMuZHJhd0xpbmVUbyh0aGlzLnllc19zeW1ib2wsIHRoaXMuZ2V0QXR0cigneWVzLXRleHQnKSwgdGhpcy55ZXNfZGlyZWN0aW9uKTtcbiAgfVxuXG4gIGlmICh0aGlzLm5vX3N5bWJvbCkge1xuICAgIHRoaXMuZHJhd0xpbmVUbyh0aGlzLm5vX3N5bWJvbCwgdGhpcy5nZXRBdHRyKCduby10ZXh0JyksIHRoaXMubm9fZGlyZWN0aW9uKTtcbiAgfVxufTtcblxubW9kdWxlLmV4cG9ydHMgPSBDb25kaXRpb247XG5cblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyAuL3NyYy9mbG93Y2hhcnQuc3ltYm9sLmNvbmRpdGlvbi5qc1xuLy8gbW9kdWxlIGlkID0gNFxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTsiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///4\n");
+    }, /* 5 */
+    /*!******************!*\
+  !*** ./index.js ***!
+  \******************/
+    /*! dynamic exports provided */
+    /*! all exports used */
+    /***/
+    function(module, exports, __webpack_require__) {
+        eval("__webpack_require__(/*! ./src/flowchart.shim */ 6);\nvar parse = __webpack_require__(/*! ./src/flowchart.parse */ 3);\n__webpack_require__(/*! ./src/jquery-plugin */ 16);\n\nvar FlowChart = {\n\tparse: parse\n};\n\nif (typeof window !== 'undefined') {\n\twindow.flowchart = FlowChart;\n}\n\nmodule.exports = FlowChart;\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiNS5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL2luZGV4LmpzPzI2NDUiXSwic291cmNlc0NvbnRlbnQiOlsicmVxdWlyZSgnLi9zcmMvZmxvd2NoYXJ0LnNoaW0nKTtcbnZhciBwYXJzZSA9IHJlcXVpcmUoJy4vc3JjL2Zsb3djaGFydC5wYXJzZScpO1xucmVxdWlyZSgnLi9zcmMvanF1ZXJ5LXBsdWdpbicpO1xuXG52YXIgRmxvd0NoYXJ0ID0ge1xuXHRwYXJzZTogcGFyc2Vcbn07XG5cbmlmICh0eXBlb2Ygd2luZG93ICE9PSAndW5kZWZpbmVkJykge1xuXHR3aW5kb3cuZmxvd2NoYXJ0ID0gRmxvd0NoYXJ0O1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IEZsb3dDaGFydDtcblxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4vaW5kZXguanNcbi8vIG1vZHVsZSBpZCA9IDVcbi8vIG1vZHVsZSBjaHVua3MgPSAwIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTsiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///5\n");
     }, /* 6 */
-    /*!********************************!*\
-  !*** ./src/flowchart.chart.js ***!
-  \********************************/
-    /***/
-    function(module, exports, __webpack_require__) {
-        function FlowChart(container, options) {
-            options = options || {}, this.paper = new Raphael(container), this.options = defaults(options, defaultOptions), 
-            this.symbols = [], this.lines = [], this.start = null;
-        }
-        var Raphael = __webpack_require__(/*! raphael */ 15), defaults = __webpack_require__(/*! ./flowchart.helpers */ 1).defaults, defaultOptions = __webpack_require__(/*! ./flowchart.defaults */ 7), Condition = __webpack_require__(/*! ./flowchart.symbol.condition */ 5);
-        FlowChart.prototype.handle = function(symbol) {
-            this.symbols.indexOf(symbol) <= -1 && this.symbols.push(symbol);
-            var flowChart = this;
-            return symbol instanceof Condition ? (symbol.yes = function(nextSymbol) {
-                return symbol.yes_symbol = nextSymbol, symbol.no_symbol && (symbol.pathOk = !0), 
-                flowChart.handle(nextSymbol);
-            }, symbol.no = function(nextSymbol) {
-                return symbol.no_symbol = nextSymbol, symbol.yes_symbol && (symbol.pathOk = !0), 
-                flowChart.handle(nextSymbol);
-            }) : symbol.then = function(nextSymbol) {
-                return symbol.next = nextSymbol, symbol.pathOk = !0, flowChart.handle(nextSymbol);
-            }, symbol;
-        }, FlowChart.prototype.startWith = function(symbol) {
-            return this.start = symbol, this.handle(symbol);
-        }, FlowChart.prototype.render = function() {
-            var symbol, line, maxWidth = 0, maxHeight = 0, i = 0, len = 0, maxX = 0, maxY = 0, minX = 0, minY = 0;
-            for (i = 0, len = this.symbols.length; len > i; i++) symbol = this.symbols[i], symbol.width > maxWidth && (maxWidth = symbol.width), 
-            symbol.height > maxHeight && (maxHeight = symbol.height);
-            for (i = 0, len = this.symbols.length; len > i; i++) symbol = this.symbols[i], symbol.shiftX(this.options.x + (maxWidth - symbol.width) / 2 + this.options["line-width"]), 
-            symbol.shiftY(this.options.y + (maxHeight - symbol.height) / 2 + this.options["line-width"]);
-            // for (i = 0, len = this.symbols.length; i < len; i++) {
-            //   symbol = this.symbols[i];
-            //   symbol.render();
-            // }
-            for (this.start.render(), i = 0, len = this.symbols.length; len > i; i++) symbol = this.symbols[i], 
-            symbol.renderLines();
-            maxX = this.maxXFromLine;
-            var x, y;
-            for (i = 0, len = this.symbols.length; len > i; i++) symbol = this.symbols[i], x = symbol.getX() + symbol.width, 
-            y = symbol.getY() + symbol.height, x > maxX && (maxX = x), y > maxY && (maxY = y);
-            for (i = 0, len = this.lines.length; len > i; i++) {
-                line = this.lines[i].getBBox(), x = line.x, y = line.y;
-                var x2 = line.x2, y2 = line.y2;
-                minX > x && (minX = x), minY > y && (minY = y), x2 > maxX && (maxX = x2), y2 > maxY && (maxY = y2);
-            }
-            var scale = this.options.scale, lineWidth = this.options["line-width"];
-            0 > minX && (minX -= lineWidth), 0 > minY && (minY -= lineWidth);
-            var width = maxX + lineWidth - minX, height = maxY + lineWidth - minY;
-            this.paper.setSize(width * scale, height * scale), this.paper.setViewBox(minX, minY, width, height, !0);
-        }, FlowChart.prototype.clean = function() {
-            if (this.paper) {
-                var paperDom = this.paper.canvas;
-                paperDom.parentNode.removeChild(paperDom);
-            }
-        }, module.exports = FlowChart;
-    }, /* 7 */
-    /*!***********************************!*\
-  !*** ./src/flowchart.defaults.js ***!
-  \***********************************/
-    /***/
-    function(module, exports) {
-        // defaults
-        module.exports = {
-            x: 0,
-            y: 0,
-            "line-width": 3,
-            "line-length": 50,
-            "text-margin": 10,
-            "font-size": 14,
-            "font-color": "black",
-            // 'font': 'normal',
-            // 'font-family': 'calibri',
-            // 'font-weight': 'normal',
-            "line-color": "black",
-            "element-color": "black",
-            fill: "white",
-            "yes-text": "yes",
-            "no-text": "no",
-            "arrow-end": "block",
-            "class": "flowchart",
-            scale: 1,
-            symbols: {
-                start: {},
-                end: {},
-                condition: {},
-                inputoutput: {},
-                operation: {},
-                subroutine: {}
-            }
-        };
-    }, /* 8 */
     /*!*******************************!*\
   !*** ./src/flowchart.shim.js ***!
   \*******************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
     /***/
     function(module, exports) {
-        // add indexOf to non ECMA-262 standard compliant browsers
-        Array.prototype.indexOf || (Array.prototype.indexOf = function(searchElement) {
-            "use strict";
-            if (null === this) throw new TypeError();
-            var t = Object(this), len = t.length >>> 0;
-            if (0 === len) return -1;
-            var n = 0;
-            if (arguments.length > 0 && (n = Number(arguments[1]), n != n ? n = 0 : 0 !== n && n != 1 / 0 && n != -(1 / 0) && (n = (n > 0 || -1) * Math.floor(Math.abs(n)))), 
-            n >= len) return -1;
-            for (var k = n >= 0 ? n : Math.max(len - Math.abs(n), 0); len > k; k++) if (k in t && t[k] === searchElement) return k;
-            return -1;
-        }), // add lastIndexOf to non ECMA-262 standard compliant browsers
-        Array.prototype.lastIndexOf || (Array.prototype.lastIndexOf = function(searchElement) {
-            "use strict";
-            if (null === this) throw new TypeError();
-            var t = Object(this), len = t.length >>> 0;
-            if (0 === len) return -1;
-            var n = len;
-            arguments.length > 1 && (n = Number(arguments[1]), n != n ? n = 0 : 0 !== n && n != 1 / 0 && n != -(1 / 0) && (n = (n > 0 || -1) * Math.floor(Math.abs(n))));
-            for (var k = n >= 0 ? Math.min(n, len - 1) : len - Math.abs(n); k >= 0; k--) if (k in t && t[k] === searchElement) return k;
-            return -1;
-        }), String.prototype.trim || (String.prototype.trim = function() {
-            return this.replace(/^\s+|\s+$/g, "");
-        });
-    }, /* 9 */
-    /*!*************************************!*\
-  !*** ./src/flowchart.symbol.end.js ***!
-  \*************************************/
+        eval('// add indexOf to non ECMA-262 standard compliant browsers\nif (!Array.prototype.indexOf) {\n  Array.prototype.indexOf = function (searchElement /*, fromIndex */ ) {\n    "use strict";\n    if (this === null) {\n      throw new TypeError();\n    }\n    var t = Object(this);\n    var len = t.length >>> 0;\n    if (len === 0) {\n      return -1;\n    }\n    var n = 0;\n    if (arguments.length > 0) {\n      n = Number(arguments[1]);\n      if (n != n) { // shortcut for verifying if it\'s NaN\n        n = 0;\n      } else if (n !== 0 && n != Infinity && n != -Infinity) {\n        n = (n > 0 || -1) * Math.floor(Math.abs(n));\n      }\n    }\n    if (n >= len) {\n      return -1;\n    }\n    var k = n >= 0 ? n : Math.max(len - Math.abs(n), 0);\n    for (; k < len; k++) {\n      if (k in t && t[k] === searchElement) {\n        return k;\n      }\n    }\n    return -1;\n  };\n}\n\n// add lastIndexOf to non ECMA-262 standard compliant browsers\nif (!Array.prototype.lastIndexOf) {\n  Array.prototype.lastIndexOf = function(searchElement /*, fromIndex*/) {\n    "use strict";\n    if (this === null) {\n      throw new TypeError();\n    }\n    var t = Object(this);\n    var len = t.length >>> 0;\n    if (len === 0) {\n      return -1;\n    }\n    var n = len;\n    if (arguments.length > 1) {\n      n = Number(arguments[1]);\n      if (n != n) {\n        n = 0;\n      } else if (n !== 0 && n != (1 / 0) && n != -(1 / 0)) {\n        n = (n > 0 || -1) * Math.floor(Math.abs(n));\n      }\n    }\n    var k = n >= 0 ? Math.min(n, len - 1) : len - Math.abs(n);\n    for (; k >= 0; k--) {\n      if (k in t && t[k] === searchElement) {\n        return k;\n      }\n    }\n    return -1;\n  };\n}\n\nif (!String.prototype.trim) {\n  String.prototype.trim = function() {\n    return this.replace(/^\\s+|\\s+$/g, \'\');\n  };\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiNi5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9mbG93Y2hhcnQuc2hpbS5qcz80NjkyIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIGFkZCBpbmRleE9mIHRvIG5vbiBFQ01BLTI2MiBzdGFuZGFyZCBjb21wbGlhbnQgYnJvd3NlcnNcbmlmICghQXJyYXkucHJvdG90eXBlLmluZGV4T2YpIHtcbiAgQXJyYXkucHJvdG90eXBlLmluZGV4T2YgPSBmdW5jdGlvbiAoc2VhcmNoRWxlbWVudCAvKiwgZnJvbUluZGV4ICovICkge1xuICAgIFwidXNlIHN0cmljdFwiO1xuICAgIGlmICh0aGlzID09PSBudWxsKSB7XG4gICAgICB0aHJvdyBuZXcgVHlwZUVycm9yKCk7XG4gICAgfVxuICAgIHZhciB0ID0gT2JqZWN0KHRoaXMpO1xuICAgIHZhciBsZW4gPSB0Lmxlbmd0aCA+Pj4gMDtcbiAgICBpZiAobGVuID09PSAwKSB7XG4gICAgICByZXR1cm4gLTE7XG4gICAgfVxuICAgIHZhciBuID0gMDtcbiAgICBpZiAoYXJndW1lbnRzLmxlbmd0aCA+IDApIHtcbiAgICAgIG4gPSBOdW1iZXIoYXJndW1lbnRzWzFdKTtcbiAgICAgIGlmIChuICE9IG4pIHsgLy8gc2hvcnRjdXQgZm9yIHZlcmlmeWluZyBpZiBpdCdzIE5hTlxuICAgICAgICBuID0gMDtcbiAgICAgIH0gZWxzZSBpZiAobiAhPT0gMCAmJiBuICE9IEluZmluaXR5ICYmIG4gIT0gLUluZmluaXR5KSB7XG4gICAgICAgIG4gPSAobiA+IDAgfHwgLTEpICogTWF0aC5mbG9vcihNYXRoLmFicyhuKSk7XG4gICAgICB9XG4gICAgfVxuICAgIGlmIChuID49IGxlbikge1xuICAgICAgcmV0dXJuIC0xO1xuICAgIH1cbiAgICB2YXIgayA9IG4gPj0gMCA/IG4gOiBNYXRoLm1heChsZW4gLSBNYXRoLmFicyhuKSwgMCk7XG4gICAgZm9yICg7IGsgPCBsZW47IGsrKykge1xuICAgICAgaWYgKGsgaW4gdCAmJiB0W2tdID09PSBzZWFyY2hFbGVtZW50KSB7XG4gICAgICAgIHJldHVybiBrO1xuICAgICAgfVxuICAgIH1cbiAgICByZXR1cm4gLTE7XG4gIH07XG59XG5cbi8vIGFkZCBsYXN0SW5kZXhPZiB0byBub24gRUNNQS0yNjIgc3RhbmRhcmQgY29tcGxpYW50IGJyb3dzZXJzXG5pZiAoIUFycmF5LnByb3RvdHlwZS5sYXN0SW5kZXhPZikge1xuICBBcnJheS5wcm90b3R5cGUubGFzdEluZGV4T2YgPSBmdW5jdGlvbihzZWFyY2hFbGVtZW50IC8qLCBmcm9tSW5kZXgqLykge1xuICAgIFwidXNlIHN0cmljdFwiO1xuICAgIGlmICh0aGlzID09PSBudWxsKSB7XG4gICAgICB0aHJvdyBuZXcgVHlwZUVycm9yKCk7XG4gICAgfVxuICAgIHZhciB0ID0gT2JqZWN0KHRoaXMpO1xuICAgIHZhciBsZW4gPSB0Lmxlbmd0aCA+Pj4gMDtcbiAgICBpZiAobGVuID09PSAwKSB7XG4gICAgICByZXR1cm4gLTE7XG4gICAgfVxuICAgIHZhciBuID0gbGVuO1xuICAgIGlmIChhcmd1bWVudHMubGVuZ3RoID4gMSkge1xuICAgICAgbiA9IE51bWJlcihhcmd1bWVudHNbMV0pO1xuICAgICAgaWYgKG4gIT0gbikge1xuICAgICAgICBuID0gMDtcbiAgICAgIH0gZWxzZSBpZiAobiAhPT0gMCAmJiBuICE9ICgxIC8gMCkgJiYgbiAhPSAtKDEgLyAwKSkge1xuICAgICAgICBuID0gKG4gPiAwIHx8IC0xKSAqIE1hdGguZmxvb3IoTWF0aC5hYnMobikpO1xuICAgICAgfVxuICAgIH1cbiAgICB2YXIgayA9IG4gPj0gMCA/IE1hdGgubWluKG4sIGxlbiAtIDEpIDogbGVuIC0gTWF0aC5hYnMobik7XG4gICAgZm9yICg7IGsgPj0gMDsgay0tKSB7XG4gICAgICBpZiAoayBpbiB0ICYmIHRba10gPT09IHNlYXJjaEVsZW1lbnQpIHtcbiAgICAgICAgcmV0dXJuIGs7XG4gICAgICB9XG4gICAgfVxuICAgIHJldHVybiAtMTtcbiAgfTtcbn1cblxuaWYgKCFTdHJpbmcucHJvdG90eXBlLnRyaW0pIHtcbiAgU3RyaW5nLnByb3RvdHlwZS50cmltID0gZnVuY3Rpb24oKSB7XG4gICAgcmV0dXJuIHRoaXMucmVwbGFjZSgvXlxccyt8XFxzKyQvZywgJycpO1xuICB9O1xufVxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4vc3JjL2Zsb3djaGFydC5zaGltLmpzXG4vLyBtb2R1bGUgaWQgPSA2XG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///6\n');
+    }, /* 7 */
+    /*!********************************!*\
+  !*** ./src/flowchart.chart.js ***!
+  \********************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
     /***/
     function(module, exports, __webpack_require__) {
-        function End(chart, options) {
-            var symbol = chart.paper.rect(0, 0, 0, 0, 20);
-            options = options || {}, options.text = options.text || "End", Symbol.call(this, chart, options, symbol);
-        }
-        var Symbol = __webpack_require__(/*! ./flowchart.symbol */ 2), inherits = __webpack_require__(/*! ./flowchart.helpers */ 1).inherits;
-        inherits(End, Symbol), module.exports = End;
-    }, /* 10 */
-    /*!*********************************************!*\
-  !*** ./src/flowchart.symbol.inputoutput.js ***!
-  \*********************************************/
-    /***/
-    function(module, exports, __webpack_require__) {
-        function InputOutput(chart, options) {
-            options = options || {}, Symbol.call(this, chart, options), this.textMargin = this.getAttr("text-margin"), 
-            this.text.attr({
-                x: 3 * this.textMargin
-            });
-            var width = this.text.getBBox().width + 4 * this.textMargin, height = this.text.getBBox().height + 2 * this.textMargin, startX = this.textMargin, startY = height / 2, start = {
-                x: startX,
-                y: startY
-            }, points = [ {
-                x: startX - this.textMargin,
-                y: height
-            }, {
-                x: startX - this.textMargin + width,
-                y: height
-            }, {
-                x: startX - this.textMargin + width + 2 * this.textMargin,
-                y: 0
-            }, {
-                x: startX - this.textMargin + 2 * this.textMargin,
-                y: 0
-            }, {
-                x: startX,
-                y: startY
-            } ], symbol = drawPath(chart, start, points);
-            symbol.attr({
-                stroke: this.getAttr("element-color"),
-                "stroke-width": this.getAttr("line-width"),
-                fill: this.getAttr("fill")
-            }), options.link && symbol.attr("href", options.link), options.target && symbol.attr("target", options.target), 
-            options.key && (symbol.node.id = options.key), symbol.node.setAttribute("class", this.getAttr("class")), 
-            this.text.attr({
-                y: symbol.getBBox().height / 2
-            }), this.group.push(symbol), symbol.insertBefore(this.text), this.initialize();
-        }
-        var Symbol = __webpack_require__(/*! ./flowchart.symbol */ 2), inherits = __webpack_require__(/*! ./flowchart.helpers */ 1).inherits, drawAPI = __webpack_require__(/*! ./flowchart.functions */ 3), drawPath = drawAPI.drawPath;
-        inherits(InputOutput, Symbol), InputOutput.prototype.getLeft = function() {
-            var y = this.getY() + this.group.getBBox().height / 2, x = this.getX() + this.textMargin;
-            return {
-                x: x,
-                y: y
-            };
-        }, InputOutput.prototype.getRight = function() {
-            var y = this.getY() + this.group.getBBox().height / 2, x = this.getX() + this.group.getBBox().width - this.textMargin;
-            return {
-                x: x,
-                y: y
-            };
-        }, module.exports = InputOutput;
-    }, /* 11 */
-    /*!*******************************************!*\
-  !*** ./src/flowchart.symbol.operation.js ***!
-  \*******************************************/
-    /***/
-    function(module, exports, __webpack_require__) {
-        function Operation(chart, options) {
-            var symbol = chart.paper.rect(0, 0, 0, 0);
-            options = options || {}, Symbol.call(this, chart, options, symbol);
-        }
-        var Symbol = __webpack_require__(/*! ./flowchart.symbol */ 2), inherits = __webpack_require__(/*! ./flowchart.helpers */ 1).inherits;
-        inherits(Operation, Symbol), module.exports = Operation;
-    }, /* 12 */
-    /*!***************************************!*\
-  !*** ./src/flowchart.symbol.start.js ***!
-  \***************************************/
-    /***/
-    function(module, exports, __webpack_require__) {
-        function Start(chart, options) {
-            var symbol = chart.paper.rect(0, 0, 0, 0, 20);
-            options = options || {}, options.text = options.text || "Start", Symbol.call(this, chart, options, symbol);
-        }
-        var Symbol = __webpack_require__(/*! ./flowchart.symbol */ 2), inherits = __webpack_require__(/*! ./flowchart.helpers */ 1).inherits;
-        inherits(Start, Symbol), module.exports = Start;
-    }, /* 13 */
-    /*!********************************************!*\
-  !*** ./src/flowchart.symbol.subroutine.js ***!
-  \********************************************/
-    /***/
-    function(module, exports, __webpack_require__) {
-        function Subroutine(chart, options) {
-            var symbol = chart.paper.rect(0, 0, 0, 0);
-            options = options || {}, Symbol.call(this, chart, options, symbol), symbol.attr({
-                width: this.text.getBBox().width + 4 * this.getAttr("text-margin")
-            }), this.text.attr({
-                x: 2 * this.getAttr("text-margin")
-            });
-            var innerWrap = chart.paper.rect(0, 0, 0, 0);
-            innerWrap.attr({
-                x: this.getAttr("text-margin"),
-                stroke: this.getAttr("element-color"),
-                "stroke-width": this.getAttr("line-width"),
-                width: this.text.getBBox().width + 2 * this.getAttr("text-margin"),
-                height: this.text.getBBox().height + 2 * this.getAttr("text-margin"),
-                fill: this.getAttr("fill")
-            }), options.key && (innerWrap.node.id = options.key + "i");
-            var font = this.getAttr("font"), fontF = this.getAttr("font-family"), fontW = this.getAttr("font-weight");
-            font && innerWrap.attr({
-                font: font
-            }), fontF && innerWrap.attr({
-                "font-family": fontF
-            }), fontW && innerWrap.attr({
-                "font-weight": fontW
-            }), options.link && innerWrap.attr("href", options.link), options.target && innerWrap.attr("target", options.target), 
-            this.group.push(innerWrap), innerWrap.insertBefore(this.text), this.initialize();
-        }
-        var Symbol = __webpack_require__(/*! ./flowchart.symbol */ 2), inherits = __webpack_require__(/*! ./flowchart.helpers */ 1).inherits;
-        inherits(Subroutine, Symbol), module.exports = Subroutine;
-    }, /* 14 */
-    /*!******************************!*\
-  !*** ./src/jquery-plugin.js ***!
-  \******************************/
-    /***/
-    function(module, exports, __webpack_require__) {
-        if ("undefined" != typeof jQuery) {
-            var parse = __webpack_require__(/*! ./flowchart.parse */ 4);
-            !function($) {
-                $.fn.flowChart = function(options) {
-                    return this.each(function() {
-                        var $this = $(this), chart = parse($this.text());
-                        $this.html(""), chart.drawSVG(this, options);
-                    });
-                };
-            }(jQuery);
-        }
-    }, /* 15 */
+        eval("var Raphael = __webpack_require__(/*! raphael */ 8);\nvar defaults = __webpack_require__(/*! ./flowchart.helpers */ 0).defaults;\nvar defaultOptions = __webpack_require__(/*! ./flowchart.defaults */ 9);\nvar Condition = __webpack_require__(/*! ./flowchart.symbol.condition */ 4);\n\nfunction FlowChart(container, options) {\n  options = options || {};\n\n  this.paper = new Raphael(container);\n\n  this.options = defaults(options, defaultOptions);\n\n  this.symbols = [];\n  this.lines = [];\n  this.start = null;\n}\n\nFlowChart.prototype.handle = function(symbol) {\n  if (this.symbols.indexOf(symbol) <= -1) {\n    this.symbols.push(symbol);\n  }\n\n  var flowChart = this;\n\n  if (symbol instanceof(Condition)) {\n    symbol.yes = function(nextSymbol) {\n      symbol.yes_symbol = nextSymbol;\n      if(symbol.no_symbol) {\n        symbol.pathOk = true;\n      }\n      return flowChart.handle(nextSymbol);\n    };\n    symbol.no = function(nextSymbol) {\n      symbol.no_symbol = nextSymbol;\n      if(symbol.yes_symbol) {\n        symbol.pathOk = true;\n      }\n      return flowChart.handle(nextSymbol);\n    };\n  } else {\n    symbol.then = function(nextSymbol) {\n      symbol.next = nextSymbol;\n      symbol.pathOk = true;\n      return flowChart.handle(nextSymbol);\n    };\n  }\n\n  return symbol;\n};\n\nFlowChart.prototype.startWith = function(symbol) {\n  this.start = symbol;\n  return this.handle(symbol);\n};\n\nFlowChart.prototype.render = function() {\n  var maxWidth = 0,\n      maxHeight = 0,\n      i = 0,\n      len = 0,\n      maxX = 0,\n      maxY = 0,\n      minX = 0,\n      minY = 0,\n      symbol,\n      line;\n\n  for (i = 0, len = this.symbols.length; i < len; i++) {\n    symbol = this.symbols[i];\n    if (symbol.width > maxWidth) {\n      maxWidth = symbol.width;\n    }\n    if (symbol.height > maxHeight) {\n      maxHeight = symbol.height;\n    }\n  }\n\n  for (i = 0, len = this.symbols.length; i < len; i++) {\n    symbol = this.symbols[i];\n    symbol.shiftX(this.options.x + (maxWidth - symbol.width)/2 + this.options['line-width']);\n    symbol.shiftY(this.options.y + (maxHeight - symbol.height)/2 + this.options['line-width']);\n  }\n\n  this.start.render();\n  // for (i = 0, len = this.symbols.length; i < len; i++) {\n  //   symbol = this.symbols[i];\n  //   symbol.render();\n  // }\n\n  for (i = 0, len = this.symbols.length; i < len; i++) {\n    symbol = this.symbols[i];\n    symbol.renderLines();\n  }\n\n  maxX = this.maxXFromLine;\n\n  var x;\n  var y;\n\n  for (i = 0, len = this.symbols.length; i < len; i++) {\n    symbol = this.symbols[i];\n    x = symbol.getX() + symbol.width;\n    y = symbol.getY() + symbol.height;\n    if (x > maxX) {\n      maxX = x;\n    }\n    if (y > maxY) {\n      maxY = y;\n    }\n  }\n\n  for (i = 0, len = this.lines.length; i < len; i++) {\n    line = this.lines[i].getBBox();\n    x = line.x;\n    y = line.y;\n    var x2 = line.x2;\n    var y2 = line.y2;\n    if (x < minX) {\n      minX = x;\n    }\n    if (y < minY) {\n      minY = y;\n    }\n    if (x2 > maxX) {\n      maxX = x2;\n    }\n    if (y2 > maxY) {\n      maxY = y2;\n    }\n  }\n\n  var scale = this.options['scale'];\n  var lineWidth = this.options['line-width'];\n\n  if (minX < 0) minX -= lineWidth;\n  if (minY < 0) minY -= lineWidth;\n\n  var width = maxX + lineWidth - minX;\n  var height = maxY + lineWidth - minY;\n\n  this.paper.setSize(width * scale, height * scale);\n  this.paper.setViewBox(minX, minY, width, height, true);\n};\n\nFlowChart.prototype.clean = function() {\n  if (this.paper) {\n    var paperDom = this.paper.canvas;\n    paperDom.parentNode.removeChild(paperDom);\n  }\n};\n\nmodule.exports = FlowChart;\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiNy5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9mbG93Y2hhcnQuY2hhcnQuanM/MzliNSJdLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgUmFwaGFlbCA9IHJlcXVpcmUoJ3JhcGhhZWwnKTtcbnZhciBkZWZhdWx0cyA9IHJlcXVpcmUoJy4vZmxvd2NoYXJ0LmhlbHBlcnMnKS5kZWZhdWx0cztcbnZhciBkZWZhdWx0T3B0aW9ucyA9IHJlcXVpcmUoJy4vZmxvd2NoYXJ0LmRlZmF1bHRzJyk7XG52YXIgQ29uZGl0aW9uID0gcmVxdWlyZSgnLi9mbG93Y2hhcnQuc3ltYm9sLmNvbmRpdGlvbicpO1xuXG5mdW5jdGlvbiBGbG93Q2hhcnQoY29udGFpbmVyLCBvcHRpb25zKSB7XG4gIG9wdGlvbnMgPSBvcHRpb25zIHx8IHt9O1xuXG4gIHRoaXMucGFwZXIgPSBuZXcgUmFwaGFlbChjb250YWluZXIpO1xuXG4gIHRoaXMub3B0aW9ucyA9IGRlZmF1bHRzKG9wdGlvbnMsIGRlZmF1bHRPcHRpb25zKTtcblxuICB0aGlzLnN5bWJvbHMgPSBbXTtcbiAgdGhpcy5saW5lcyA9IFtdO1xuICB0aGlzLnN0YXJ0ID0gbnVsbDtcbn1cblxuRmxvd0NoYXJ0LnByb3RvdHlwZS5oYW5kbGUgPSBmdW5jdGlvbihzeW1ib2wpIHtcbiAgaWYgKHRoaXMuc3ltYm9scy5pbmRleE9mKHN5bWJvbCkgPD0gLTEpIHtcbiAgICB0aGlzLnN5bWJvbHMucHVzaChzeW1ib2wpO1xuICB9XG5cbiAgdmFyIGZsb3dDaGFydCA9IHRoaXM7XG5cbiAgaWYgKHN5bWJvbCBpbnN0YW5jZW9mKENvbmRpdGlvbikpIHtcbiAgICBzeW1ib2wueWVzID0gZnVuY3Rpb24obmV4dFN5bWJvbCkge1xuICAgICAgc3ltYm9sLnllc19zeW1ib2wgPSBuZXh0U3ltYm9sO1xuICAgICAgaWYoc3ltYm9sLm5vX3N5bWJvbCkge1xuICAgICAgICBzeW1ib2wucGF0aE9rID0gdHJ1ZTtcbiAgICAgIH1cbiAgICAgIHJldHVybiBmbG93Q2hhcnQuaGFuZGxlKG5leHRTeW1ib2wpO1xuICAgIH07XG4gICAgc3ltYm9sLm5vID0gZnVuY3Rpb24obmV4dFN5bWJvbCkge1xuICAgICAgc3ltYm9sLm5vX3N5bWJvbCA9IG5leHRTeW1ib2w7XG4gICAgICBpZihzeW1ib2wueWVzX3N5bWJvbCkge1xuICAgICAgICBzeW1ib2wucGF0aE9rID0gdHJ1ZTtcbiAgICAgIH1cbiAgICAgIHJldHVybiBmbG93Q2hhcnQuaGFuZGxlKG5leHRTeW1ib2wpO1xuICAgIH07XG4gIH0gZWxzZSB7XG4gICAgc3ltYm9sLnRoZW4gPSBmdW5jdGlvbihuZXh0U3ltYm9sKSB7XG4gICAgICBzeW1ib2wubmV4dCA9IG5leHRTeW1ib2w7XG4gICAgICBzeW1ib2wucGF0aE9rID0gdHJ1ZTtcbiAgICAgIHJldHVybiBmbG93Q2hhcnQuaGFuZGxlKG5leHRTeW1ib2wpO1xuICAgIH07XG4gIH1cblxuICByZXR1cm4gc3ltYm9sO1xufTtcblxuRmxvd0NoYXJ0LnByb3RvdHlwZS5zdGFydFdpdGggPSBmdW5jdGlvbihzeW1ib2wpIHtcbiAgdGhpcy5zdGFydCA9IHN5bWJvbDtcbiAgcmV0dXJuIHRoaXMuaGFuZGxlKHN5bWJvbCk7XG59O1xuXG5GbG93Q2hhcnQucHJvdG90eXBlLnJlbmRlciA9IGZ1bmN0aW9uKCkge1xuICB2YXIgbWF4V2lkdGggPSAwLFxuICAgICAgbWF4SGVpZ2h0ID0gMCxcbiAgICAgIGkgPSAwLFxuICAgICAgbGVuID0gMCxcbiAgICAgIG1heFggPSAwLFxuICAgICAgbWF4WSA9IDAsXG4gICAgICBtaW5YID0gMCxcbiAgICAgIG1pblkgPSAwLFxuICAgICAgc3ltYm9sLFxuICAgICAgbGluZTtcblxuICBmb3IgKGkgPSAwLCBsZW4gPSB0aGlzLnN5bWJvbHMubGVuZ3RoOyBpIDwgbGVuOyBpKyspIHtcbiAgICBzeW1ib2wgPSB0aGlzLnN5bWJvbHNbaV07XG4gICAgaWYgKHN5bWJvbC53aWR0aCA+IG1heFdpZHRoKSB7XG4gICAgICBtYXhXaWR0aCA9IHN5bWJvbC53aWR0aDtcbiAgICB9XG4gICAgaWYgKHN5bWJvbC5oZWlnaHQgPiBtYXhIZWlnaHQpIHtcbiAgICAgIG1heEhlaWdodCA9IHN5bWJvbC5oZWlnaHQ7XG4gICAgfVxuICB9XG5cbiAgZm9yIChpID0gMCwgbGVuID0gdGhpcy5zeW1ib2xzLmxlbmd0aDsgaSA8IGxlbjsgaSsrKSB7XG4gICAgc3ltYm9sID0gdGhpcy5zeW1ib2xzW2ldO1xuICAgIHN5bWJvbC5zaGlmdFgodGhpcy5vcHRpb25zLnggKyAobWF4V2lkdGggLSBzeW1ib2wud2lkdGgpLzIgKyB0aGlzLm9wdGlvbnNbJ2xpbmUtd2lkdGgnXSk7XG4gICAgc3ltYm9sLnNoaWZ0WSh0aGlzLm9wdGlvbnMueSArIChtYXhIZWlnaHQgLSBzeW1ib2wuaGVpZ2h0KS8yICsgdGhpcy5vcHRpb25zWydsaW5lLXdpZHRoJ10pO1xuICB9XG5cbiAgdGhpcy5zdGFydC5yZW5kZXIoKTtcbiAgLy8gZm9yIChpID0gMCwgbGVuID0gdGhpcy5zeW1ib2xzLmxlbmd0aDsgaSA8IGxlbjsgaSsrKSB7XG4gIC8vICAgc3ltYm9sID0gdGhpcy5zeW1ib2xzW2ldO1xuICAvLyAgIHN5bWJvbC5yZW5kZXIoKTtcbiAgLy8gfVxuXG4gIGZvciAoaSA9IDAsIGxlbiA9IHRoaXMuc3ltYm9scy5sZW5ndGg7IGkgPCBsZW47IGkrKykge1xuICAgIHN5bWJvbCA9IHRoaXMuc3ltYm9sc1tpXTtcbiAgICBzeW1ib2wucmVuZGVyTGluZXMoKTtcbiAgfVxuXG4gIG1heFggPSB0aGlzLm1heFhGcm9tTGluZTtcblxuICB2YXIgeDtcbiAgdmFyIHk7XG5cbiAgZm9yIChpID0gMCwgbGVuID0gdGhpcy5zeW1ib2xzLmxlbmd0aDsgaSA8IGxlbjsgaSsrKSB7XG4gICAgc3ltYm9sID0gdGhpcy5zeW1ib2xzW2ldO1xuICAgIHggPSBzeW1ib2wuZ2V0WCgpICsgc3ltYm9sLndpZHRoO1xuICAgIHkgPSBzeW1ib2wuZ2V0WSgpICsgc3ltYm9sLmhlaWdodDtcbiAgICBpZiAoeCA+IG1heFgpIHtcbiAgICAgIG1heFggPSB4O1xuICAgIH1cbiAgICBpZiAoeSA+IG1heFkpIHtcbiAgICAgIG1heFkgPSB5O1xuICAgIH1cbiAgfVxuXG4gIGZvciAoaSA9IDAsIGxlbiA9IHRoaXMubGluZXMubGVuZ3RoOyBpIDwgbGVuOyBpKyspIHtcbiAgICBsaW5lID0gdGhpcy5saW5lc1tpXS5nZXRCQm94KCk7XG4gICAgeCA9IGxpbmUueDtcbiAgICB5ID0gbGluZS55O1xuICAgIHZhciB4MiA9IGxpbmUueDI7XG4gICAgdmFyIHkyID0gbGluZS55MjtcbiAgICBpZiAoeCA8IG1pblgpIHtcbiAgICAgIG1pblggPSB4O1xuICAgIH1cbiAgICBpZiAoeSA8IG1pblkpIHtcbiAgICAgIG1pblkgPSB5O1xuICAgIH1cbiAgICBpZiAoeDIgPiBtYXhYKSB7XG4gICAgICBtYXhYID0geDI7XG4gICAgfVxuICAgIGlmICh5MiA+IG1heFkpIHtcbiAgICAgIG1heFkgPSB5MjtcbiAgICB9XG4gIH1cblxuICB2YXIgc2NhbGUgPSB0aGlzLm9wdGlvbnNbJ3NjYWxlJ107XG4gIHZhciBsaW5lV2lkdGggPSB0aGlzLm9wdGlvbnNbJ2xpbmUtd2lkdGgnXTtcblxuICBpZiAobWluWCA8IDApIG1pblggLT0gbGluZVdpZHRoO1xuICBpZiAobWluWSA8IDApIG1pblkgLT0gbGluZVdpZHRoO1xuXG4gIHZhciB3aWR0aCA9IG1heFggKyBsaW5lV2lkdGggLSBtaW5YO1xuICB2YXIgaGVpZ2h0ID0gbWF4WSArIGxpbmVXaWR0aCAtIG1pblk7XG5cbiAgdGhpcy5wYXBlci5zZXRTaXplKHdpZHRoICogc2NhbGUsIGhlaWdodCAqIHNjYWxlKTtcbiAgdGhpcy5wYXBlci5zZXRWaWV3Qm94KG1pblgsIG1pblksIHdpZHRoLCBoZWlnaHQsIHRydWUpO1xufTtcblxuRmxvd0NoYXJ0LnByb3RvdHlwZS5jbGVhbiA9IGZ1bmN0aW9uKCkge1xuICBpZiAodGhpcy5wYXBlcikge1xuICAgIHZhciBwYXBlckRvbSA9IHRoaXMucGFwZXIuY2FudmFzO1xuICAgIHBhcGVyRG9tLnBhcmVudE5vZGUucmVtb3ZlQ2hpbGQocGFwZXJEb20pO1xuICB9XG59O1xuXG5tb2R1bGUuZXhwb3J0cyA9IEZsb3dDaGFydDtcblxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4vc3JjL2Zsb3djaGFydC5jaGFydC5qc1xuLy8gbW9kdWxlIGlkID0gN1xuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7Iiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///7\n");
+    }, /* 8 */
     /*!**************************!*\
   !*** external "Raphael" ***!
   \**************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
     /***/
     function(module, exports) {
-        module.exports = __WEBPACK_EXTERNAL_MODULE_15__;
+        eval("module.exports = __WEBPACK_EXTERNAL_MODULE_8__;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiOC5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy9leHRlcm5hbCBcIlJhcGhhZWxcIj8zYmJiIl0sInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5leHBvcnRzID0gX19XRUJQQUNLX0VYVEVSTkFMX01PRFVMRV84X187XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJSYXBoYWVsXCJcbi8vIG1vZHVsZSBpZCA9IDhcbi8vIG1vZHVsZSBjaHVua3MgPSAwIl0sIm1hcHBpbmdzIjoiQUFBQSIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///8\n");
+    }, /* 9 */
+    /*!***********************************!*\
+  !*** ./src/flowchart.defaults.js ***!
+  \***********************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
+    /***/
+    function(module, exports) {
+        eval("// defaults\nmodule.exports = {\n  'x': 0,\n  'y': 0,\n  'line-width': 3,\n  'line-length': 50,\n  'text-margin': 10,\n  'font-size': 14,\n  'font-color': 'black',\n  // 'font': 'normal',\n  // 'font-family': 'calibri',\n  // 'font-weight': 'normal',\n  'line-color': 'black',\n  'element-color': 'black',\n  'fill': 'white',\n  'yes-text': 'yes',\n  'no-text': 'no',\n  'arrow-end': 'block',\n  'class': 'flowchart',\n  'scale': 1,\n  'symbols': {\n    'start': {},\n    'end': {},\n    'condition': {},\n    'inputoutput': {},\n    'operation': {},\n    'subroutine': {}\n  }//,\n  // 'flowstate' : {\n  //   'past' : { 'fill': '#CCCCCC', 'font-size': 12},\n  //   'current' : {'fill': 'yellow', 'font-color': 'red', 'font-weight': 'bold'},\n  //   'future' : { 'fill': '#FFFF99'},\n  //   'invalid': {'fill': '#444444'}\n  // }\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiOS5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9mbG93Y2hhcnQuZGVmYXVsdHMuanM/M2U2MSJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBkZWZhdWx0c1xubW9kdWxlLmV4cG9ydHMgPSB7XG4gICd4JzogMCxcbiAgJ3knOiAwLFxuICAnbGluZS13aWR0aCc6IDMsXG4gICdsaW5lLWxlbmd0aCc6IDUwLFxuICAndGV4dC1tYXJnaW4nOiAxMCxcbiAgJ2ZvbnQtc2l6ZSc6IDE0LFxuICAnZm9udC1jb2xvcic6ICdibGFjaycsXG4gIC8vICdmb250JzogJ25vcm1hbCcsXG4gIC8vICdmb250LWZhbWlseSc6ICdjYWxpYnJpJyxcbiAgLy8gJ2ZvbnQtd2VpZ2h0JzogJ25vcm1hbCcsXG4gICdsaW5lLWNvbG9yJzogJ2JsYWNrJyxcbiAgJ2VsZW1lbnQtY29sb3InOiAnYmxhY2snLFxuICAnZmlsbCc6ICd3aGl0ZScsXG4gICd5ZXMtdGV4dCc6ICd5ZXMnLFxuICAnbm8tdGV4dCc6ICdubycsXG4gICdhcnJvdy1lbmQnOiAnYmxvY2snLFxuICAnY2xhc3MnOiAnZmxvd2NoYXJ0JyxcbiAgJ3NjYWxlJzogMSxcbiAgJ3N5bWJvbHMnOiB7XG4gICAgJ3N0YXJ0Jzoge30sXG4gICAgJ2VuZCc6IHt9LFxuICAgICdjb25kaXRpb24nOiB7fSxcbiAgICAnaW5wdXRvdXRwdXQnOiB7fSxcbiAgICAnb3BlcmF0aW9uJzoge30sXG4gICAgJ3N1YnJvdXRpbmUnOiB7fVxuICB9Ly8sXG4gIC8vICdmbG93c3RhdGUnIDoge1xuICAvLyAgICdwYXN0JyA6IHsgJ2ZpbGwnOiAnI0NDQ0NDQycsICdmb250LXNpemUnOiAxMn0sXG4gIC8vICAgJ2N1cnJlbnQnIDogeydmaWxsJzogJ3llbGxvdycsICdmb250LWNvbG9yJzogJ3JlZCcsICdmb250LXdlaWdodCc6ICdib2xkJ30sXG4gIC8vICAgJ2Z1dHVyZScgOiB7ICdmaWxsJzogJyNGRkZGOTknfSxcbiAgLy8gICAnaW52YWxpZCc6IHsnZmlsbCc6ICcjNDQ0NDQ0J31cbiAgLy8gfVxufTtcblxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4vc3JjL2Zsb3djaGFydC5kZWZhdWx0cy5qc1xuLy8gbW9kdWxlIGlkID0gOVxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7Iiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///9\n");
+    }, /* 10 */
+    /*!***************************************!*\
+  !*** ./src/flowchart.symbol.start.js ***!
+  \***************************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
+    /***/
+    function(module, exports, __webpack_require__) {
+        eval("var Symbol = __webpack_require__(/*! ./flowchart.symbol */ 1);\nvar inherits = __webpack_require__(/*! ./flowchart.helpers */ 0).inherits;\n\nfunction Start(chart, options) {\n  var symbol = chart.paper.rect(0, 0, 0, 0, 20);\n  options = options || {};\n  options.text = options.text || 'Start';\n  Symbol.call(this, chart, options, symbol);\n}\ninherits(Start, Symbol);\n\nmodule.exports = Start;\n\n// Start.prototype.render = function() {\n//   if (this.next) {\n//     var lineLength = this.chart.options.symbols[this.symbolType]['line-length'] || this.chart.options['line-length'];\n\n//     var bottomPoint = this.getBottom();\n//     var topPoint = this.next.getTop();\n\n//     if (!this.next.isPositioned) {\n//       this.next.shiftY(this.getY() + this.height + lineLength);\n//       this.next.setX(bottomPoint.x - this.next.width/2);\n//       this.next.isPositioned = true;\n\n//       this.next.render();\n//     }\n//   }\n// };\n\n// Start.prototype.renderLines = function() {\n//   if (this.next) {\n//     this.drawLineTo(this.next);\n//   }\n// };\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMTAuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvZmxvd2NoYXJ0LnN5bWJvbC5zdGFydC5qcz9iMDg4Il0sInNvdXJjZXNDb250ZW50IjpbInZhciBTeW1ib2wgPSByZXF1aXJlKCcuL2Zsb3djaGFydC5zeW1ib2wnKTtcbnZhciBpbmhlcml0cyA9IHJlcXVpcmUoJy4vZmxvd2NoYXJ0LmhlbHBlcnMnKS5pbmhlcml0cztcblxuZnVuY3Rpb24gU3RhcnQoY2hhcnQsIG9wdGlvbnMpIHtcbiAgdmFyIHN5bWJvbCA9IGNoYXJ0LnBhcGVyLnJlY3QoMCwgMCwgMCwgMCwgMjApO1xuICBvcHRpb25zID0gb3B0aW9ucyB8fCB7fTtcbiAgb3B0aW9ucy50ZXh0ID0gb3B0aW9ucy50ZXh0IHx8ICdTdGFydCc7XG4gIFN5bWJvbC5jYWxsKHRoaXMsIGNoYXJ0LCBvcHRpb25zLCBzeW1ib2wpO1xufVxuaW5oZXJpdHMoU3RhcnQsIFN5bWJvbCk7XG5cbm1vZHVsZS5leHBvcnRzID0gU3RhcnQ7XG5cbi8vIFN0YXJ0LnByb3RvdHlwZS5yZW5kZXIgPSBmdW5jdGlvbigpIHtcbi8vICAgaWYgKHRoaXMubmV4dCkge1xuLy8gICAgIHZhciBsaW5lTGVuZ3RoID0gdGhpcy5jaGFydC5vcHRpb25zLnN5bWJvbHNbdGhpcy5zeW1ib2xUeXBlXVsnbGluZS1sZW5ndGgnXSB8fCB0aGlzLmNoYXJ0Lm9wdGlvbnNbJ2xpbmUtbGVuZ3RoJ107XG5cbi8vICAgICB2YXIgYm90dG9tUG9pbnQgPSB0aGlzLmdldEJvdHRvbSgpO1xuLy8gICAgIHZhciB0b3BQb2ludCA9IHRoaXMubmV4dC5nZXRUb3AoKTtcblxuLy8gICAgIGlmICghdGhpcy5uZXh0LmlzUG9zaXRpb25lZCkge1xuLy8gICAgICAgdGhpcy5uZXh0LnNoaWZ0WSh0aGlzLmdldFkoKSArIHRoaXMuaGVpZ2h0ICsgbGluZUxlbmd0aCk7XG4vLyAgICAgICB0aGlzLm5leHQuc2V0WChib3R0b21Qb2ludC54IC0gdGhpcy5uZXh0LndpZHRoLzIpO1xuLy8gICAgICAgdGhpcy5uZXh0LmlzUG9zaXRpb25lZCA9IHRydWU7XG5cbi8vICAgICAgIHRoaXMubmV4dC5yZW5kZXIoKTtcbi8vICAgICB9XG4vLyAgIH1cbi8vIH07XG5cbi8vIFN0YXJ0LnByb3RvdHlwZS5yZW5kZXJMaW5lcyA9IGZ1bmN0aW9uKCkge1xuLy8gICBpZiAodGhpcy5uZXh0KSB7XG4vLyAgICAgdGhpcy5kcmF3TGluZVRvKHRoaXMubmV4dCk7XG4vLyAgIH1cbi8vIH07XG5cblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyAuL3NyYy9mbG93Y2hhcnQuc3ltYm9sLnN0YXJ0LmpzXG4vLyBtb2R1bGUgaWQgPSAxMFxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7Iiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///10\n");
+    }, /* 11 */
+    /*!*************************************!*\
+  !*** ./src/flowchart.symbol.end.js ***!
+  \*************************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
+    /***/
+    function(module, exports, __webpack_require__) {
+        eval("var Symbol = __webpack_require__(/*! ./flowchart.symbol */ 1);\nvar inherits = __webpack_require__(/*! ./flowchart.helpers */ 0).inherits;\n\nfunction End(chart, options) {\n  var symbol = chart.paper.rect(0, 0, 0, 0, 20);\n  options = options || {};\n  options.text = options.text || 'End';\n  Symbol.call(this, chart, options, symbol);\n}\ninherits(End, Symbol);\n\nmodule.exports = End;\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMTEuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvZmxvd2NoYXJ0LnN5bWJvbC5lbmQuanM/NjA1ZCJdLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgU3ltYm9sID0gcmVxdWlyZSgnLi9mbG93Y2hhcnQuc3ltYm9sJyk7XG52YXIgaW5oZXJpdHMgPSByZXF1aXJlKCcuL2Zsb3djaGFydC5oZWxwZXJzJykuaW5oZXJpdHM7XG5cbmZ1bmN0aW9uIEVuZChjaGFydCwgb3B0aW9ucykge1xuICB2YXIgc3ltYm9sID0gY2hhcnQucGFwZXIucmVjdCgwLCAwLCAwLCAwLCAyMCk7XG4gIG9wdGlvbnMgPSBvcHRpb25zIHx8IHt9O1xuICBvcHRpb25zLnRleHQgPSBvcHRpb25zLnRleHQgfHwgJ0VuZCc7XG4gIFN5bWJvbC5jYWxsKHRoaXMsIGNoYXJ0LCBvcHRpb25zLCBzeW1ib2wpO1xufVxuaW5oZXJpdHMoRW5kLCBTeW1ib2wpO1xuXG5tb2R1bGUuZXhwb3J0cyA9IEVuZDtcblxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4vc3JjL2Zsb3djaGFydC5zeW1ib2wuZW5kLmpzXG4vLyBtb2R1bGUgaWQgPSAxMVxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTsiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///11\n");
+    }, /* 12 */
+    /*!*******************************************!*\
+  !*** ./src/flowchart.symbol.operation.js ***!
+  \*******************************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
+    /***/
+    function(module, exports, __webpack_require__) {
+        eval("var Symbol = __webpack_require__(/*! ./flowchart.symbol */ 1);\nvar inherits = __webpack_require__(/*! ./flowchart.helpers */ 0).inherits;\n\nfunction Operation(chart, options) {\n  var symbol = chart.paper.rect(0, 0, 0, 0);\n  options = options || {};\n  Symbol.call(this, chart, options, symbol);\n}\ninherits(Operation, Symbol);\n\nmodule.exports = Operation;\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMTIuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvZmxvd2NoYXJ0LnN5bWJvbC5vcGVyYXRpb24uanM/MmFjMCJdLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgU3ltYm9sID0gcmVxdWlyZSgnLi9mbG93Y2hhcnQuc3ltYm9sJyk7XG52YXIgaW5oZXJpdHMgPSByZXF1aXJlKCcuL2Zsb3djaGFydC5oZWxwZXJzJykuaW5oZXJpdHM7XG5cbmZ1bmN0aW9uIE9wZXJhdGlvbihjaGFydCwgb3B0aW9ucykge1xuICB2YXIgc3ltYm9sID0gY2hhcnQucGFwZXIucmVjdCgwLCAwLCAwLCAwKTtcbiAgb3B0aW9ucyA9IG9wdGlvbnMgfHwge307XG4gIFN5bWJvbC5jYWxsKHRoaXMsIGNoYXJ0LCBvcHRpb25zLCBzeW1ib2wpO1xufVxuaW5oZXJpdHMoT3BlcmF0aW9uLCBTeW1ib2wpO1xuXG5tb2R1bGUuZXhwb3J0cyA9IE9wZXJhdGlvbjtcblxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4vc3JjL2Zsb3djaGFydC5zeW1ib2wub3BlcmF0aW9uLmpzXG4vLyBtb2R1bGUgaWQgPSAxMlxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7Iiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///12\n");
+    }, /* 13 */
+    /*!*********************************************!*\
+  !*** ./src/flowchart.symbol.inputoutput.js ***!
+  \*********************************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
+    /***/
+    function(module, exports, __webpack_require__) {
+        eval("var Symbol = __webpack_require__(/*! ./flowchart.symbol */ 1);\nvar inherits = __webpack_require__(/*! ./flowchart.helpers */ 0).inherits;\nvar drawAPI = __webpack_require__(/*! ./flowchart.functions */ 2);\nvar drawPath = drawAPI.drawPath;\n\nfunction InputOutput(chart, options) {\n  options = options || {};\n  Symbol.call(this, chart, options);\n  this.textMargin = this.getAttr('text-margin');\n\n  this.text.attr({\n    x: this.textMargin * 3\n  });\n\n  var width = this.text.getBBox().width + 4 * this.textMargin;\n  var height = this.text.getBBox().height + 2 * this.textMargin;\n  var startX = this.textMargin;\n  var startY = height/2;\n\n  var start = {x: startX, y: startY};\n  var points = [\n    {x: startX - this.textMargin, y: height},\n    {x: startX - this.textMargin + width, y: height},\n    {x: startX - this.textMargin + width + 2 * this.textMargin, y: 0},\n    {x: startX - this.textMargin + 2 * this.textMargin, y: 0},\n    {x: startX, y: startY}\n  ];\n\n  var symbol = drawPath(chart, start, points);\n\n  symbol.attr({\n    stroke: this.getAttr('element-color'),\n    'stroke-width': this.getAttr('line-width'),\n    fill: this.getAttr('fill')\n  });\n  if (options.link) { symbol.attr('href', options.link); }\n  if (options.target) { symbol.attr('target', options.target); }\n  if (options.key) { symbol.node.id = options.key; }\n  symbol.node.setAttribute('class', this.getAttr('class'));\n\n  this.text.attr({\n    y: symbol.getBBox().height/2\n  });\n\n  this.group.push(symbol);\n  symbol.insertBefore(this.text);\n\n  this.initialize();\n}\ninherits(InputOutput, Symbol);\n\nInputOutput.prototype.getLeft = function() {\n  var y = this.getY() + this.group.getBBox().height/2;\n  var x = this.getX() + this.textMargin;\n  return {x: x, y: y};\n};\n\nInputOutput.prototype.getRight = function() {\n  var y = this.getY() + this.group.getBBox().height/2;\n  var x = this.getX() + this.group.getBBox().width - this.textMargin;\n  return {x: x, y: y};\n};\n\nmodule.exports = InputOutput;\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMTMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvZmxvd2NoYXJ0LnN5bWJvbC5pbnB1dG91dHB1dC5qcz8zNzcwIl0sInNvdXJjZXNDb250ZW50IjpbInZhciBTeW1ib2wgPSByZXF1aXJlKCcuL2Zsb3djaGFydC5zeW1ib2wnKTtcbnZhciBpbmhlcml0cyA9IHJlcXVpcmUoJy4vZmxvd2NoYXJ0LmhlbHBlcnMnKS5pbmhlcml0cztcbnZhciBkcmF3QVBJID0gcmVxdWlyZSgnLi9mbG93Y2hhcnQuZnVuY3Rpb25zJyk7XG52YXIgZHJhd1BhdGggPSBkcmF3QVBJLmRyYXdQYXRoO1xuXG5mdW5jdGlvbiBJbnB1dE91dHB1dChjaGFydCwgb3B0aW9ucykge1xuICBvcHRpb25zID0gb3B0aW9ucyB8fCB7fTtcbiAgU3ltYm9sLmNhbGwodGhpcywgY2hhcnQsIG9wdGlvbnMpO1xuICB0aGlzLnRleHRNYXJnaW4gPSB0aGlzLmdldEF0dHIoJ3RleHQtbWFyZ2luJyk7XG5cbiAgdGhpcy50ZXh0LmF0dHIoe1xuICAgIHg6IHRoaXMudGV4dE1hcmdpbiAqIDNcbiAgfSk7XG5cbiAgdmFyIHdpZHRoID0gdGhpcy50ZXh0LmdldEJCb3goKS53aWR0aCArIDQgKiB0aGlzLnRleHRNYXJnaW47XG4gIHZhciBoZWlnaHQgPSB0aGlzLnRleHQuZ2V0QkJveCgpLmhlaWdodCArIDIgKiB0aGlzLnRleHRNYXJnaW47XG4gIHZhciBzdGFydFggPSB0aGlzLnRleHRNYXJnaW47XG4gIHZhciBzdGFydFkgPSBoZWlnaHQvMjtcblxuICB2YXIgc3RhcnQgPSB7eDogc3RhcnRYLCB5OiBzdGFydFl9O1xuICB2YXIgcG9pbnRzID0gW1xuICAgIHt4OiBzdGFydFggLSB0aGlzLnRleHRNYXJnaW4sIHk6IGhlaWdodH0sXG4gICAge3g6IHN0YXJ0WCAtIHRoaXMudGV4dE1hcmdpbiArIHdpZHRoLCB5OiBoZWlnaHR9LFxuICAgIHt4OiBzdGFydFggLSB0aGlzLnRleHRNYXJnaW4gKyB3aWR0aCArIDIgKiB0aGlzLnRleHRNYXJnaW4sIHk6IDB9LFxuICAgIHt4OiBzdGFydFggLSB0aGlzLnRleHRNYXJnaW4gKyAyICogdGhpcy50ZXh0TWFyZ2luLCB5OiAwfSxcbiAgICB7eDogc3RhcnRYLCB5OiBzdGFydFl9XG4gIF07XG5cbiAgdmFyIHN5bWJvbCA9IGRyYXdQYXRoKGNoYXJ0LCBzdGFydCwgcG9pbnRzKTtcblxuICBzeW1ib2wuYXR0cih7XG4gICAgc3Ryb2tlOiB0aGlzLmdldEF0dHIoJ2VsZW1lbnQtY29sb3InKSxcbiAgICAnc3Ryb2tlLXdpZHRoJzogdGhpcy5nZXRBdHRyKCdsaW5lLXdpZHRoJyksXG4gICAgZmlsbDogdGhpcy5nZXRBdHRyKCdmaWxsJylcbiAgfSk7XG4gIGlmIChvcHRpb25zLmxpbmspIHsgc3ltYm9sLmF0dHIoJ2hyZWYnLCBvcHRpb25zLmxpbmspOyB9XG4gIGlmIChvcHRpb25zLnRhcmdldCkgeyBzeW1ib2wuYXR0cigndGFyZ2V0Jywgb3B0aW9ucy50YXJnZXQpOyB9XG4gIGlmIChvcHRpb25zLmtleSkgeyBzeW1ib2wubm9kZS5pZCA9IG9wdGlvbnMua2V5OyB9XG4gIHN5bWJvbC5ub2RlLnNldEF0dHJpYnV0ZSgnY2xhc3MnLCB0aGlzLmdldEF0dHIoJ2NsYXNzJykpO1xuXG4gIHRoaXMudGV4dC5hdHRyKHtcbiAgICB5OiBzeW1ib2wuZ2V0QkJveCgpLmhlaWdodC8yXG4gIH0pO1xuXG4gIHRoaXMuZ3JvdXAucHVzaChzeW1ib2wpO1xuICBzeW1ib2wuaW5zZXJ0QmVmb3JlKHRoaXMudGV4dCk7XG5cbiAgdGhpcy5pbml0aWFsaXplKCk7XG59XG5pbmhlcml0cyhJbnB1dE91dHB1dCwgU3ltYm9sKTtcblxuSW5wdXRPdXRwdXQucHJvdG90eXBlLmdldExlZnQgPSBmdW5jdGlvbigpIHtcbiAgdmFyIHkgPSB0aGlzLmdldFkoKSArIHRoaXMuZ3JvdXAuZ2V0QkJveCgpLmhlaWdodC8yO1xuICB2YXIgeCA9IHRoaXMuZ2V0WCgpICsgdGhpcy50ZXh0TWFyZ2luO1xuICByZXR1cm4ge3g6IHgsIHk6IHl9O1xufTtcblxuSW5wdXRPdXRwdXQucHJvdG90eXBlLmdldFJpZ2h0ID0gZnVuY3Rpb24oKSB7XG4gIHZhciB5ID0gdGhpcy5nZXRZKCkgKyB0aGlzLmdyb3VwLmdldEJCb3goKS5oZWlnaHQvMjtcbiAgdmFyIHggPSB0aGlzLmdldFgoKSArIHRoaXMuZ3JvdXAuZ2V0QkJveCgpLndpZHRoIC0gdGhpcy50ZXh0TWFyZ2luO1xuICByZXR1cm4ge3g6IHgsIHk6IHl9O1xufTtcblxubW9kdWxlLmV4cG9ydHMgPSBJbnB1dE91dHB1dDtcblxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4vc3JjL2Zsb3djaGFydC5zeW1ib2wuaW5wdXRvdXRwdXQuanNcbi8vIG1vZHVsZSBpZCA9IDEzXG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7Iiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///13\n");
+    }, /* 14 */
+    /*!********************************************!*\
+  !*** ./src/flowchart.symbol.subroutine.js ***!
+  \********************************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
+    /***/
+    function(module, exports, __webpack_require__) {
+        eval("var Symbol = __webpack_require__(/*! ./flowchart.symbol */ 1);\nvar inherits = __webpack_require__(/*! ./flowchart.helpers */ 0).inherits;\n\nfunction Subroutine(chart, options) {\n  var symbol = chart.paper.rect(0, 0, 0, 0);\n  options = options || {};\n  Symbol.call(this, chart, options, symbol);\n\n  symbol.attr({\n    width: this.text.getBBox().width + 4 * this.getAttr('text-margin')\n  });\n\n  this.text.attr({\n    'x': 2 * this.getAttr('text-margin')\n  });\n\n  var innerWrap = chart.paper.rect(0, 0, 0, 0);\n  innerWrap.attr({\n    x: this.getAttr('text-margin'),\n    stroke: this.getAttr('element-color'),\n    'stroke-width': this.getAttr('line-width'),\n    width: this.text.getBBox().width + 2 * this.getAttr('text-margin'),\n    height: this.text.getBBox().height + 2 * this.getAttr('text-margin'),\n    fill: this.getAttr('fill')\n  });\n  if (options.key) { innerWrap.node.id = options.key + 'i'; }\n\n  var font = this.getAttr('font');\n  var fontF = this.getAttr('font-family');\n  var fontW = this.getAttr('font-weight');\n\n  if (font) innerWrap.attr({ 'font': font });\n  if (fontF) innerWrap.attr({ 'font-family': fontF });\n  if (fontW) innerWrap.attr({ 'font-weight': fontW });\n\n  if (options.link) { innerWrap.attr('href', options.link); }\n  if (options.target) { innerWrap.attr('target', options.target); }\n  this.group.push(innerWrap);\n  innerWrap.insertBefore(this.text);\n\n  this.initialize();\n}\ninherits(Subroutine, Symbol);\n\nmodule.exports = Subroutine;\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMTQuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvZmxvd2NoYXJ0LnN5bWJvbC5zdWJyb3V0aW5lLmpzP2Y1ZDIiXSwic291cmNlc0NvbnRlbnQiOlsidmFyIFN5bWJvbCA9IHJlcXVpcmUoJy4vZmxvd2NoYXJ0LnN5bWJvbCcpO1xudmFyIGluaGVyaXRzID0gcmVxdWlyZSgnLi9mbG93Y2hhcnQuaGVscGVycycpLmluaGVyaXRzO1xuXG5mdW5jdGlvbiBTdWJyb3V0aW5lKGNoYXJ0LCBvcHRpb25zKSB7XG4gIHZhciBzeW1ib2wgPSBjaGFydC5wYXBlci5yZWN0KDAsIDAsIDAsIDApO1xuICBvcHRpb25zID0gb3B0aW9ucyB8fCB7fTtcbiAgU3ltYm9sLmNhbGwodGhpcywgY2hhcnQsIG9wdGlvbnMsIHN5bWJvbCk7XG5cbiAgc3ltYm9sLmF0dHIoe1xuICAgIHdpZHRoOiB0aGlzLnRleHQuZ2V0QkJveCgpLndpZHRoICsgNCAqIHRoaXMuZ2V0QXR0cigndGV4dC1tYXJnaW4nKVxuICB9KTtcblxuICB0aGlzLnRleHQuYXR0cih7XG4gICAgJ3gnOiAyICogdGhpcy5nZXRBdHRyKCd0ZXh0LW1hcmdpbicpXG4gIH0pO1xuXG4gIHZhciBpbm5lcldyYXAgPSBjaGFydC5wYXBlci5yZWN0KDAsIDAsIDAsIDApO1xuICBpbm5lcldyYXAuYXR0cih7XG4gICAgeDogdGhpcy5nZXRBdHRyKCd0ZXh0LW1hcmdpbicpLFxuICAgIHN0cm9rZTogdGhpcy5nZXRBdHRyKCdlbGVtZW50LWNvbG9yJyksXG4gICAgJ3N0cm9rZS13aWR0aCc6IHRoaXMuZ2V0QXR0cignbGluZS13aWR0aCcpLFxuICAgIHdpZHRoOiB0aGlzLnRleHQuZ2V0QkJveCgpLndpZHRoICsgMiAqIHRoaXMuZ2V0QXR0cigndGV4dC1tYXJnaW4nKSxcbiAgICBoZWlnaHQ6IHRoaXMudGV4dC5nZXRCQm94KCkuaGVpZ2h0ICsgMiAqIHRoaXMuZ2V0QXR0cigndGV4dC1tYXJnaW4nKSxcbiAgICBmaWxsOiB0aGlzLmdldEF0dHIoJ2ZpbGwnKVxuICB9KTtcbiAgaWYgKG9wdGlvbnMua2V5KSB7IGlubmVyV3JhcC5ub2RlLmlkID0gb3B0aW9ucy5rZXkgKyAnaSc7IH1cblxuICB2YXIgZm9udCA9IHRoaXMuZ2V0QXR0cignZm9udCcpO1xuICB2YXIgZm9udEYgPSB0aGlzLmdldEF0dHIoJ2ZvbnQtZmFtaWx5Jyk7XG4gIHZhciBmb250VyA9IHRoaXMuZ2V0QXR0cignZm9udC13ZWlnaHQnKTtcblxuICBpZiAoZm9udCkgaW5uZXJXcmFwLmF0dHIoeyAnZm9udCc6IGZvbnQgfSk7XG4gIGlmIChmb250RikgaW5uZXJXcmFwLmF0dHIoeyAnZm9udC1mYW1pbHknOiBmb250RiB9KTtcbiAgaWYgKGZvbnRXKSBpbm5lcldyYXAuYXR0cih7ICdmb250LXdlaWdodCc6IGZvbnRXIH0pO1xuXG4gIGlmIChvcHRpb25zLmxpbmspIHsgaW5uZXJXcmFwLmF0dHIoJ2hyZWYnLCBvcHRpb25zLmxpbmspOyB9XG4gIGlmIChvcHRpb25zLnRhcmdldCkgeyBpbm5lcldyYXAuYXR0cigndGFyZ2V0Jywgb3B0aW9ucy50YXJnZXQpOyB9XG4gIHRoaXMuZ3JvdXAucHVzaChpbm5lcldyYXApO1xuICBpbm5lcldyYXAuaW5zZXJ0QmVmb3JlKHRoaXMudGV4dCk7XG5cbiAgdGhpcy5pbml0aWFsaXplKCk7XG59XG5pbmhlcml0cyhTdWJyb3V0aW5lLCBTeW1ib2wpO1xuXG5tb2R1bGUuZXhwb3J0cyA9IFN1YnJvdXRpbmU7XG5cblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyAuL3NyYy9mbG93Y2hhcnQuc3ltYm9sLnN1YnJvdXRpbmUuanNcbi8vIG1vZHVsZSBpZCA9IDE0XG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOyIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///14\n");
+    }, /* 15 */
+    /*!*****************************************!*\
+  !*** ./src/flowchart.symbol.options.js ***!
+  \*****************************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
+    /***/
+    function(module, exports, __webpack_require__) {
+        eval("var Symbol = __webpack_require__(/*! ./flowchart.symbol */ 1);\nvar inherits = __webpack_require__(/*! ./flowchart.helpers */ 0).inherits;\nvar drawAPI = __webpack_require__(/*! ./flowchart.functions */ 2);\nvar drawPath = drawAPI.drawPath;\n\nfunction Options(chart, options) {\n  options = options || {};\n  Symbol.call(this, chart, options);\n  this.textMargin = this.getAttr('text-margin');\n  this.yes_direction = 'bottom';\n  this.no_direction = 'right';\n  this.params = options.params;\n  if (options.yes && options.direction_yes && options.no && !options.direction_no) {\n    if (options.direction_yes === 'right') {\n      this.no_direction = 'bottom';\n      this.yes_direction = 'right';\n    } else {\n      this.no_direction = 'right';\n      this.yes_direction = 'bottom';\n    }\n  } else if (options.yes && !options.direction_yes && options.no && options.direction_no) {\n    if (options.direction_no === 'right') {\n      this.yes_direction = 'bottom';\n      this.no_direction = 'right';\n    } else {\n      this.yes_direction = 'right';\n      this.no_direction = 'bottom';\n    }\n  } else {\n    this.yes_direction = 'bottom';\n    this.no_direction = 'right';\n  }\n\n  this.yes_direction = this.yes_direction || 'bottom';\n  this.no_direction = this.no_direction || 'right';\n\n  this.text.attr({\n    x: this.textMargin * 2\n  });\n\n  var width = this.text.getBBox().width + 3 * this.textMargin;\n  width += width/2;\n  var height = this.text.getBBox().height + 2 * this.textMargin;\n  height += height/2;\n  height = Math.max(width * 0.5, height);\n  var startX = width/4;\n  var startY = height/4;\n\n  this.text.attr({\n    x: startX + this.textMargin/2\n  });\n\n  var start = {x: startX, y: startY};\n  var points = [\n    {x: startX - width/4, y: startY + height/4},\n    {x: startX - width/4 + width/2, y: startY + height/4 + height/2},\n    {x: startX - width/4 + width, y: startY + height/4},\n    {x: startX - width/4 + width/2, y: startY + height/4 - height/2},\n    {x: startX - width/4, y: startY + height/4}\n  ];\n\n  var symbol = drawPath(chart, start, points);\n\n  symbol.attr({\n    stroke: this.getAttr('element-color'),\n    'stroke-width': this.getAttr('line-width'),\n    fill: this.getAttr('fill')\n  });\n  if (options.link) { symbol.attr('href', options.link); }\n  if (options.target) { symbol.attr('target', options.target); }\n  if (options.key) { symbol.node.id = options.key; }\n  symbol.node.setAttribute('class', this.getAttr('class'));\n\n  this.text.attr({\n    y: symbol.getBBox().height/2\n  });\n\n  this.group.push(symbol);\n  symbol.insertBefore(this.text);\n\n  this.initialize();\n}\ninherits(Options, Symbol);\n\nOptions.prototype.render = function() {\n\n  if (this.yes_direction) {\n    this[this.yes_direction + '_symbol'] = this.yes_symbol;\n  }\n\n  if (this.no_direction) {\n    this[this.no_direction + '_symbol'] = this.no_symbol;\n  }\n\n  var lineLength = this.getAttr('line-length');\n\n  if (this.bottom_symbol) {\n    var bottomPoint = this.getBottom();\n\n    if (!this.bottom_symbol.isPositioned) {\n      this.bottom_symbol.shiftY(this.getY() + this.height + lineLength);\n      this.bottom_symbol.setX(bottomPoint.x - this.bottom_symbol.width/2);\n      this.bottom_symbol.isPositioned = true;\n\n      this.bottom_symbol.render();\n    }\n  }\n\n  if (this.right_symbol) {\n    var rightPoint = this.getRight();\n\n    if (!this.right_symbol.isPositioned) {\n\n      this.right_symbol.setY(rightPoint.y - this.right_symbol.height/2);\n      this.right_symbol.shiftX(this.group.getBBox().x + this.width + lineLength);\n\n      var self = this;\n      (function shift() {\n        var hasSymbolUnder = false;\n        var symb;\n        for (var i = 0, len = self.chart.symbols.length; i < len; i++) {\n          symb = self.chart.symbols[i];\n\n          if (!self.params['align-next'] || self.params['align-next'] !== 'no') { \n            var diff = Math.abs(symb.getCenter().x - self.right_symbol.getCenter().x);\n            if (symb.getCenter().y > self.right_symbol.getCenter().y && diff <= self.right_symbol.width/2) {\n              hasSymbolUnder = true;\n              break;\n            }\n          }\n        }\n\n        if (hasSymbolUnder) {\n          self.right_symbol.setX(symb.getX() + symb.width + lineLength);\n          shift();\n        }\n      })();\n\n      this.right_symbol.isPositioned = true;\n\n      this.right_symbol.render();\n    }\n  }\n};\n\nOptions.prototype.renderLines = function() {\n  if (this.yes_symbol) {\n    this.drawLineTo(this.yes_symbol, this.getAttr('yes-text'), this.yes_direction);\n  }\n\n  if (this.no_symbol) {\n    this.drawLineTo(this.no_symbol, this.getAttr('no-text'), this.no_direction);\n  }\n};\n\nmodule.exports = Options;\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMTUuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvZmxvd2NoYXJ0LnN5bWJvbC5vcHRpb25zLmpzPzZmYjYiXSwic291cmNlc0NvbnRlbnQiOlsidmFyIFN5bWJvbCA9IHJlcXVpcmUoJy4vZmxvd2NoYXJ0LnN5bWJvbCcpO1xudmFyIGluaGVyaXRzID0gcmVxdWlyZSgnLi9mbG93Y2hhcnQuaGVscGVycycpLmluaGVyaXRzO1xudmFyIGRyYXdBUEkgPSByZXF1aXJlKCcuL2Zsb3djaGFydC5mdW5jdGlvbnMnKTtcbnZhciBkcmF3UGF0aCA9IGRyYXdBUEkuZHJhd1BhdGg7XG5cbmZ1bmN0aW9uIE9wdGlvbnMoY2hhcnQsIG9wdGlvbnMpIHtcbiAgb3B0aW9ucyA9IG9wdGlvbnMgfHwge307XG4gIFN5bWJvbC5jYWxsKHRoaXMsIGNoYXJ0LCBvcHRpb25zKTtcbiAgdGhpcy50ZXh0TWFyZ2luID0gdGhpcy5nZXRBdHRyKCd0ZXh0LW1hcmdpbicpO1xuICB0aGlzLnllc19kaXJlY3Rpb24gPSAnYm90dG9tJztcbiAgdGhpcy5ub19kaXJlY3Rpb24gPSAncmlnaHQnO1xuICB0aGlzLnBhcmFtcyA9IG9wdGlvbnMucGFyYW1zO1xuICBpZiAob3B0aW9ucy55ZXMgJiYgb3B0aW9ucy5kaXJlY3Rpb25feWVzICYmIG9wdGlvbnMubm8gJiYgIW9wdGlvbnMuZGlyZWN0aW9uX25vKSB7XG4gICAgaWYgKG9wdGlvbnMuZGlyZWN0aW9uX3llcyA9PT0gJ3JpZ2h0Jykge1xuICAgICAgdGhpcy5ub19kaXJlY3Rpb24gPSAnYm90dG9tJztcbiAgICAgIHRoaXMueWVzX2RpcmVjdGlvbiA9ICdyaWdodCc7XG4gICAgfSBlbHNlIHtcbiAgICAgIHRoaXMubm9fZGlyZWN0aW9uID0gJ3JpZ2h0JztcbiAgICAgIHRoaXMueWVzX2RpcmVjdGlvbiA9ICdib3R0b20nO1xuICAgIH1cbiAgfSBlbHNlIGlmIChvcHRpb25zLnllcyAmJiAhb3B0aW9ucy5kaXJlY3Rpb25feWVzICYmIG9wdGlvbnMubm8gJiYgb3B0aW9ucy5kaXJlY3Rpb25fbm8pIHtcbiAgICBpZiAob3B0aW9ucy5kaXJlY3Rpb25fbm8gPT09ICdyaWdodCcpIHtcbiAgICAgIHRoaXMueWVzX2RpcmVjdGlvbiA9ICdib3R0b20nO1xuICAgICAgdGhpcy5ub19kaXJlY3Rpb24gPSAncmlnaHQnO1xuICAgIH0gZWxzZSB7XG4gICAgICB0aGlzLnllc19kaXJlY3Rpb24gPSAncmlnaHQnO1xuICAgICAgdGhpcy5ub19kaXJlY3Rpb24gPSAnYm90dG9tJztcbiAgICB9XG4gIH0gZWxzZSB7XG4gICAgdGhpcy55ZXNfZGlyZWN0aW9uID0gJ2JvdHRvbSc7XG4gICAgdGhpcy5ub19kaXJlY3Rpb24gPSAncmlnaHQnO1xuICB9XG5cbiAgdGhpcy55ZXNfZGlyZWN0aW9uID0gdGhpcy55ZXNfZGlyZWN0aW9uIHx8ICdib3R0b20nO1xuICB0aGlzLm5vX2RpcmVjdGlvbiA9IHRoaXMubm9fZGlyZWN0aW9uIHx8ICdyaWdodCc7XG5cbiAgdGhpcy50ZXh0LmF0dHIoe1xuICAgIHg6IHRoaXMudGV4dE1hcmdpbiAqIDJcbiAgfSk7XG5cbiAgdmFyIHdpZHRoID0gdGhpcy50ZXh0LmdldEJCb3goKS53aWR0aCArIDMgKiB0aGlzLnRleHRNYXJnaW47XG4gIHdpZHRoICs9IHdpZHRoLzI7XG4gIHZhciBoZWlnaHQgPSB0aGlzLnRleHQuZ2V0QkJveCgpLmhlaWdodCArIDIgKiB0aGlzLnRleHRNYXJnaW47XG4gIGhlaWdodCArPSBoZWlnaHQvMjtcbiAgaGVpZ2h0ID0gTWF0aC5tYXgod2lkdGggKiAwLjUsIGhlaWdodCk7XG4gIHZhciBzdGFydFggPSB3aWR0aC80O1xuICB2YXIgc3RhcnRZID0gaGVpZ2h0LzQ7XG5cbiAgdGhpcy50ZXh0LmF0dHIoe1xuICAgIHg6IHN0YXJ0WCArIHRoaXMudGV4dE1hcmdpbi8yXG4gIH0pO1xuXG4gIHZhciBzdGFydCA9IHt4OiBzdGFydFgsIHk6IHN0YXJ0WX07XG4gIHZhciBwb2ludHMgPSBbXG4gICAge3g6IHN0YXJ0WCAtIHdpZHRoLzQsIHk6IHN0YXJ0WSArIGhlaWdodC80fSxcbiAgICB7eDogc3RhcnRYIC0gd2lkdGgvNCArIHdpZHRoLzIsIHk6IHN0YXJ0WSArIGhlaWdodC80ICsgaGVpZ2h0LzJ9LFxuICAgIHt4OiBzdGFydFggLSB3aWR0aC80ICsgd2lkdGgsIHk6IHN0YXJ0WSArIGhlaWdodC80fSxcbiAgICB7eDogc3RhcnRYIC0gd2lkdGgvNCArIHdpZHRoLzIsIHk6IHN0YXJ0WSArIGhlaWdodC80IC0gaGVpZ2h0LzJ9LFxuICAgIHt4OiBzdGFydFggLSB3aWR0aC80LCB5OiBzdGFydFkgKyBoZWlnaHQvNH1cbiAgXTtcblxuICB2YXIgc3ltYm9sID0gZHJhd1BhdGgoY2hhcnQsIHN0YXJ0LCBwb2ludHMpO1xuXG4gIHN5bWJvbC5hdHRyKHtcbiAgICBzdHJva2U6IHRoaXMuZ2V0QXR0cignZWxlbWVudC1jb2xvcicpLFxuICAgICdzdHJva2Utd2lkdGgnOiB0aGlzLmdldEF0dHIoJ2xpbmUtd2lkdGgnKSxcbiAgICBmaWxsOiB0aGlzLmdldEF0dHIoJ2ZpbGwnKVxuICB9KTtcbiAgaWYgKG9wdGlvbnMubGluaykgeyBzeW1ib2wuYXR0cignaHJlZicsIG9wdGlvbnMubGluayk7IH1cbiAgaWYgKG9wdGlvbnMudGFyZ2V0KSB7IHN5bWJvbC5hdHRyKCd0YXJnZXQnLCBvcHRpb25zLnRhcmdldCk7IH1cbiAgaWYgKG9wdGlvbnMua2V5KSB7IHN5bWJvbC5ub2RlLmlkID0gb3B0aW9ucy5rZXk7IH1cbiAgc3ltYm9sLm5vZGUuc2V0QXR0cmlidXRlKCdjbGFzcycsIHRoaXMuZ2V0QXR0cignY2xhc3MnKSk7XG5cbiAgdGhpcy50ZXh0LmF0dHIoe1xuICAgIHk6IHN5bWJvbC5nZXRCQm94KCkuaGVpZ2h0LzJcbiAgfSk7XG5cbiAgdGhpcy5ncm91cC5wdXNoKHN5bWJvbCk7XG4gIHN5bWJvbC5pbnNlcnRCZWZvcmUodGhpcy50ZXh0KTtcblxuICB0aGlzLmluaXRpYWxpemUoKTtcbn1cbmluaGVyaXRzKE9wdGlvbnMsIFN5bWJvbCk7XG5cbk9wdGlvbnMucHJvdG90eXBlLnJlbmRlciA9IGZ1bmN0aW9uKCkge1xuXG4gIGlmICh0aGlzLnllc19kaXJlY3Rpb24pIHtcbiAgICB0aGlzW3RoaXMueWVzX2RpcmVjdGlvbiArICdfc3ltYm9sJ10gPSB0aGlzLnllc19zeW1ib2w7XG4gIH1cblxuICBpZiAodGhpcy5ub19kaXJlY3Rpb24pIHtcbiAgICB0aGlzW3RoaXMubm9fZGlyZWN0aW9uICsgJ19zeW1ib2wnXSA9IHRoaXMubm9fc3ltYm9sO1xuICB9XG5cbiAgdmFyIGxpbmVMZW5ndGggPSB0aGlzLmdldEF0dHIoJ2xpbmUtbGVuZ3RoJyk7XG5cbiAgaWYgKHRoaXMuYm90dG9tX3N5bWJvbCkge1xuICAgIHZhciBib3R0b21Qb2ludCA9IHRoaXMuZ2V0Qm90dG9tKCk7XG5cbiAgICBpZiAoIXRoaXMuYm90dG9tX3N5bWJvbC5pc1Bvc2l0aW9uZWQpIHtcbiAgICAgIHRoaXMuYm90dG9tX3N5bWJvbC5zaGlmdFkodGhpcy5nZXRZKCkgKyB0aGlzLmhlaWdodCArIGxpbmVMZW5ndGgpO1xuICAgICAgdGhpcy5ib3R0b21fc3ltYm9sLnNldFgoYm90dG9tUG9pbnQueCAtIHRoaXMuYm90dG9tX3N5bWJvbC53aWR0aC8yKTtcbiAgICAgIHRoaXMuYm90dG9tX3N5bWJvbC5pc1Bvc2l0aW9uZWQgPSB0cnVlO1xuXG4gICAgICB0aGlzLmJvdHRvbV9zeW1ib2wucmVuZGVyKCk7XG4gICAgfVxuICB9XG5cbiAgaWYgKHRoaXMucmlnaHRfc3ltYm9sKSB7XG4gICAgdmFyIHJpZ2h0UG9pbnQgPSB0aGlzLmdldFJpZ2h0KCk7XG5cbiAgICBpZiAoIXRoaXMucmlnaHRfc3ltYm9sLmlzUG9zaXRpb25lZCkge1xuXG4gICAgICB0aGlzLnJpZ2h0X3N5bWJvbC5zZXRZKHJpZ2h0UG9pbnQueSAtIHRoaXMucmlnaHRfc3ltYm9sLmhlaWdodC8yKTtcbiAgICAgIHRoaXMucmlnaHRfc3ltYm9sLnNoaWZ0WCh0aGlzLmdyb3VwLmdldEJCb3goKS54ICsgdGhpcy53aWR0aCArIGxpbmVMZW5ndGgpO1xuXG4gICAgICB2YXIgc2VsZiA9IHRoaXM7XG4gICAgICAoZnVuY3Rpb24gc2hpZnQoKSB7XG4gICAgICAgIHZhciBoYXNTeW1ib2xVbmRlciA9IGZhbHNlO1xuICAgICAgICB2YXIgc3ltYjtcbiAgICAgICAgZm9yICh2YXIgaSA9IDAsIGxlbiA9IHNlbGYuY2hhcnQuc3ltYm9scy5sZW5ndGg7IGkgPCBsZW47IGkrKykge1xuICAgICAgICAgIHN5bWIgPSBzZWxmLmNoYXJ0LnN5bWJvbHNbaV07XG5cbiAgICAgICAgICBpZiAoIXNlbGYucGFyYW1zWydhbGlnbi1uZXh0J10gfHwgc2VsZi5wYXJhbXNbJ2FsaWduLW5leHQnXSAhPT0gJ25vJykgeyBcbiAgICAgICAgICAgIHZhciBkaWZmID0gTWF0aC5hYnMoc3ltYi5nZXRDZW50ZXIoKS54IC0gc2VsZi5yaWdodF9zeW1ib2wuZ2V0Q2VudGVyKCkueCk7XG4gICAgICAgICAgICBpZiAoc3ltYi5nZXRDZW50ZXIoKS55ID4gc2VsZi5yaWdodF9zeW1ib2wuZ2V0Q2VudGVyKCkueSAmJiBkaWZmIDw9IHNlbGYucmlnaHRfc3ltYm9sLndpZHRoLzIpIHtcbiAgICAgICAgICAgICAgaGFzU3ltYm9sVW5kZXIgPSB0cnVlO1xuICAgICAgICAgICAgICBicmVhaztcbiAgICAgICAgICAgIH1cbiAgICAgICAgICB9XG4gICAgICAgIH1cblxuICAgICAgICBpZiAoaGFzU3ltYm9sVW5kZXIpIHtcbiAgICAgICAgICBzZWxmLnJpZ2h0X3N5bWJvbC5zZXRYKHN5bWIuZ2V0WCgpICsgc3ltYi53aWR0aCArIGxpbmVMZW5ndGgpO1xuICAgICAgICAgIHNoaWZ0KCk7XG4gICAgICAgIH1cbiAgICAgIH0pKCk7XG5cbiAgICAgIHRoaXMucmlnaHRfc3ltYm9sLmlzUG9zaXRpb25lZCA9IHRydWU7XG5cbiAgICAgIHRoaXMucmlnaHRfc3ltYm9sLnJlbmRlcigpO1xuICAgIH1cbiAgfVxufTtcblxuT3B0aW9ucy5wcm90b3R5cGUucmVuZGVyTGluZXMgPSBmdW5jdGlvbigpIHtcbiAgaWYgKHRoaXMueWVzX3N5bWJvbCkge1xuICAgIHRoaXMuZHJhd0xpbmVUbyh0aGlzLnllc19zeW1ib2wsIHRoaXMuZ2V0QXR0cigneWVzLXRleHQnKSwgdGhpcy55ZXNfZGlyZWN0aW9uKTtcbiAgfVxuXG4gIGlmICh0aGlzLm5vX3N5bWJvbCkge1xuICAgIHRoaXMuZHJhd0xpbmVUbyh0aGlzLm5vX3N5bWJvbCwgdGhpcy5nZXRBdHRyKCduby10ZXh0JyksIHRoaXMubm9fZGlyZWN0aW9uKTtcbiAgfVxufTtcblxubW9kdWxlLmV4cG9ydHMgPSBPcHRpb25zO1xuXG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi9zcmMvZmxvd2NoYXJ0LnN5bWJvbC5vcHRpb25zLmpzXG4vLyBtb2R1bGUgaWQgPSAxNVxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTsiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///15\n");
+    }, /* 16 */
+    /*!******************************!*\
+  !*** ./src/jquery-plugin.js ***!
+  \******************************/
+    /*! dynamic exports provided */
+    /*! all exports used */
+    /***/
+    function(module, exports, __webpack_require__) {
+        eval("if (typeof jQuery != 'undefined') {\n\tvar parse = __webpack_require__(/*! ./flowchart.parse */ 3);\n\t(function( $ ) {\n\t\t$.fn.flowChart = function( options ) {\n\t\t\treturn this.each(function() {\n\t\t\t\tvar $this = $(this);\n\t\t\t\tvar chart = parse($this.text());\n\t\t\t\t$this.html('');\n\t\t\t\tchart.drawSVG(this, options);\n\t\t\t});\n\t\t};\n\t})(jQuery); // eslint-disable-line\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMTYuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvanF1ZXJ5LXBsdWdpbi5qcz8zZjE2Il0sInNvdXJjZXNDb250ZW50IjpbImlmICh0eXBlb2YgalF1ZXJ5ICE9ICd1bmRlZmluZWQnKSB7XG5cdHZhciBwYXJzZSA9IHJlcXVpcmUoJy4vZmxvd2NoYXJ0LnBhcnNlJyk7XG5cdChmdW5jdGlvbiggJCApIHtcblx0XHQkLmZuLmZsb3dDaGFydCA9IGZ1bmN0aW9uKCBvcHRpb25zICkge1xuXHRcdFx0cmV0dXJuIHRoaXMuZWFjaChmdW5jdGlvbigpIHtcblx0XHRcdFx0dmFyICR0aGlzID0gJCh0aGlzKTtcblx0XHRcdFx0dmFyIGNoYXJ0ID0gcGFyc2UoJHRoaXMudGV4dCgpKTtcblx0XHRcdFx0JHRoaXMuaHRtbCgnJyk7XG5cdFx0XHRcdGNoYXJ0LmRyYXdTVkcodGhpcywgb3B0aW9ucyk7XG5cdFx0XHR9KTtcblx0XHR9O1xuXHR9KShqUXVlcnkpOyAvLyBlc2xpbnQtZGlzYWJsZS1saW5lXG59XG5cblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyAuL3NyYy9qcXVlcnktcGx1Z2luLmpzXG4vLyBtb2R1bGUgaWQgPSAxNlxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOyIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///16\n");
     } ]);
 });
-//# sourceMappingURL=flowchart.js.map

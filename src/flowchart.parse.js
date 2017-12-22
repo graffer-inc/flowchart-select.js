@@ -5,6 +5,7 @@ var Operation = require('./flowchart.symbol.operation');
 var InputOutput = require('./flowchart.symbol.inputoutput');
 var Subroutine = require('./flowchart.symbol.subroutine');
 var Condition = require('./flowchart.symbol.condition');
+var Select = require('./flowchart.symbol.select');
 
 function parse(input) {
   input = input || '';
@@ -13,7 +14,7 @@ function parse(input) {
   var chart = {
     symbols: {},
     start: null,
-    drawSVG: function(container, options) {
+    drawSVG: function (container, options) {
       var self = this;
 
       if (this.diagram) {
@@ -48,52 +49,73 @@ function parse(input) {
           case 'condition':
             dispSymbols[s.key] = new Condition(diagram, s);
             break;
+          case 'select':
+            dispSymbols[s.key] = new Select(diagram, s);
+            break;
           default:
-            return new Error('Wrong symbol type!');
+            return new Error('Wrong symbol types!');
         }
 
         return dispSymbols[s.key];
       }
 
-      (function constructChart(s, prevDisp, prev) {
-        var dispSymb = getDisplaySymbol(s);
+      (function constructChart(symbol, prevDisp, prev) {
+        var dispSymb = getDisplaySymbol(symbol);
 
-        if (self.start === s) {
+        if (self.start === symbol) {
           diagram.startWith(dispSymb);
         } else if (prevDisp && prev && !prevDisp.pathOk) {
-          if (prevDisp instanceof(Condition)) {
-            if (prev.yes === s) {
+          if (prevDisp instanceof (Condition)) {
+            if (prev.yes === symbol) {
               prevDisp.yes(dispSymb);
             }
-            if (prev.no === s) {
+            if (prev.no === symbol) {
               prevDisp.no(dispSymb);
+            }
+          } else if (prevDisp instanceof (Select)) {
+            for (var j = 1; j < 11; j++) {
+              var label = 'option' + j;
+              if (prev[label] === symbol) {
+                prevDisp[label](dispSymb, label);
+              }
             }
           } else {
             prevDisp.then(dispSymb);
           }
+
         }
 
         if (dispSymb.pathOk) {
           return dispSymb;
         }
 
-        if (dispSymb instanceof(Condition)) {
-          if (s.yes) {
-            constructChart(s.yes, dispSymb, s);
+        if (dispSymb instanceof (Condition)) {
+          if (symbol.yes) {
+            constructChart(symbol.yes, dispSymb, symbol);
           }
-          if (s.no) {
-            constructChart(s.no, dispSymb, s);
+          if (symbol.no) {
+            constructChart(symbol.no, dispSymb, symbol);
           }
-        } else if (s.next) {
-          constructChart(s.next, dispSymb, s);
+        } else if (dispSymb instanceof (Select)) {
+
+          for (var jj = 1; jj < 11; jj++) {
+            var label2 = 'option' + jj;
+            if (symbol[label2]) {
+              constructChart(symbol[label2], dispSymb, symbol);
+            }
+          }
+
+        } else if (symbol.next) {
+          constructChart(symbol.next, dispSymb, symbol);
         }
+
 
         return dispSymb;
       })(this.start);
 
       diagram.render();
     },
-    clean: function() {
+    clean: function () {
       this.diagram.clean();
     }
   };
@@ -101,14 +123,14 @@ function parse(input) {
   var lines = [];
   var prevBreak = 0;
   for (var i0 = 1, i0len = input.length; i0 < i0len; i0++) {
-    if(input[i0] === '\n' && input[i0 - 1] !== '\\') {
+    if (input[i0] === '\n' && input[i0 - 1] !== '\\') {
       var line0 = input.substring(prevBreak, i0);
       prevBreak = i0 + 1;
       lines.push(line0.replace(/\\\n/g, '\n'));
     }
   }
 
-  if(prevBreak < input.length) {
+  if (prevBreak < input.length) {
     lines.push(input.substr(prevBreak));
   }
 
@@ -124,11 +146,11 @@ function parse(input) {
     }
   }
 
-  function getStyle(s){
+  function getStyle(s) {
     var startIndex = s.indexOf('(') + 1;
     var endIndex = s.indexOf(')');
     if (startIndex >= 0 && endIndex >= 0) {
-      return s.substring(startIndex,endIndex);
+      return s.substring(startIndex, endIndex);
     }
     return '{}';
   }
@@ -149,7 +171,7 @@ function parse(input) {
     if (startIndex >= 0 && endIndex >= 0) {
       next = flowSymb.substring(startIndex, endIndex);
       if (next.indexOf(',') < 0) {
-        if (next !== 'yes' && next !== 'no') {
+        if (next !== 'yes' && next !== 'no' && next.substr(0, 2) !== 'op') {
           next = 'next, ' + next;
         }
       }
@@ -159,6 +181,8 @@ function parse(input) {
 
   while (lines.length > 0) {
     var line = lines.splice(0, 1)[0].trim();
+
+    var nextSymb;
 
     if (line.indexOf('=>') >= 0) {
       // definition
@@ -176,11 +200,11 @@ function parse(input) {
 
       //parse parameters
       var params = parts[0].match(/\((.*)\)/);
-      if (params && params.length > 1){
+      if (params && params.length > 1) {
         var entries = params[1].split(',');
-        for(var i = 0; i < entries.length; i++) {
+        for (var ii = 0; ii < entries.length; ii++) {
           var entry = entries[0].split('=');
-          if (entry.length == 2){
+          if (entry.length === 2) {
             symbol.params[entry[0]] = entry[1];
           }
         }
@@ -232,6 +256,7 @@ function parse(input) {
       chart.symbols[symbol.key] = symbol;
 
     } else if (line.indexOf('->') >= 0) {
+
       // flow
       var flowSymbols = line.split('->');
       for (var i = 0, lenS = flowSymbols.length; i < lenS; i++) {
@@ -252,7 +277,7 @@ function parse(input) {
         }
 
         if (i + 1 < lenS) {
-          var nextSymb = flowSymbols[i + 1];
+          nextSymb = flowSymbols[i + 1];
           realSymb[next] = getSymbol(nextSymb);
           realSymb['direction_' + next] = direction;
           direction = null;
@@ -262,13 +287,13 @@ function parse(input) {
 
       // line style
       var lineStyleSymbols = line.split('@>');
-      for (var i = 0, lenS = lineStyleSymbols.length; i < lenS; i++) {
+      for (var iii = 0, lenSS = lineStyleSymbols.length; iii < lenSS; iii++) {
 
-        if ((i+1) != lenS){
+        if ((iii + 1) !== lenSS) {
           var curSymb = getSymbol(lineStyleSymbols[i]);
-          var nextSymb = getSymbol(lineStyleSymbols[i+1])
+          nextSymb = getSymbol(lineStyleSymbols[iii + 1]);
 
-          curSymb['lineStyle'][nextSymb.key] = JSON.parse(getStyle(lineStyleSymbols[i+1]));
+          curSymb['lineStyle'][nextSymb.key] = JSON.parse(getStyle(lineStyleSymbols[iii + 1]));
         }
       }
     }

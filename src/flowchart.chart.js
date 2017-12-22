@@ -2,6 +2,7 @@ var Raphael = require('raphael');
 var defaults = require('./flowchart.helpers').defaults;
 var defaultOptions = require('./flowchart.defaults');
 var Condition = require('./flowchart.symbol.condition');
+var Select = require('./flowchart.symbol.select');
 
 function FlowChart(container, options) {
   options = options || {};
@@ -15,30 +16,48 @@ function FlowChart(container, options) {
   this.start = null;
 }
 
-FlowChart.prototype.handle = function(symbol) {
+FlowChart.prototype.handle = function (symbol) {
   if (this.symbols.indexOf(symbol) <= -1) {
     this.symbols.push(symbol);
   }
 
   var flowChart = this;
 
-  if (symbol instanceof(Condition)) {
-    symbol.yes = function(nextSymbol) {
+  if (symbol instanceof (Condition)) {
+    symbol.yes = function (nextSymbol) {
       symbol.yes_symbol = nextSymbol;
-      if(symbol.no_symbol) {
+      if (symbol.no_symbol) {
         symbol.pathOk = true;
       }
       return flowChart.handle(nextSymbol);
     };
-    symbol.no = function(nextSymbol) {
+    symbol.no = function (nextSymbol) {
       symbol.no_symbol = nextSymbol;
-      if(symbol.yes_symbol) {
+      if (symbol.yes_symbol) {
         symbol.pathOk = true;
       }
       return flowChart.handle(nextSymbol);
     };
+  } else if (symbol instanceof (Select)) {
+
+    for (var j = 1; j < 11; j++) {
+      var label = 'option' + j;
+      symbol[label] = function (nextSymbol, label) {
+        symbol[label + '_symbol'] = nextSymbol;
+
+        for (var jj = 1; jj < j; jj++) {
+          if (!symbol[jj]) {
+            symbol.pathOk = false;
+            break;
+          }
+          symbol.pathOk = true;
+        }
+        return flowChart.handle(nextSymbol);
+      };
+    }
+
   } else {
-    symbol.then = function(nextSymbol) {
+    symbol.then = function (nextSymbol) {
       symbol.next = nextSymbol;
       symbol.pathOk = true;
       return flowChart.handle(nextSymbol);
@@ -48,22 +67,22 @@ FlowChart.prototype.handle = function(symbol) {
   return symbol;
 };
 
-FlowChart.prototype.startWith = function(symbol) {
+FlowChart.prototype.startWith = function (symbol) {
   this.start = symbol;
   return this.handle(symbol);
 };
 
-FlowChart.prototype.render = function() {
+FlowChart.prototype.render = function () {
   var maxWidth = 0,
-      maxHeight = 0,
-      i = 0,
-      len = 0,
-      maxX = 0,
-      maxY = 0,
-      minX = 0,
-      minY = 0,
-      symbol,
-      line;
+    maxHeight = 0,
+    i = 0,
+    len = 0,
+    maxX = 0,
+    maxY = 0,
+    minX = 0,
+    minY = 0,
+    symbol,
+    line;
 
   for (i = 0, len = this.symbols.length; i < len; i++) {
     symbol = this.symbols[i];
@@ -77,8 +96,8 @@ FlowChart.prototype.render = function() {
 
   for (i = 0, len = this.symbols.length; i < len; i++) {
     symbol = this.symbols[i];
-    symbol.shiftX(this.options.x + (maxWidth - symbol.width)/2 + this.options['line-width']);
-    symbol.shiftY(this.options.y + (maxHeight - symbol.height)/2 + this.options['line-width']);
+    symbol.shiftX(this.options.x + (maxWidth - symbol.width) / 2 + this.options['line-width']);
+    symbol.shiftY(this.options.y + (maxHeight - symbol.height) / 2 + this.options['line-width']);
   }
 
   this.start.render();
@@ -142,7 +161,7 @@ FlowChart.prototype.render = function() {
   this.paper.setViewBox(minX, minY, width, height, true);
 };
 
-FlowChart.prototype.clean = function() {
+FlowChart.prototype.clean = function () {
   if (this.paper) {
     var paperDom = this.paper.canvas;
     paperDom.parentNode.removeChild(paperDom);

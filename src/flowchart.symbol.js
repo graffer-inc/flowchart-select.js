@@ -307,9 +307,7 @@ Symbol.prototype.drawLineTo = function(symbol, text, origin) {
   } else if ((!origin || origin === 'bottom') && isRight) {
     line = drawLine(this.chart, bottom, [
       {x: bottom.x, y: bottom.y + lineLength/2},
-      {x: bottom.x + (bottom.x - symbolTop.x)/2, y: bottom.y + lineLength/2},
-      {x: bottom.x + (bottom.x - symbolTop.x)/2, y: symbolTop.y - lineLength/2},
-      {x: symbolTop.x, y: symbolTop.y - lineLength/2},
+      {x: symbolTop.x, y: bottom.y + lineLength/2},
       {x: symbolTop.x, y: symbolTop.y}
     ], text);
     this.bottomStart = true;

@@ -64,6 +64,7 @@ function drawLine(chart, from, to, text) {
 
     var isHorizontal = false;
     var firstTo = to[0];
+    var lastTo = to[to.length -1 ];
 
     if (from.y === firstTo.y) {
       isHorizontal = true;
@@ -93,7 +94,7 @@ function drawLine(chart, from, to, text) {
         y -= textPath.getBBox().height/2;
       }
     } else {
-      x = from.x;
+      x = lastTo.x;
       y = from.y;
 
       if (isHorizontal) {

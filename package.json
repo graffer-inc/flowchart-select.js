@@ -17,14 +17,17 @@
     "jquery": "^2.2.0",
     "lodash": ">=0.2.1",
     "moment": "^2.11.1",
-    "webpack": "^1.12.11",
+    "webpack": "^3.10.0",
     "webpack-dev-middleware": "^1.4.0",
+    "webpack-dev-server": "^2.9.7",
     "webpack-hot-middleware": "^2.6.0"
   },
   "scripts": {
     "init": "git submodule init && git submodule update && git submodule status",
     "start": "node devserver.js",
     "lint": "eslint src",
+    "watch": "NODE_ENV=production webpack -d --config webpack.config.js --watch",
+    "serve": "webpack-dev-server -d --config webpack.config.js",
     "build:unminified": "NODE_ENV=production webpack -d --config webpack.config.js",
     "build:minified": "NODE_ENV=production MINIFIED=1 webpack -d --config webpack.config.js",
     "build": "npm run build:unminified && npm run build:minified && cp ./release/flowchart.js ./site/flowchart-latest.js",
